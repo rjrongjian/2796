@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
@@ -50,6 +51,23 @@ namespace DeepNaiWorkshop_2796
             {
                 intCode[i] = i % 9;
             }
+        }
+
+        /*
+         * 获取指定注册表基项值
+         * 
+         */ 
+        public static RegistryKey getFatherKey()
+        {
+            RegistryKey lm = Registry.CurrentUser;
+            RegistryKey fatherKey = lm.OpenSubKey("SOFTWARE", true);
+            RegistryKey myProjectFatherKey = fatherKey.OpenSubKey(Const.REGISTRY_LOCATION);
+            if (myProjectFatherKey == null)
+            {
+                myProjectFatherKey = fatherKey.CreateSubKey(Const.REGISTRY_LOCATION);
+
+            }
+            return myProjectFatherKey;
         }
 
         /*

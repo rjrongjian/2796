@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -65,9 +66,33 @@ namespace DeepNaiWorkshop_2796
 
         public override RespMessage checkReg(String registCode)
         {
+            //相等且注册表没有存此值时，就存入
+            RegistryKey fatherKey = SoftRegister.getFatherKey();
             String localRegistCode = this.generateRegistCode(SoftRegister.getMNum());
-            if()
-            throw new NotImplementedException();
+            string str = fatherKey.GetValue(Const.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY, "").ToString();
+            if (localRegistCode.Equals(registCode))
+            {
+                
+                
+                if ("".Equals(str))
+                {
+                    fatherKey.SetValue(Const.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY, registCode);
+                }
+                return new RespMessage(1,"OK");
+            }
+            else
+            {
+                //当注册码不想等时，且当注册表此注册信息存在，也会被清除
+                //string str = Registry.GetValue(Const.REGISTRY_LOCATION, Const.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY, "").ToString();
+                if (!"".Equals(str))
+                {
+                    fatherKey.SetValue( Const.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY, "");
+                    return new RespMessage(2, "请重新输入注册码，以便继续使用应用");
+                }
+                return new RespMessage(3, "请输入正确的注册码！");
+
+            }
+            
         }
     }
 }
