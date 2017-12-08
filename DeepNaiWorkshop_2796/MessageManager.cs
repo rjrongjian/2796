@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DeepNaiWorkshop_2796
 {
-    class DateUtil
+    class MessageManager
     {
-        public static string getCurrentTimeStr()
+        public static void show(String content)
         {
-            return DateTime.Now.ToString();
+            
         }
     }
 }
