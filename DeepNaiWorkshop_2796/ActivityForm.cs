@@ -24,6 +24,7 @@ namespace DeepNaiWorkshop_2796
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.Text = this.Text + "-版本" + Const.VERSION;
             this.textBox1.Text = SoftRegister.getMNum();
             RegistryKey fatherKey =  SoftRegister.getFatherKey();
             this.textBox2.Text = fatherKey.GetValue(Const.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY, "").ToString();
@@ -55,6 +56,7 @@ namespace DeepNaiWorkshop_2796
                 mainForm = new MainForm();
                 //调整页面位置
                 mainForm.Location = activityFormLocation;
+                mainForm.Text = mainForm.Text + "-版本" + Const.VERSION;
                 mainForm.Show();
             }
             else

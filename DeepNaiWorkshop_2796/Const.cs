@@ -13,5 +13,7 @@ namespace DeepNaiWorkshop_2796
         public static String VALUE_NAME_FOR_VALIDATE_IN_REGISTRY = "VALIDATE";//注册表中使用的识别码
         //在HKEY_LOCAL_MACHINE/SOFTWARE下开始创建
         public static String REGISTRY_LOCATION = PROJECT_ID;//注册表基项位置
+
+        public static String VERSION = "V2.3";//版本号
     }
 }

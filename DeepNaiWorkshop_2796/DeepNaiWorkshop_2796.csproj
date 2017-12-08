@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDataBean.cs" />
     <Compile Include="Const.cs" />
     <Compile Include="DateUtil.cs" />
     <Compile Include="DefaultSoftRegister.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="ActivityForm.Designer.cs">
       <DependentUpon>ActivityForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LogTool.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

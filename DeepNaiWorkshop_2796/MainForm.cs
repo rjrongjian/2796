@@ -16,9 +16,14 @@ namespace DeepNaiWorkshop_2796
         {
             InitializeComponent();
         }
+        //TODO 网络读取图片 http://www.jb51.net/article/78993.htm
+
+
+
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            
             System.Environment.Exit(0);
         }
     }
