@@ -24,10 +24,13 @@ namespace DeepNaiWorkshop_2796
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.StartPosition = FormStartPosition.Manual;
             this.Text = this.Text + "-版本" + Const.VERSION;
             this.textBox1.Text = SoftRegister.getMNum();
             RegistryKey fatherKey =  SoftRegister.getFatherKey();
             this.textBox2.Text = fatherKey.GetValue(Const.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY, "").ToString();
+
+            this.Location = new Point((Screen.PrimaryScreen.Bounds.Width-this.Width)/2, (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2);
             //Console.WriteLine("获取的机器码：" + SoftRegister.getMNum());
             //Console.WriteLine("生成的注册码：" + sr.generateRegistCode(SoftRegister.getMNum()));
             //Console.WriteLine("生成的注册码2：" + sr.generateRegistCode(SoftRegister.getMNum()));
