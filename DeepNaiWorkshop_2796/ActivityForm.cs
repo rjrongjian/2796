@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -36,6 +37,8 @@ namespace DeepNaiWorkshop_2796
             //Console.WriteLine("生成的注册码2：" + sr.generateRegistCode(SoftRegister.getMNum()));
             //RespMessage respMessage = sr.checkReg(sr.generateRegistCode(SoftRegister.getMNum()));
             //Console.WriteLine("获取的注册信息："+respMessage.message);
+
+
         }
         //复制机器码按钮
         private void button2_Click(object sender, EventArgs e)

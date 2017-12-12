@@ -71,6 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RespMessage.cs" />
     <Compile Include="SoftRegister.cs" />
+    <Compile Include="StringTool.cs" />
     <Compile Include="TaoBaoTool.cs" />
     <Compile Include="WebTool.cs" />
     <Compile Include="WinTool.cs" />

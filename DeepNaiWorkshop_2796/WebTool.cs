@@ -23,7 +23,7 @@ namespace DeepNaiWorkshop_2796
 
             //string pageHtml = Encoding.UTF8.GetString(pageData); //如果获取网站页面采用的是UTF-8，则使用这句
 
-            Console.WriteLine(pageHtml);//在控制台输入获取的内容
+            //Console.WriteLine(pageHtml);//在控制台输入获取的内容
 
             return pageHtml;
         }

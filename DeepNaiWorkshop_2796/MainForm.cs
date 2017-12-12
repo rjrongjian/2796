@@ -48,11 +48,21 @@ namespace DeepNaiWorkshop_2796
                 LogTool.log("正在获取网页信息",this.logLabel);
                 String htmlWebContent = WebTool.getHtmlContent(url);
                 LogTool.log("开始解析网页", this.logLabel);
-                BaseDataBean dataBean = taoBaoTool.parseShopData(int.Parse(validateResult.message), htmlWebContent);
-                if (dataBean == null)
+                //目前只支持天猫
+                
+                if(TaoBaoTool.GOOD_TYPE_TMALL == int.Parse(validateResult.message))
                 {
-                    alert("不能正常解析数据");
+                    BaseDataBean dataBean = taoBaoTool.parseShopData(int.Parse(validateResult.message), htmlWebContent);
+                    if (dataBean == null)
+                    {
+                        alert("不能正常解析数据，请手动录入");
+                    }
                 }
+                else
+                {
+                    alert("目前不支持淘宝商品数据爬取，请手动录入");
+                }
+                
 
 
 
