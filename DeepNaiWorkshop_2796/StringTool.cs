@@ -12,7 +12,7 @@ namespace DeepNaiWorkshop_2796
         {
             if (str.StartsWith(startWith))
             {
-                return replaceWithStr + str.Substring(str.IndexOf(startWith));
+                return replaceWithStr + str.Substring(str.IndexOf(startWith) + startWith.Length);
             }
             else
             {

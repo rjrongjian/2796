@@ -30,44 +30,59 @@ namespace DeepNaiWorkshop_2796
 
         private void button1_Click(object sender, EventArgs e)  //获取商品信息
         {
-            
-            String url = this.textBox1.Text;
-            TaoBaoTool taoBaoTool = new TaoBaoTool();
-            //判断是否是天猫 淘宝链接
-            RespMessage validateResult = taoBaoTool.isTmallOrTaoBaoItemPage(url);
-            if (validateResult.code!=1)
+            //按钮不可用
+            setMainFormBtnStatus(2);
+            try
             {
-                alert(validateResult.message);
-            }
-            else
-            {
-                //开始解析数据
-                LogTool.log("开始解析天猫（淘宝）详情页面：" + url, this.logLabel);
-                //按钮不可用
-                setMainFormBtnStatus(2);
-                LogTool.log("正在获取网页信息",this.logLabel);
-                String htmlWebContent = WebTool.getHtmlContent(url);
-                LogTool.log("开始解析网页", this.logLabel);
-                //目前只支持天猫
-                
-                if(TaoBaoTool.GOOD_TYPE_TMALL == int.Parse(validateResult.message))
+                String url = this.textBox1.Text;
+                TaoBaoTool taoBaoTool = new TaoBaoTool();
+                //判断是否是天猫 淘宝链接
+                RespMessage validateResult = taoBaoTool.isTmallOrTaoBaoItemPage(url);
+                if (validateResult.code != 1)
                 {
-                    BaseDataBean dataBean = taoBaoTool.parseShopData(int.Parse(validateResult.message), htmlWebContent);
-                    if (dataBean == null)
-                    {
-                        alert("不能正常解析数据，请手动录入");
-                    }
+                    alert(validateResult.message);
                 }
                 else
                 {
-                    alert("目前不支持淘宝商品数据爬取，请手动录入");
+                    //开始解析数据
+                    LogTool.log("开始解析天猫（淘宝）详情页面：" + url, this.logLabel);
+                    
+                    LogTool.log("正在获取网页信息", this.logLabel);
+                    String htmlWebContent = WebTool.getHtmlContent(url);
+                    LogTool.log("开始解析网页", this.logLabel);
+                    //目前只支持天猫
+
+                    if (TaoBaoTool.GOOD_TYPE_TMALL == int.Parse(validateResult.message))
+                    {
+                        BaseDataBean dataBean = taoBaoTool.parseShopData(int.Parse(validateResult.message), htmlWebContent);
+                        if (dataBean == null)
+                        {
+                            alert("不能正常解析数据，请手动录入");
+                        }
+
+                        //赋值
+                        this.textBox3.Text = dataBean.CouponValue.ToString();//自定义券价格
+                        this.textBox2.Text = dataBean.Price.ToString();//商品价格 
+                        this.textBox6.Text = dataBean.Name;//商品名称
+                        this.textBox4.Text = dataBean.Volume.ToString();//商品销量
+                        this.textBox7.Text = dataBean.MainPicStr;// 商品图片地址
+                        this.pictureBox1.Image = dataBean.MainPic;// 商品图片
+                        LogTool.log("数据解析完成，数据可手动更改...",this.logLabel);
+                        setMainFormBtnStatus(7);//获取商品数据、生成截图按钮可用
+
+                    }
+                    else
+                    {
+                        alert("目前不支持淘宝商品数据爬取，请手动录入");
+                    }
+
                 }
-                
-
-
-
             }
-            
+            catch(Exception ex)
+            {
+                ExceptionTool.log(ex);
+                alert("解析数据失败，请手动录入");
+            }
 
         }
 
@@ -110,52 +125,59 @@ namespace DeepNaiWorkshop_2796
             if (status == 1)
             {
                 this.button1.Enabled = true;
-                this.button1.Enabled = true;
-                this.button1.Enabled = true;
-                this.button1.Enabled = true;
+                this.button2.Enabled = true;
+                this.button3.Enabled = true;
+                this.button4.Enabled = true;
             }
             else if (status == 2)//2 按钮全部不可用
             {
                 this.button1.Enabled = false;
-                this.button1.Enabled = false;
-                this.button1.Enabled = false;
-                this.button1.Enabled = false;
+                this.button2.Enabled = false;
+                this.button3.Enabled = false;
+                this.button4.Enabled = false;
             }
             else if (status == 3)//3 获取商品信息按钮可用
             {
                 this.button1.Enabled = true;
-                this.button1.Enabled = false;
-                this.button1.Enabled = false;
-                this.button1.Enabled = false;
+                this.button2.Enabled = false;
+                this.button3.Enabled = false;
+                this.button4.Enabled = false;
             }
             else if (status == 4)//4 生成截图按钮可用
             {
                 this.button1.Enabled = false;
-                this.button1.Enabled = true;
-                this.button1.Enabled = false;
-                this.button1.Enabled = false;
+                this.button2.Enabled = true;
+                this.button3.Enabled = false;
+                this.button4.Enabled = false;
             }
             else if (status == 5)//5 截图优惠券按钮可用
             {
                 this.button1.Enabled = false;
-                this.button1.Enabled = false;
-                this.button1.Enabled = true;
-                this.button1.Enabled = false;
+                this.button2.Enabled = false;
+                this.button3.Enabled = true;
+                this.button4.Enabled = false;
             }
             else if (status == 6)//6 截图订单详情按钮可用
             {
                 this.button1.Enabled = false;
-                this.button1.Enabled = false;
-                this.button1.Enabled = false;
+                this.button2.Enabled = false;
+                this.button3.Enabled = false;
+                this.button4.Enabled = true;
+            }
+            else if (status == 7)//7 获取商品数据、生成截图按钮可用
+            {
                 this.button1.Enabled = true;
+                this.button2.Enabled = true;
+                this.button3.Enabled = false;
+                this.button4.Enabled = false;
             }
             else
             {
                 LogTool.log("未能识别的按钮状态值："+status,this.logLabel);
                 this.button1.Enabled = false;
-                this.button1.Enabled = false;
-                this.button1.Enabled = false;
-                this.button1.Enabled = false;
+                this.button2.Enabled = false;
+                this.button3.Enabled = false;
+                this.button4.Enabled = false;
             }
         }
     }

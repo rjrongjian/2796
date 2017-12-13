@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +58,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "激活软件";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 9F);
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(45, 94);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 12);
+            this.label3.TabIndex = 6;
             // 
             // button2
             // 
@@ -112,16 +122,6 @@
             this.textBox1.Size = new System.Drawing.Size(156, 21);
             this.textBox1.TabIndex = 0;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 9F);
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(45, 94);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 12);
-            this.label3.TabIndex = 6;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label5);
@@ -133,15 +133,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "软件说明";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(329, 12);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "淘客设置券信息，生成“优惠券领取”和“用券下单”截图，";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -150,6 +141,15 @@
             this.label5.Size = new System.Drawing.Size(365, 12);
             this.label5.TabIndex = 1;
             this.label5.Text = "通过更巨吸引力的券信息，在社交平台进行引流。例如：淘宝评价。";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(28, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(329, 12);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "淘客设置券信息，生成“优惠券领取”和“用券下单”截图，";
             // 
             // ActivityForm
             // 
@@ -160,7 +160,7 @@
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.Name = "ActivityForm";
-            this.Text = "天猫淘宝评价水印助手-软件激活";
+            this.Text = "天猫评价水印助手（优惠券截图生成器）-软件激活";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ActivityForm_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);

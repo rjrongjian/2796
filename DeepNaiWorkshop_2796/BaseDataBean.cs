@@ -11,6 +11,7 @@ namespace DeepNaiWorkshop_2796
     {
         private String _name;//商品标题
         private Image _mainPic;//商品主图
+        private String _mainPicStr;//商品主图路径
         private String _startDateOfCoupon;//优惠券开始日期 格式：2017.12.07
         private String _endDateOfCoupon;//优惠券结束日期
         private double _price;//商品价格
@@ -30,5 +31,6 @@ namespace DeepNaiWorkshop_2796
         public int Volume { get => _volume; set => _volume = value; }
         public Image ShopPic { get => _shopPic; set => _shopPic = value; }
         public List<string> CommentariesList { get => _commentariesList; set => _commentariesList = value; }
+        public string MainPicStr { get => _mainPicStr; set => _mainPicStr = value; }
     }
 }

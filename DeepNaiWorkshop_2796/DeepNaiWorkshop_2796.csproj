@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="BaseDataBean.cs" />
     <Compile Include="Const.cs" />
+    <Compile Include="DataTool.cs" />
     <Compile Include="DateUtil.cs" />
     <Compile Include="DefaultSoftRegister.cs" />
     <Compile Include="EncryptTool.cs" />
@@ -58,6 +59,8 @@
     <Compile Include="ActivityForm.Designer.cs">
       <DependentUpon>ActivityForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExceptionTool.cs" />
+    <Compile Include="ImageTool.cs" />
     <Compile Include="LogTool.cs" />
     <Compile Include="MailTool.cs" />
     <Compile Include="MainForm.cs">
