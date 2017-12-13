@@ -52,6 +52,7 @@
     <Compile Include="DataTool.cs" />
     <Compile Include="DateUtil.cs" />
     <Compile Include="DefaultSoftRegister.cs" />
+    <Compile Include="MailTool.cs" />
     <Compile Include="EncryptTool.cs" />
     <Compile Include="ActivityForm.cs">
       <SubType>Form</SubType>
@@ -62,7 +63,6 @@
     <Compile Include="ExceptionTool.cs" />
     <Compile Include="ImageTool.cs" />
     <Compile Include="LogTool.cs" />
-    <Compile Include="MailTool.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

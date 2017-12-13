@@ -39,9 +39,10 @@ namespace DeepNaiWorkshop_2796
             //Console.WriteLine("获取的注册信息："+respMessage.message);
 
             //测试发邮件
-            Console.WriteLine("发送前");
-            MailTool.sendQQMail(Const.FROM_MAIL, "内容", "标题", "高富帅");
-            Console.WriteLine("发送没");
+            //Console.WriteLine("发送前");
+            //MailTool email = new MailTool("1633545776@qq.com", "测试邮件2", "测试内容");
+            //email.Send();
+            //Console.WriteLine("发送没");
         }
         //复制机器码按钮
         private void button2_Click(object sender, EventArgs e)
