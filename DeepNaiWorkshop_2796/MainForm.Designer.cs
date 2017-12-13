@@ -225,9 +225,12 @@
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.LightGray;
+            this.pictureBox3.BackgroundImage = global::DeepNaiWorkshop_2796.Properties.Resources.test;
+            this.pictureBox3.InitialImage = null;
             this.pictureBox3.Location = new System.Drawing.Point(115, 30);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(293, 453);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             // 
