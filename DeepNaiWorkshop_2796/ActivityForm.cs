@@ -38,7 +38,10 @@ namespace DeepNaiWorkshop_2796
             //RespMessage respMessage = sr.checkReg(sr.generateRegistCode(SoftRegister.getMNum()));
             //Console.WriteLine("获取的注册信息："+respMessage.message);
 
-
+            //测试发邮件
+            Console.WriteLine("发送前");
+            MailTool.sendQQMail(Const.FROM_MAIL, "内容", "标题", "高富帅");
+            Console.WriteLine("发送没");
         }
         //复制机器码按钮
         private void button2_Click(object sender, EventArgs e)

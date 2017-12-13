@@ -15,5 +15,10 @@ namespace DeepNaiWorkshop_2796
         {
             label.Text = content;
         }
+
+        public static void logInFile(string errorInfo)
+        {
+            Console.WriteLine(errorInfo);
+        }
     }
 }

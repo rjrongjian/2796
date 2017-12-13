@@ -315,9 +315,11 @@
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(235, 91);
+            this.textBox4.MaxLength = 5;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(40, 21);
             this.textBox4.TabIndex = 13;
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // label11
             // 
@@ -340,9 +342,11 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(235, 61);
+            this.textBox2.MaxLength = 7;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(40, 21);
             this.textBox2.TabIndex = 10;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // groupBox2
             // 
@@ -556,9 +560,11 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(243, 113);
+            this.textBox3.MaxLength = 7;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(41, 21);
             this.textBox3.TabIndex = 11;
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
             // label7
             // 

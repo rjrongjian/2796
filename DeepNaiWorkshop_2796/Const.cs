@@ -15,5 +15,7 @@ namespace DeepNaiWorkshop_2796
         public static String REGISTRY_LOCATION = PROJECT_ID;//注册表基项位置
 
         public static String VERSION = "V2.3";//版本号
+
+        public static String FROM_MAIL = "1633545776@qq.com";//发件人账号
     }
 }

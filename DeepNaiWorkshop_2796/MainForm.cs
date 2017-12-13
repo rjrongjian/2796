@@ -180,5 +180,113 @@ namespace DeepNaiWorkshop_2796
                 this.button4.Enabled = false;
             }
         }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果输入的不是数字键，也不是.则取消该输入
+            if ((Char.IsNumber(e.KeyChar)) || e.KeyChar == (char)46 || e.KeyChar == (char)8)
+            {
+                if (e.KeyChar == (char)46)//输入的是.
+                {
+                    if (String.IsNullOrEmpty(this.textBox3.Text))//输入的金额首个字符为. 取消事件
+                    {
+                        e.Handled = true;//取消事件
+                    }
+                    else
+                    {
+                        if (this.textBox3.Text.Contains("."))//文字中已经输入过.
+                        {
+                            e.Handled = true;//取消事件
+                        }
+                    }
+                    
+
+                }
+                else
+                {
+                    if(e.KeyChar != (char)8)
+                    {
+                        if (this.textBox3.Text.IndexOf('.') != -1)//输入数字时已经包含. 判断当前.后面的位数
+                        {
+                            String[] splitArr = this.textBox3.Text.Split('.');
+                            if (splitArr[1].Length >= 2)
+                            {
+                                e.Handled = true;//取消事件
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            else
+            {
+                e.Handled = true;//取消事件
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)//这种校验不能解决4444. 这种数据
+        {
+            //如果输入的不是数字键，也不是.则取消该输入
+            if ((Char.IsNumber(e.KeyChar)) || e.KeyChar == (char)46 || e.KeyChar == (char)8)
+            {
+                if (e.KeyChar == (char)46)//输入的是.
+                {
+                    if (String.IsNullOrEmpty(this.textBox2.Text))//输入的金额首个字符为. 取消事件
+                    {
+                        e.Handled = true;//取消事件
+                    }
+                    else
+                    {
+                        if (this.textBox2.Text.Contains("."))//文字中已经输入过.
+                        {
+                            e.Handled = true;//取消事件
+                        }
+                    }
+
+
+                }
+                else
+                {
+                    if (e.KeyChar != (char)8)
+                    {
+                        if (this.textBox2.Text.IndexOf('.') != -1)//输入数字时已经包含. 判断当前.后面的位数
+                        {
+                            String[] splitArr = this.textBox2.Text.Split('.');
+                            if (splitArr[1].Length >= 2)
+                            {
+                                e.Handled = true;//取消事件
+                            }
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                e.Handled = true;//取消事件
+            }
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar))
+            {
+                if (String.IsNullOrEmpty(this.textBox4.Text))//输入的金额首个字符为. 取消事件
+                {
+                    if(e.KeyChar == (char)48)
+                    {
+                        e.Handled = true;//取消事件
+                    }
+                }
+            }
+            else
+            {
+                if(e.KeyChar != (char)8)
+                {
+                    e.Handled = true;//取消事件
+                }
+                
+            }
+        }
     }
 }
