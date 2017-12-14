@@ -187,50 +187,29 @@ namespace DeepNaiWorkshop_2796
             }
         }
 
-        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)//输入销量（不以0开头）
         {
-            //如果输入的不是数字键，也不是.则取消该输入
-            if ((Char.IsNumber(e.KeyChar)) || e.KeyChar == (char)46 || e.KeyChar == (char)8)
+            if (Char.IsNumber(e.KeyChar))
             {
-                if (e.KeyChar == (char)46)//输入的是.
+                if (String.IsNullOrEmpty(this.textBox3.Text))//输入的金额首个字符为. 取消事件
                 {
-                    if (String.IsNullOrEmpty(this.textBox3.Text))//输入的金额首个字符为. 取消事件
+                    if (e.KeyChar == (char)48)
                     {
                         e.Handled = true;//取消事件
                     }
-                    else
-                    {
-                        if (this.textBox3.Text.Contains("."))//文字中已经输入过.
-                        {
-                            e.Handled = true;//取消事件
-                        }
-                    }
-                    
-
-                }
-                else
-                {
-                    if(e.KeyChar != (char)8)
-                    {
-                        if (this.textBox3.Text.IndexOf('.') != -1)//输入数字时已经包含. 判断当前.后面的位数
-                        {
-                            String[] splitArr = this.textBox3.Text.Split('.');
-                            if (splitArr[1].Length >= 2)
-                            {
-                                e.Handled = true;//取消事件
-                            }
-                        }
-                    }
-                    
                 }
             }
             else
             {
-                e.Handled = true;//取消事件
+                if (e.KeyChar != (char)8)
+                {
+                    e.Handled = true;//取消事件
+                }
+
             }
         }
 
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)//这种校验不能解决4444. 这种数据
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)//这种校验不能解决4444. 这种数据 只能输入商品价格
         {
             //如果输入的不是数字键，也不是.则取消该输入
             if ((Char.IsNumber(e.KeyChar)) || e.KeyChar == (char)46 || e.KeyChar == (char)8)
@@ -253,6 +232,11 @@ namespace DeepNaiWorkshop_2796
                 }
                 else
                 {
+                    if(String.IsNullOrWhiteSpace(this.textBox2.Text)&& e.KeyChar == (char)48)//不能以0开头
+                    {
+                        e.Handled = true;//取消事件
+                    }
+
                     if (e.KeyChar != (char)8)
                     {
                         if (this.textBox2.Text.IndexOf('.') != -1)//输入数字时已经包含. 判断当前.后面的位数
@@ -390,7 +374,7 @@ namespace DeepNaiWorkshop_2796
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Multiselect = false;//该值确定是否可以选择多个文件
                 dialog.Title = "请选择文件夹";
-                dialog.Filter = "图像文件(*.jpg;*.jpg;*.jpeg;*.gif;*.png)|*.jpg;*.jpeg;*.gif;*.png";
+                dialog.Filter = "图像文件(*.jpg;*.jpg;*.jpeg;*.gif;*.png;*.bmp)|*.jpg;*.jpeg;*.gif;*.png;*.bmp";
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     string file = dialog.FileName;
@@ -414,6 +398,95 @@ namespace DeepNaiWorkshop_2796
 
         private bool validateData()//校验生成截图时用到的数据
         {
+            //自定义券价格校验
+            if (String.IsNullOrWhiteSpace(this.textBox3.Text))
+            {
+                alert("请输入自定义券价格");
+                return false;
+            }
+
+            //如果选择的是水印图片,校验图片是否获取到
+            if (this.radioButton1.Checked)
+            {
+                if (this.pictureBox2.Image == null)
+                {
+                    alert("请重新选择水印图片");
+                    return false;
+                }
+            }
+
+            //如果选择的是文字图片，允许为空
+
+            //校验商品图片
+            if (this.pictureBox1.Image == null)
+            {
+                if (String.IsNullOrWhiteSpace(this.textBox7.Text))//商品图片空，商品地址也为空
+                {
+                    alert("请输入正确的商品图片链接");
+                }
+                else
+                {
+                    //根据图片地址生成图片
+                    //判断图片路径是否合法（本地图片或者网络图片）
+                    int isLegal = ImageTool.isLegalOfImgPath(this.textBox7.Text);//0 不合法 1 网络图片 2 本地图片
+                    if (isLegal==0)//不合法
+                    {
+                        alert("请输入合法的图片路径（本地或网络图片完整地址）");
+                        return false;
+                    }
+
+                    try
+                    {
+                        Image goodPic = null;
+                        if (isLegal == 1)//网络图片
+                        {
+                            goodPic = ImageTool.getImageBy(this.textBox7.Text);
+                        }
+                        else //本地图片
+                        {
+                            goodPic = ImageTool.getLocalImageBy(this.textBox7.Text);
+                        }
+                        if (goodPic == null)
+                        {
+                            alert("不能获取商品图片，请检查商品图片路径是否正确");
+                            return false;
+                        }
+                        this.pictureBox1.Image = goodPic;
+                    }
+                    catch(Exception e)
+                    {
+                        alert("不能获取商品图片，请检查商品图片路径是否正确");
+                        return false;
+                    }
+
+                }
+            }
+
+            //检验商品价格
+            if(String.IsNullOrWhiteSpace(this.textBox2.Text))
+            {
+                alert("商品价格不能为空");
+                return false;
+            }
+            if (this.textBox2.Text.EndsWith("."))
+            {
+                alert("商品价格不能以.结尾");
+                return false;
+            }
+
+            //检验商品销量
+            if (String.IsNullOrWhiteSpace(this.textBox4.Text))
+            {
+                alert("商品销量不能为空");
+                return false;
+            }
+            //检验名称
+            if (String.IsNullOrWhiteSpace(this.textBox6.Text))
+            {
+                alert("商品名称不能为空");
+                return false;
+            }
+
             return true;
         }
     }

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace DeepNaiWorkshop_2796
@@ -28,6 +29,36 @@ namespace DeepNaiWorkshop_2796
             img = Image.FromStream(s);
             s.Close();
             return img;
+        }
+
+        /// <summary>
+        /// 判断当前图片路径是否有效，且是网络图片还是本地图片
+        /// </summary>
+        /// <param name="imgPath">图片路径</param>
+        /// <returns>0 不合法 1 网络图片 2 本地图片</returns>
+        public static int isLegalOfImgPath(string imgPath)
+        {
+            if (String.IsNullOrWhiteSpace(imgPath))
+            {
+                return 0;
+            }
+            //网络图片
+            Regex reg = new Regex("[A-Za-z]:[\\s\\S]+[.jpg|.jpeg|.gif|.png|.bmp]");
+            Match match = reg.Match(imgPath);
+
+            if (match.Success)
+            {
+                return 2;
+            }
+            Regex reg2 = new Regex("[http://|https://][\\s\\S]+");
+            Match match2 = reg.Match(imgPath);
+            if (match2.Success)
+            {
+                return 1;
+            }
+
+            return 0;
+
         }
     }
 }
