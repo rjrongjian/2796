@@ -20,5 +20,14 @@ namespace DeepNaiWorkshop_2796
             stream.Close();
             return image;
         }
+
+        public static Image getLocalImageBy(String imgPath)
+        {
+            Image img = null;
+            Stream s = File.Open(imgPath, FileMode.Open);
+            img = Image.FromStream(s);
+            s.Close();
+            return img;
+        }
     }
 }

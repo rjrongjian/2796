@@ -117,7 +117,7 @@ namespace DeepNaiWorkshop_2796
             //测试在pictureBox添加另一个
             PictureBox p = new PictureBox();
             p.Image = ResourceTool.getImage("test2");
-            Console.WriteLine("显示了吗"+p.Image.ToString());
+            //Console.WriteLine("显示了吗"+p.Image.ToString());
             p.Show();
             this.pictureBox3.Controls.Add(p);
         }
@@ -293,6 +293,128 @@ namespace DeepNaiWorkshop_2796
                 }
                 
             }
+        }
+
+        
+
+        private void textBox8_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果输入的不是数字键，也不是.则取消该输入
+            if ((Char.IsNumber(e.KeyChar)) || e.KeyChar == (char)46 || e.KeyChar == (char)8)
+            {
+                if (e.KeyChar == (char)46)//输入的是.
+                {
+                    if (String.IsNullOrEmpty(this.textBox8.Text))//输入的金额首个字符为. 取消事件
+                    {
+                        e.Handled = true;//取消事件
+                    }
+                    else
+                    {
+                        if (this.textBox8.Text.Contains("."))//文字中已经输入过.
+                        {
+                            e.Handled = true;//取消事件
+                        }
+                    }
+
+
+                }
+                else
+                {
+                    if (e.KeyChar != (char)8)
+                    {
+                        if (this.textBox8.Text.IndexOf('.') != -1)//输入数字时已经包含. 判断当前.后面的位数
+                        {
+                            String[] splitArr = this.textBox8.Text.Split('.');
+                            if (splitArr[1].Length >= 2)
+                            {
+                                e.Handled = true;//取消事件
+                            }
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                e.Handled = true;//取消事件
+            }
+        }
+
+        private void textBox9_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果输入的不是数字键，也不是.则取消该输入
+            if ((Char.IsNumber(e.KeyChar)) || e.KeyChar == (char)46 || e.KeyChar == (char)8)
+            {
+                if (e.KeyChar == (char)46)//输入的是.
+                {
+                    if (String.IsNullOrEmpty(this.textBox9.Text))//输入的金额首个字符为. 取消事件
+                    {
+                        e.Handled = true;//取消事件
+                    }
+                    else
+                    {
+                        if (this.textBox9.Text.Contains("."))//文字中已经输入过.
+                        {
+                            e.Handled = true;//取消事件
+                        }
+                    }
+
+
+                }
+                else
+                {
+                    if (e.KeyChar != (char)8)
+                    {
+                        if (this.textBox9.Text.IndexOf('.') != -1)//输入数字时已经包含. 判断当前.后面的位数
+                        {
+                            String[] splitArr = this.textBox9.Text.Split('.');
+                            if (splitArr[1].Length >= 2)
+                            {
+                                e.Handled = true;//取消事件
+                            }
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                e.Handled = true;//取消事件
+            }
+        }
+
+        private void radioButton1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (this.radioButton1.Checked)
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Multiselect = false;//该值确定是否可以选择多个文件
+                dialog.Title = "请选择文件夹";
+                dialog.Filter = "图像文件(*.jpg;*.jpg;*.jpeg;*.gif;*.png)|*.jpg;*.jpeg;*.gif;*.png";
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string file = dialog.FileName;
+                    Image watermark = ImageTool.getLocalImageBy(file);
+                    this.pictureBox2.Image = watermark;
+                    this.label14.Text = watermark.Height.ToString();//水印高
+                    this.label15.Text = watermark.Width.ToString();//水印图片宽
+
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)//生成截图
+        {
+            bool validateResult = validateData();
+            if (validateResult)//生成截图时用到的数据都正常
+            {
+                Console.WriteLine("将数据生成到页面");
+            }
+        }
+
+        private bool validateData()//校验生成截图时用到的数据
+        {
+            return true;
         }
     }
 }

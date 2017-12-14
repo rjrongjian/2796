@@ -28,11 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
@@ -82,6 +91,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -89,6 +99,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -136,6 +147,14 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.textBox9);
+            this.tabPage2.Controls.Add(this.textBox8);
+            this.tabPage2.Controls.Add(this.label29);
+            this.tabPage2.Controls.Add(this.button5);
+            this.tabPage2.Controls.Add(this.label28);
+            this.tabPage2.Controls.Add(this.label27);
+            this.tabPage2.Controls.Add(this.label26);
+            this.tabPage2.Controls.Add(this.label25);
             this.tabPage2.Controls.Add(this.label21);
             this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.label20);
@@ -152,15 +171,89 @@
             this.tabPage2.Text = "输出截图";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(39, 265);
+            this.textBox9.MaxLength = 3;
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(46, 21);
+            this.textBox9.TabIndex = 13;
+            this.textBox9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox9_KeyPress);
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(39, 238);
+            this.textBox8.MaxLength = 3;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(46, 21);
+            this.textBox8.TabIndex = 12;
+            this.textBox8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox8_KeyPress);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(5, 269);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(29, 12);
+            this.label29.TabIndex = 11;
+            this.label29.Text = "宽：";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(35, 292);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(68, 25);
+            this.button5.TabIndex = 10;
+            this.button5.Text = "更改尺寸";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(5, 242);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(29, 12);
+            this.label28.TabIndex = 9;
+            this.label28.Text = "高：";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(6, 219);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(53, 12);
+            this.label27.TabIndex = 8;
+            this.label27.Text = "水印尺寸";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.ForeColor = System.Drawing.Color.Red;
+            this.label26.Location = new System.Drawing.Point(1, 153);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(101, 12);
+            this.label26.TabIndex = 7;
+            this.label26.Text = "上传并生成截图；";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.Color.Red;
+            this.label25.Location = new System.Drawing.Point(2, 132);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(101, 12);
+            this.label25.TabIndex = 6;
+            this.label25.Text = "水印错误，请重新";
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.ForeColor = System.Drawing.Color.Red;
-            this.label21.Location = new System.Drawing.Point(7, 110);
+            this.label21.Location = new System.Drawing.Point(2, 110);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(101, 12);
+            this.label21.Size = new System.Drawing.Size(113, 12);
             this.label21.TabIndex = 5;
-            this.label21.Text = "注意：水印可拖动";
+            this.label21.Text = "注意：水印可拖动；";
             // 
             // button3
             // 
@@ -353,6 +446,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.textBox10);
             this.groupBox2.Location = new System.Drawing.Point(401, 228);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(321, 264);
@@ -482,6 +576,7 @@
             this.pictureBox2.Location = new System.Drawing.Point(6, 17);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(131, 78);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
@@ -512,10 +607,12 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(271, 92);
             this.textBox5.TabIndex = 2;
+            this.textBox5.Text = "我是水印...";
             // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
+            this.radioButton2.Checked = true;
             this.radioButton2.Location = new System.Drawing.Point(28, 132);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(95, 16);
@@ -531,9 +628,9 @@
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(95, 16);
             this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
             this.radioButton1.Text = "使用图片水印";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.radioButton1_MouseClick);
             // 
             // label10
             // 
@@ -596,13 +693,13 @@
             // 
             // button2
             // 
-            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(246, 442);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(99, 23);
             this.button2.TabIndex = 7;
             this.button2.Text = "生成截图";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -640,6 +737,14 @@
             this.tabControl1.Size = new System.Drawing.Size(760, 524);
             this.tabControl1.TabIndex = 0;
             // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(12, 20);
+            this.textBox10.Multiline = true;
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(300, 237);
+            this.textBox10.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -650,6 +755,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "天猫评价水印助手(优惠券截图生成器)";
@@ -664,6 +770,8 @@
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -731,5 +839,14 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox textBox10;
     }
 }
