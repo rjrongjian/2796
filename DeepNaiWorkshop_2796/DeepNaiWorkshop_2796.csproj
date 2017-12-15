@@ -109,16 +109,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\test2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\test.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo_32x32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\template_Nexus5X.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\template_ip6.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\吃内存.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

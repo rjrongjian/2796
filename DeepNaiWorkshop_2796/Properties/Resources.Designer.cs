@@ -71,7 +71,7 @@ namespace DeepNaiWorkshop_2796.Properties {
         }
         
         /// <summary>
-        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+        ///   查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Icon logo_32x32 {
             get {
@@ -83,9 +83,9 @@ namespace DeepNaiWorkshop_2796.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap test {
+        internal static System.Drawing.Bitmap template_ip6 {
             get {
-                object obj = ResourceManager.GetObject("test", resourceCulture);
+                object obj = ResourceManager.GetObject("template_ip6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,19 @@ namespace DeepNaiWorkshop_2796.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap test2 {
+        internal static System.Drawing.Bitmap template_Nexus5X {
             get {
-                object obj = ResourceManager.GetObject("test2", resourceCulture);
+                object obj = ResourceManager.GetObject("template_Nexus5X", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 吃内存 {
+            get {
+                object obj = ResourceManager.GetObject("吃内存", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

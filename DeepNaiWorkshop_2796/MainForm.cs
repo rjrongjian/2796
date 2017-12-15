@@ -115,11 +115,11 @@ namespace DeepNaiWorkshop_2796
             this.StartPosition = FormStartPosition.Manual;
             this.logLabel = this.label4;
             //测试在pictureBox添加另一个
-            PictureBox p = new PictureBox();
-            p.Image = ResourceTool.getImage("test2");
-            //Console.WriteLine("显示了吗"+p.Image.ToString());
-            p.Show();
-            this.pictureBox3.Controls.Add(p);
+            //PictureBox p = new PictureBox();
+            //p.Image = ResourceTool.getImage("test2");
+            ////Console.WriteLine("显示了吗"+p.Image.ToString());
+            //p.Show();
+            //this.pictureBox3.Controls.Add(p);
         }
         /*
          * 设置mainForm按钮状态
