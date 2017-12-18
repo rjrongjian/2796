@@ -22,6 +22,11 @@ namespace DeepNaiWorkshop_2796
             return image;
         }
 
+        /// <summary>
+        /// 读取本地图片
+        /// </summary>
+        /// <param name="imgPath"></param>
+        /// <returns></returns>
         public static Image getLocalImageBy(String imgPath)
         {
             Image img = null;
@@ -60,5 +65,7 @@ namespace DeepNaiWorkshop_2796
             return 0;
 
         }
+
+        
     }
 }

@@ -13,6 +13,7 @@ namespace DeepNaiWorkshop_2796
     public partial class MainForm : Form
     {
         private Label logLabel;
+        private Image originalCouponPic;//原始的优惠券截图背景图片
         public MainForm()
         {
             InitializeComponent();
@@ -66,6 +67,7 @@ namespace DeepNaiWorkshop_2796
                         this.textBox6.Text = dataBean.Name;//商品名称
                         this.textBox4.Text = dataBean.Volume.ToString();//商品销量
                         this.textBox7.Text = dataBean.MainPicStr;// 商品图片地址
+                        this.textBox11.Text = dataBean.ShopName;//店铺名称
                         this.pictureBox1.Image = dataBean.MainPic;// 商品图片
                         LogTool.log("数据解析完成，数据可手动更改...",this.logLabel);
                         setMainFormBtnStatus(7);//获取商品数据、生成截图按钮可用
@@ -114,6 +116,8 @@ namespace DeepNaiWorkshop_2796
             this.Location = new Point((Screen.PrimaryScreen.Bounds.Width - this.Width) / 2, (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2);
             this.StartPosition = FormStartPosition.Manual;
             this.logLabel = this.label4;
+
+            originalCouponPic = this.pictureBox3.Image;
             //测试在pictureBox添加另一个
             //PictureBox p = new PictureBox();
             //p.Image = ResourceTool.getImage("test2");
@@ -390,10 +394,48 @@ namespace DeepNaiWorkshop_2796
         private void button2_Click(object sender, EventArgs e)//生成截图
         {
             bool validateResult = validateData();
-            if (validateResult)//生成截图时用到的数据都正常
+            if (!validateResult)//生成截图时用到的数据都正常
             {
                 Console.WriteLine("将数据生成到页面");
+                return;
             }
+
+            PictureBox couponPb = this.pictureBox3;
+            //开优惠券截图开始插入数据
+            couponPb.Image = ResourceTool.getImage(Const.COUPON_BACK_IMG_NAME); ;//初始化背景图片
+            Graphics g = Graphics.FromImage(couponPb.Image);
+            //商家名称
+            String shopName = this.textBox11.Text;
+            SolidBrush shopNameBrush = new SolidBrush(Color.White);
+            Font shopNameFont = new Font(Const.COUPON_FONT, 11);
+            //获取字符串宽度
+            SizeF shopNameSize = g.MeasureString(shopName, shopNameFont);
+            Point shopNamePoint = new Point((int)(couponPb.Image.Width- shopNameSize.Width)/2, 119);
+            
+            g.DrawString(shopName, shopNameFont, shopNameBrush, shopNamePoint, StringFormat.GenericDefault);
+            //商品缩略图 123x123
+            //Image goodPic = (Image)pictureBox1.Image.Clone();//拷贝一个图片
+            g.DrawImage(pictureBox1.Image, 14, 291, 114, 114);
+
+            //优惠券价格
+            String rmb = "￥";
+            SolidBrush rmbBrush = new SolidBrush(ColorTool.getColorFromHtml("#d0021b"));
+            Font rmbFont = new Font(Const.COUPON_FONT, 20);
+            SizeF rmbSize = g.MeasureString(rmb, rmbFont);
+            
+
+            String couponValue = this.textBox3.Text;
+            Font couponValueFont = new Font(Const.COUPON_FONT, 38);
+            SizeF couponValueSize = g.MeasureString(couponValue, couponValueFont);
+
+            int baseX = 51;
+            int baseY = 100;
+            Point rmbPoint = new Point(((int)(170-rmbSize.Width- couponValueSize.Width)/2)+baseX, baseY+(int)(couponValueSize.Height-rmbSize.Width);
+            Point couponValuePoint = new Point(rmbPoint.X+rmbSize.Wi);
+            g.DrawString(rmb, rmbFont, rmbBrush, rmbPoint, StringFormat.GenericDefault);
+            g.DrawString(couponValue, couponValueFont, rmbBrush, couponValuePoint, StringFormat.GenericDefault);
+
+            g.Dispose();
         }
 
         private bool validateData()//校验生成截图时用到的数据
@@ -482,6 +524,13 @@ namespace DeepNaiWorkshop_2796
             }
             //检验名称
             if (String.IsNullOrWhiteSpace(this.textBox6.Text))
+            {
+                alert("商品名称不能为空");
+                return false;
+            }
+
+            //检验店铺名称
+            if (String.IsNullOrWhiteSpace(this.textBox11.Text))
             {
                 alert("商品名称不能为空");
                 return false;

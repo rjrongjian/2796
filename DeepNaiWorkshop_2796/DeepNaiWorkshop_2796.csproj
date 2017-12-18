@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDataBean.cs" />
+    <Compile Include="ColorTool.cs" />
     <Compile Include="Const.cs" />
     <Compile Include="DataTool.cs" />
     <Compile Include="DateUtil.cs" />

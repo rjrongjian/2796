@@ -46,6 +46,7 @@ namespace DeepNaiWorkshop_2796
         {
 
             BaseDataBean shopData = new BaseDataBean();
+            Console.WriteLine(htmlContent);
             if (String.IsNullOrEmpty(htmlContent))
             {
                 return null;
@@ -53,12 +54,13 @@ namespace DeepNaiWorkshop_2796
             if(tmallOrTaoBao== TaoBaoTool.GOOD_TYPE_TMALL)
             {
                // Console.WriteLine(htmlContent);
-                Regex reg = new Regex("[\\s\\S]*<title>([\\s\\S]*)-tmall.com天猫</title>[\\s\\S]*<img id=\"J_ImgBooth\"[\\s\\S]*?src=\"([\\s\\S]*?)\"[\\s\\S]*defaultItemPrice\":\"([\\s\\S]*?)\"[\\s\\S]*");
+                Regex reg = new Regex("[\\s\\S]*<title>([\\s\\S]*)-tmall.com天猫</title>[\\s\\S]*<img id=\"J_ImgBooth\"[\\s\\S]*?src=\"([\\s\\S]*?)\"[\\s\\S]*<input type=\"hidden\" name=\"seller_nickname\" value=\"([\\s\\S]*?)\" />[\\s\\S]*defaultItemPrice\":\"([\\s\\S]*?)\"[\\s\\S]*");
                 Match match = reg.Match(htmlContent);
                 String mainPic = match.Groups[2].Value;
                 mainPic = StringTool.replaceStartWith(mainPic, "//", "http://");
                 String name = match.Groups[1].Value;
-                String price = match.Groups[3].Value;
+                String shopName = match.Groups[3].Value;
+                String price = match.Groups[4].Value;
 
                 //TODO 抓取的数据
                 //Console.WriteLine("获取的数据");
@@ -73,6 +75,7 @@ namespace DeepNaiWorkshop_2796
                 String[] priceArr = price.Split('-');//说明有多个价格
                 shopData.Price = double.Parse(priceArr[0].Trim());
                 shopData.Volume = DataTool.randomVal(2500,1000);//销量
+                shopData.ShopName = shopName;
                 int couponValue = (int)(shopData.Price * 0.4);
                 shopData.CouponValue = couponValue < 20 ? couponValue : (couponValue+(10-(couponValue % 10)));//自定义券价值
                 shopData.CouponValue = shopData.CouponValue > 100 ? 100 : shopData.CouponValue;

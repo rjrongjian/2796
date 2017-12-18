@@ -88,6 +88,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -107,7 +109,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(14, 540);
+            this.label1.Location = new System.Drawing.Point(12, 567);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 1;
@@ -117,7 +119,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(74, 540);
+            this.label2.Location = new System.Drawing.Point(72, 567);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 2;
@@ -126,7 +128,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(129, 540);
+            this.label3.Location = new System.Drawing.Point(127, 567);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 3;
@@ -135,7 +137,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(194, 540);
+            this.label4.Location = new System.Drawing.Point(192, 567);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 12);
             this.label4.TabIndex = 4;
@@ -158,7 +160,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(752, 498);
+            this.tabPage2.Size = new System.Drawing.Size(752, 525);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "输出截图";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -262,7 +264,7 @@
             this.pictureBox4.BackColor = System.Drawing.Color.LightGray;
             this.pictureBox4.Location = new System.Drawing.Point(377, 34);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(375, 460);
+            this.pictureBox4.Size = new System.Drawing.Size(375, 485);
             this.pictureBox4.TabIndex = 1;
             this.pictureBox4.TabStop = false;
             // 
@@ -273,7 +275,7 @@
             this.pictureBox3.InitialImage = null;
             this.pictureBox3.Location = new System.Drawing.Point(0, 34);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(375, 461);
+            this.pictureBox3.Size = new System.Drawing.Size(375, 485);
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             // 
@@ -285,13 +287,15 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(752, 498);
+            this.tabPage1.Size = new System.Drawing.Size(752, 525);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "输出配置";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.textBox11);
+            this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.textBox7);
             this.groupBox3.Controls.Add(this.textBox6);
             this.groupBox3.Controls.Add(this.label23);
@@ -360,7 +364,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(235, 91);
+            this.textBox4.Location = new System.Drawing.Point(223, 54);
             this.textBox4.MaxLength = 5;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(40, 21);
@@ -370,7 +374,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(190, 95);
+            this.label11.Location = new System.Drawing.Point(178, 58);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(41, 12);
             this.label11.TabIndex = 12;
@@ -379,7 +383,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(166, 66);
+            this.label6.Location = new System.Drawing.Point(154, 29);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 4;
@@ -387,7 +391,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(235, 61);
+            this.textBox2.Location = new System.Drawing.Point(223, 24);
             this.textBox2.MaxLength = 7;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(40, 21);
@@ -639,6 +643,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(265, 21);
             this.textBox1.TabIndex = 1;
+            this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // label5
             // 
@@ -692,14 +697,30 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(760, 524);
+            this.tabControl1.Size = new System.Drawing.Size(760, 551);
             this.tabControl1.TabIndex = 0;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(154, 89);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(65, 12);
+            this.label18.TabIndex = 19;
+            this.label18.Text = "店铺名称：";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(222, 85);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(84, 21);
+            this.textBox11.TabIndex = 20;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(784, 661);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -794,5 +815,7 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Label label18;
     }
 }
