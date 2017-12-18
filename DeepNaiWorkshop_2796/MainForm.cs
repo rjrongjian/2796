@@ -429,11 +429,55 @@ namespace DeepNaiWorkshop_2796
             SizeF couponValueSize = g.MeasureString(couponValue, couponValueFont);
 
             int baseX = 51;
-            int baseY = 100;
-            Point rmbPoint = new Point(((int)(170-rmbSize.Width- couponValueSize.Width)/2)+baseX, baseY+(int)(couponValueSize.Height-rmbSize.Width);
-            Point couponValuePoint = new Point(rmbPoint.X+rmbSize.Wi);
+            int baseY = 160;
+            Point rmbPoint = new Point(((int)(170-rmbSize.Width- couponValueSize.Width)/2)+baseX, baseY+(int)(couponValueSize.Height-rmbSize.Width));
+            Point couponValuePoint = new Point((int)(rmbPoint.X+rmbSize.Width), (int)(rmbPoint.Y- (couponValueSize.Height - rmbSize.Width)));
             g.DrawString(rmb, rmbFont, rmbBrush, rmbPoint, StringFormat.GenericDefault);
             g.DrawString(couponValue, couponValueFont, rmbBrush, couponValuePoint, StringFormat.GenericDefault);
+
+            //优惠券日期
+            String couponTime = this.dateTimePicker1.Value.ToString("yyyy.MM.dd")+ "-" + this.dateTimePicker2.Value.ToString("yyyy.MM.dd");
+            Font couponTimeFont = new Font(Const.COUPON_FONT, 10);
+            SolidBrush couponTimeBrush = new SolidBrush(ColorTool.getColorFromHtml("#9b9b9b"));
+            SizeF couponTimeSize = g.MeasureString(couponTime, couponTimeFont);
+            Point couponTimePoint = new Point(51+(int)(170- couponTimeSize.Width)/2,230);
+            g.DrawString(couponTime, couponTimeFont, couponTimeBrush, couponTimePoint, StringFormat.GenericDefault);
+
+            //商品名称 并且自动换行
+            String goodName = this.textBox6.Text;
+            Font goodNameFont = new Font(Const.COUPON_FONT, 11);
+            SolidBrush goodNameBrush = new SolidBrush(ColorTool.getColorFromHtml("#333"));
+            Point goodNamePoint = new Point(140,288);
+
+            Brush fontBrush = SystemBrushes.ControlText;
+            //SizeF sizeText = e.Graphics.MeasureString(nodeText, font);
+            //e.Graphics.DrawString(nodeText, font, fontBrush, (this.Width - sizeText.Width) / 2, (this.Height - sizeText.Height) / 2);
+
+            StringFormat sf = new StringFormat();
+            sf.Alignment = StringAlignment.Center;
+            sf.LineAlignment = StringAlignment.Center;
+            g.DrawString(goodName, goodNameFont, fontBrush, new Rectangle(goodNamePoint.X, goodNamePoint.Y,220,37), sf);
+            //现价
+            String price = this.textBox2.Text;
+            Font priceFont = new Font(Const.COUPON_FONT, 11);
+            SolidBrush priceBrush = new SolidBrush(ColorTool.getColorFromHtml("#333"));
+            Point pricePoint = new Point(181,363);
+            g.DrawString(price, priceFont, priceBrush, pricePoint, StringFormat.GenericDefault);
+
+            //成交量
+            String volume = this.textBox4.Text+"笔成交";
+            Font volumeFont = new Font(Const.COUPON_FONT, 11);
+            SolidBrush volumeBrush = new SolidBrush(ColorTool.getColorFromHtml("#9b9b9b"));
+            SizeF volumeSize = g.MeasureString(volume, volumeFont);
+            Point volumePoint = new Point(375- (int)volumeSize.Width- 15, 334);
+            g.DrawString(volume, volumeFont, volumeBrush, volumePoint, StringFormat.GenericDefault);
+
+            //券后价
+            double priceAfter = double.Parse(price) -double.Parse(couponValue);
+            Font priceAfterFont = new Font(Const.COUPON_FONT, 24);
+            SolidBrush priceAfterBrush = new SolidBrush(ColorTool.getColorFromHtml("#f40"));
+            Point priceAfterPoint = new Point(216, 379);
+            g.DrawString(priceAfter.ToString(), priceAfterFont, priceAfterBrush, priceAfterPoint, StringFormat.GenericDefault);
 
             g.Dispose();
         }
