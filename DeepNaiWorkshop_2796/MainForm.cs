@@ -542,6 +542,14 @@ namespace DeepNaiWorkshop_2796
             waterPictureBox.Height = watermarker.Height;
             waterPictureBox.Width = watermarker.Width;
             waterPictureBox.Location = new Point(10, 410);
+            //给水印图片添加鼠标按下事件
+            //控件首次移动
+            bool isDrag = false;
+            Point prePoint1 = new Point();//优惠券截图中的水印图片位置（移动前）
+            bool isFirstMove = true;
+            waterPictureBox.MouseDown += new MouseEventHandler(couponImg_watermarker_MouseDown);
+            waterPictureBox.MouseUp += new MouseEventHandler(couponImg_watermarker_MouseUp);
+            waterPictureBox.MouseMove += new MouseEventHandler(couponImg_watermarker_MouseMove);
             this.textBox8.Text = waterPictureBox.Height.ToString();
             this.textBox9.Text = waterPictureBox.Width.ToString();
 
@@ -552,7 +560,69 @@ namespace DeepNaiWorkshop_2796
 
             //按钮全部可用
             setMainFormBtnStatus(1);
+
+
+            
+            //水印控件按下事件
+            void couponImg_watermarker_MouseDown(object downObj, MouseEventArgs mouseDownEvent)
+            {
+                //Console.WriteLine(mouseDownEvent.X + "," + mouseDownEvent.Y);
+
+                if (mouseDownEvent.Button == MouseButtons.Left)
+                {
+                    isDrag = true;
+
+                    prePoint1 = new Point(mouseDownEvent.X, mouseDownEvent.Y) ;
+                }
+            }
+            //水印控件鼠标移动事件
+            void couponImg_watermarker_MouseMove(object mouseMoveSender, MouseEventArgs mouseMoveEvent)
+            {
+                if (isDrag)
+                {
+                    if (isFirstMove)
+                    {
+                        waterPictureBox.Location = new Point(waterPictureBox.Location.X + 1, waterPictureBox.Location.Y + 1);
+                        isFirstMove = false;
+                    }
+                    else
+                    {
+
+                    
+                    Console.WriteLine(mouseMoveEvent.X + "," + mouseMoveEvent.Y);
+                    Point mousePos = new Point(waterPictureBox.Location.X, waterPictureBox.Location.Y);
+                    mousePos.Offset(mouseMoveEvent.X, mouseMoveEvent.Y);
+                    //mousePos.X -= this.waterPictureBox.Width / 2;
+                    //mousePos.Y -= this.waterPictureBox.Height / 2;
+
+                    //int offsetX = (mouseMoveEvent.X - prePoint1.X);
+                    //int offsetY = mouseMoveEvent.Y - prePoint1.Y;
+                    //waterPictureBox.Location = new Point(waterPictureBox.Location.X + offsetX, waterPictureBox.Location.Y + offsetY);
+
+                    waterPictureBox.Location = mousePos;
+                    }
+
+
+
+
+                    //Console.WriteLine(mouseMoveEvent.X+","+ mouseMoveEvent.Y);
+
+
+                }
+            }
+            //水印控件鼠标抬起事件
+            void couponImg_watermarker_MouseUp(object mouseUpSender, MouseEventArgs mouseMoveEvent)
+            {
+                if (isDrag)
+                {
+                    isDrag = false;
+                }
+            }
+
+
         }
+        
+        
 
         private bool validateData()//校验生成截图时用到的数据
         {
