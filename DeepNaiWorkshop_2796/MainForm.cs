@@ -14,6 +14,7 @@ namespace DeepNaiWorkshop_2796
     {
         private Label logLabel;
         private Image originalCouponPic;//原始的优惠券截图背景图片
+        private PictureBox waterPictureBox;//水印图片控件
         public MainForm()
         {
             InitializeComponent();
@@ -70,7 +71,7 @@ namespace DeepNaiWorkshop_2796
                         this.textBox11.Text = dataBean.ShopName;//店铺名称
                         this.pictureBox1.Image = dataBean.MainPic;// 商品图片
                         LogTool.log("数据解析完成，数据可手动更改...",this.logLabel);
-                        setMainFormBtnStatus(7);//获取商品数据、生成截图按钮可用
+                        
 
                     }
                     else
@@ -78,6 +79,7 @@ namespace DeepNaiWorkshop_2796
                         alert("目前不支持淘宝商品数据爬取，请手动录入");
                     }
 
+                    setMainFormBtnStatus(7);//获取商品数据、生成截图按钮可用
                 }
             }
             catch(Exception ex)
@@ -138,6 +140,8 @@ namespace DeepNaiWorkshop_2796
                 this.button2.Enabled = true;
                 this.button3.Enabled = true;
                 this.button4.Enabled = true;
+                this.button5.Enabled = true;
+                
             }
             else if (status == 2)//2 按钮全部不可用
             {
@@ -145,6 +149,8 @@ namespace DeepNaiWorkshop_2796
                 this.button2.Enabled = false;
                 this.button3.Enabled = false;
                 this.button4.Enabled = false;
+                this.button5.Enabled = false;
+                
             }
             else if (status == 3)//3 获取商品信息按钮可用
             {
@@ -152,6 +158,8 @@ namespace DeepNaiWorkshop_2796
                 this.button2.Enabled = false;
                 this.button3.Enabled = false;
                 this.button4.Enabled = false;
+                this.button5.Enabled = false;
+                
             }
             else if (status == 4)//4 生成截图按钮可用
             {
@@ -159,6 +167,8 @@ namespace DeepNaiWorkshop_2796
                 this.button2.Enabled = true;
                 this.button3.Enabled = false;
                 this.button4.Enabled = false;
+                this.button5.Enabled = false;
+                
             }
             else if (status == 5)//5 截图优惠券按钮可用
             {
@@ -166,6 +176,8 @@ namespace DeepNaiWorkshop_2796
                 this.button2.Enabled = false;
                 this.button3.Enabled = true;
                 this.button4.Enabled = false;
+                this.button5.Enabled = false;
+                
             }
             else if (status == 6)//6 截图订单详情按钮可用
             {
@@ -180,6 +192,8 @@ namespace DeepNaiWorkshop_2796
                 this.button2.Enabled = true;
                 this.button3.Enabled = false;
                 this.button4.Enabled = false;
+                this.button5.Enabled = false;
+                
             }
             else
             {
@@ -188,6 +202,8 @@ namespace DeepNaiWorkshop_2796
                 this.button2.Enabled = false;
                 this.button3.Enabled = false;
                 this.button4.Enabled = false;
+                this.button5.Enabled = false;
+                
             }
         }
 
@@ -396,7 +412,7 @@ namespace DeepNaiWorkshop_2796
             bool validateResult = validateData();
             if (!validateResult)//生成截图时用到的数据都正常
             {
-                Console.WriteLine("将数据生成到页面");
+                //Console.WriteLine("将数据生成到页面");
                 return;
             }
 
@@ -469,17 +485,73 @@ namespace DeepNaiWorkshop_2796
             Font volumeFont = new Font(Const.COUPON_FONT, 11);
             SolidBrush volumeBrush = new SolidBrush(ColorTool.getColorFromHtml("#9b9b9b"));
             SizeF volumeSize = g.MeasureString(volume, volumeFont);
-            Point volumePoint = new Point(375- (int)volumeSize.Width- 15, 334);
+            Point volumePoint = new Point(375- (int)volumeSize.Width- 15, 336);
             g.DrawString(volume, volumeFont, volumeBrush, volumePoint, StringFormat.GenericDefault);
 
             //券后价
             double priceAfter = double.Parse(price) -double.Parse(couponValue);
             Font priceAfterFont = new Font(Const.COUPON_FONT, 24);
+            
             SolidBrush priceAfterBrush = new SolidBrush(ColorTool.getColorFromHtml("#f40"));
             Point priceAfterPoint = new Point(216, 379);
             g.DrawString(priceAfter.ToString(), priceAfterFont, priceAfterBrush, priceAfterPoint, StringFormat.GenericDefault);
 
+            
+            //开始处理水印
+            Image watermarker = null;
+            if (this.radioButton1.Checked)//图片水印
+            {
+
+                watermarker = this.pictureBox2.Image ;
+            }
+            else {//文字水印
+                Font watermarkerFont = null;
+                if (checkBox1.Checked&&!checkBox2.Checked)//加粗
+                {
+                    watermarkerFont = new Font(Const.COUPON_FONT, 12, FontStyle.Bold|FontStyle.Italic);
+                }else if(!checkBox1.Checked && checkBox2.Checked)//删除线
+                {
+                    watermarkerFont = new Font(Const.COUPON_FONT, 12, FontStyle.Strikeout | FontStyle.Italic);
+                }
+                else if(checkBox1.Checked && checkBox2.Checked)//加粗 删除线
+                {
+                    watermarkerFont = new Font(Const.COUPON_FONT, 12, FontStyle.Strikeout | FontStyle.Bold | FontStyle.Italic);
+                }
+                else
+                {
+                    watermarkerFont = new Font(Const.COUPON_FONT, 12,FontStyle.Italic);
+                }
+                SolidBrush watermarkerBrush = new SolidBrush(ColorTool.getColorFromHtml("#333333"));
+                
+                SizeF watermarkerText = g.MeasureString(this.textBox5.Text, watermarkerFont);
+
+                int watermarkerImgWidth = (int)watermarkerText.Width+1;
+                int watermarkerImgHeight = (int)watermarkerText.Height +1;
+                Bitmap image = new Bitmap(watermarkerImgWidth, watermarkerImgHeight);
+                Graphics gi = Graphics.FromImage(image);
+                gi.Clear(Color.Transparent);//透明
+                
+                gi.DrawString(this.textBox5.Text, watermarkerFont, watermarkerBrush, new Rectangle(0, 0, watermarkerImgWidth, watermarkerImgHeight));
+                watermarker = image;
+                gi.Dispose();
+            }
+
+            waterPictureBox = new PictureBox();
+            waterPictureBox.Image = watermarker;
+            waterPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            waterPictureBox.Height = watermarker.Height;
+            waterPictureBox.Width = watermarker.Width;
+            waterPictureBox.Location = new Point(10, 410);
+            this.textBox8.Text = waterPictureBox.Height.ToString();
+            this.textBox9.Text = waterPictureBox.Width.ToString();
+
+            this.pictureBox3.Controls.Clear();
+            this.pictureBox3.Controls.Add(waterPictureBox);
+
             g.Dispose();
+
+            //按钮全部可用
+            setMainFormBtnStatus(1);
         }
 
         private bool validateData()//校验生成截图时用到的数据
@@ -581,6 +653,61 @@ namespace DeepNaiWorkshop_2796
             }
 
             return true;
+        }
+
+        private void button5_Click(object sender, EventArgs e)//更改水印尺寸
+        {
+            if (String.IsNullOrWhiteSpace(this.textBox9.Text))
+            {
+                alert("水印宽度不能为空");
+                return;
+            }
+            else
+            {
+                waterPictureBox.Width = int.Parse(this.textBox9.Text);
+            }
+            if (String.IsNullOrWhiteSpace(this.textBox8.Text))
+            {
+                alert("水印高度不能为空");
+                return;
+            }
+            else
+            {
+                waterPictureBox.Height = int.Parse(this.textBox8.Text);
+            }
+            
+            
+        }
+
+        private void textBox13_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void textBox12_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)//复制优惠券截图
+        {
+            //合并图片
+            //背景图片 this.pictureBox3.Image
+            Image watermarkerBackImg = (Image)this.pictureBox3.Image.Clone();
+            Graphics g = Graphics.FromImage(watermarkerBackImg);
+            Image waterImg = ImageTool.resetImgSize(waterPictureBox.Image, waterPictureBox.Width, waterPictureBox.Height);
+
+            g.DrawImage(waterImg, new Point(waterPictureBox.Width, waterPictureBox.Height));
+
+            g.Dispose();
+            Clipboard.SetImage(watermarkerBackImg);
+            alert("优惠券截图已拷贝到剪贴板！");
+
         }
     }
 }

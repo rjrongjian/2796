@@ -109,7 +109,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(12, 567);
+            this.label1.Location = new System.Drawing.Point(12, 640);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 1;
@@ -119,7 +119,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(72, 567);
+            this.label2.Location = new System.Drawing.Point(72, 640);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 2;
@@ -128,7 +128,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(127, 567);
+            this.label3.Location = new System.Drawing.Point(127, 640);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 3;
@@ -137,7 +137,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(192, 567);
+            this.label4.Location = new System.Drawing.Point(192, 640);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 12);
             this.label4.TabIndex = 4;
@@ -160,14 +160,14 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(752, 525);
+            this.tabPage2.Size = new System.Drawing.Size(752, 598);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "输出截图";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(627, 6);
+            this.textBox9.Location = new System.Drawing.Point(330, 7);
             this.textBox9.MaxLength = 3;
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(28, 21);
@@ -176,7 +176,7 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(570, 6);
+            this.textBox8.Location = new System.Drawing.Point(273, 7);
             this.textBox8.MaxLength = 3;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(26, 21);
@@ -186,7 +186,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(602, 12);
+            this.label29.Location = new System.Drawing.Point(305, 13);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(29, 12);
             this.label29.TabIndex = 11;
@@ -194,17 +194,19 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(662, 4);
+            this.button5.Enabled = false;
+            this.button5.Location = new System.Drawing.Point(365, 5);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(68, 25);
             this.button5.TabIndex = 10;
             this.button5.Text = "更改尺寸";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(549, 12);
+            this.label28.Location = new System.Drawing.Point(252, 13);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(29, 12);
             this.label28.TabIndex = 9;
@@ -213,11 +215,11 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(490, 11);
+            this.label27.Location = new System.Drawing.Point(217, 12);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(53, 12);
+            this.label27.Size = new System.Drawing.Size(29, 12);
             this.label27.TabIndex = 8;
-            this.label27.Text = "水印尺寸";
+            this.label27.Text = "水印";
             // 
             // label25
             // 
@@ -225,9 +227,8 @@
             this.label25.ForeColor = System.Drawing.Color.Red;
             this.label25.Location = new System.Drawing.Point(298, 11);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(197, 12);
+            this.label25.Size = new System.Drawing.Size(0, 12);
             this.label25.TabIndex = 6;
-            this.label25.Text = "水印错误，请重新上传并生成截图；";
             // 
             // label21
             // 
@@ -235,9 +236,8 @@
             this.label21.ForeColor = System.Drawing.Color.Red;
             this.label21.Location = new System.Drawing.Point(188, 11);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(113, 12);
+            this.label21.Size = new System.Drawing.Size(0, 12);
             this.label21.TabIndex = 5;
-            this.label21.Text = "注意：水印可拖动；";
             // 
             // button3
             // 
@@ -248,6 +248,7 @@
             this.button3.TabIndex = 0;
             this.button3.Text = "截图优惠券";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -261,21 +262,21 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.LightGray;
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Location = new System.Drawing.Point(377, 34);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(375, 485);
+            this.pictureBox4.Size = new System.Drawing.Size(375, 558);
             this.pictureBox4.TabIndex = 1;
             this.pictureBox4.TabStop = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.LightGray;
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.BackgroundImage = global::DeepNaiWorkshop_2796.Properties.Resources.template_ip6;
             this.pictureBox3.InitialImage = null;
             this.pictureBox3.Location = new System.Drawing.Point(0, 34);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(375, 485);
+            this.pictureBox3.Size = new System.Drawing.Size(375, 558);
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             // 
@@ -287,7 +288,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(752, 525);
+            this.tabPage1.Size = new System.Drawing.Size(752, 598);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "输出配置";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -561,16 +562,20 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.Location = new System.Drawing.Point(215, 132);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(60, 16);
             this.checkBox2.TabIndex = 4;
-            this.checkBox2.Text = "下划线";
+            this.checkBox2.Text = "删除线";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Location = new System.Drawing.Point(156, 132);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(48, 16);
@@ -715,7 +720,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(760, 551);
+            this.tabControl1.Size = new System.Drawing.Size(760, 624);
             this.tabControl1.TabIndex = 0;
             // 
             // MainForm

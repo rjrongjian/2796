@@ -46,7 +46,7 @@ namespace DeepNaiWorkshop_2796
         {
 
             BaseDataBean shopData = new BaseDataBean();
-            Console.WriteLine(htmlContent);
+            //Console.WriteLine(htmlContent);
             if (String.IsNullOrEmpty(htmlContent))
             {
                 return null;

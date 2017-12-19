@@ -65,6 +65,19 @@ namespace DeepNaiWorkshop_2796
             return 0;
 
         }
+        /// <summary>
+        /// 重新设置图片大小
+        /// </summary>
+        /// <param name="oriImg">原始图片</param>
+        /// <param name="width">更改后的图宽</param>
+        /// <param name="height">更改后的图高</param>
+        /// <returns>返回一个调整大小后的克隆对象</returns>
+        public static Image resetImgSize(Image oriImg,int width,int height)
+        {
+            Image img = (Image)oriImg.Clone();
+            return new Bitmap(img, width, height);
+
+        }
 
         
     }
