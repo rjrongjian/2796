@@ -54,7 +54,7 @@ namespace DeepNaiWorkshop_2796
             if(tmallOrTaoBao== TaoBaoTool.GOOD_TYPE_TMALL)
             {
                 //Console.WriteLine(htmlContent);
-                Regex reg = new Regex("([\\s\\S]*)<title>([\\s\\S]*)-tmall.com天猫</title>[\\s\\S]*<img id=\"J_ImgBooth\"[\\s\\S]*?src=\"([\\s\\S]*?)\"[\\s\\S]*<input type=\"hidden\" name=\"seller_nickname\" value=\"([\\s\\S]*?)\" />[\\s\\S]*defaultItemPrice\":\"([\\s\\S]*?)\"[\\s\\S]*");
+                Regex reg = new Regex("([\\s\\S]*)<title>([\\s\\S]*)-tmall.com天猫</title>[\\s\\S]*<img id=\"J_ImgBooth\"[\\s\\S]*?src=\"([\\s\\S]*?)\"[\\s\\S]*<input type=\"hidden\" name=\"seller_nickname\" value=\"([\\s\\S]*?)\" />[\\s\\S]*defaultItemPrice\":\"([\\s\\S]*?)\"([\\s\\S]*)");
 
                 Match match = reg.Match(htmlContent);
 
@@ -71,16 +71,20 @@ namespace DeepNaiWorkshop_2796
                 Match match2 = reg2.Match(subHtmlContent);
                 String sellerId = match2.Groups[2].Value;
                 String itemId = match2.Groups[1].Value;
-                String spuid = "";
+                String subHtmlContent2 = match.Groups[6].Value;
+                Regex reg3 = new Regex("[\\s\\S]*\"spuId\":([0-9]+)[\\s\\S]*");
+                Match match3 = reg3.Match(subHtmlContent2);
+                String spuid = match3.Groups[1].Value;
+                shopData.RateUrl = "https://rate.tmall.com/list_detail_rate.htm?itemId="+ itemId + "&spuId="+ spuid + "&sellerId="+ sellerId + "&order=1&currentPage=";
                 //TODO 抓取的数据
-                Console.WriteLine("获取的数据");
-                Console.WriteLine("mainPic:"+mainPic);
-                Console.WriteLine("name:"+name);
-                Console.WriteLine("price:"+price);
-                Console.WriteLine("shopName:" + shopName);
-                Console.WriteLine("sellerId:" + sellerId);
-                Console.WriteLine("itemId:" + itemId);
-                Console.WriteLine("spuid:" + spuid);
+                //Console.WriteLine("获取的数据");
+                //Console.WriteLine("mainPic:"+mainPic);
+                //Console.WriteLine("name:"+name);
+                //Console.WriteLine("price:"+price);
+                //Console.WriteLine("shopName:" + shopName);
+                //Console.WriteLine("sellerId:" + sellerId);
+                //Console.WriteLine("itemId:" + itemId);
+                //Console.WriteLine("spuid:" + spuid);
 
 
 
