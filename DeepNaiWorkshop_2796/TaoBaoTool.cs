@@ -66,7 +66,7 @@ namespace DeepNaiWorkshop_2796
                 String price = match.Groups[5].Value;
 
                 String subHtmlContent = match.Groups[1].Value;
-                Console.WriteLine(subHtmlContent);
+                //Console.WriteLine(subHtmlContent);
                 Regex reg2 = new Regex("[\\s\\S]*w.g_config={[\\s\\S]*?itemId:\"([0-9]+)\"[\\s\\S]+sellerId:\"([0-9]+)\"[\\s\\S]*");
                 Match match2 = reg2.Match(subHtmlContent);
                 String sellerId = match2.Groups[2].Value;
@@ -75,7 +75,7 @@ namespace DeepNaiWorkshop_2796
                 Regex reg3 = new Regex("[\\s\\S]*\"spuId\":([0-9]+)[\\s\\S]*");
                 Match match3 = reg3.Match(subHtmlContent2);
                 String spuid = match3.Groups[1].Value;
-                shopData.RateUrl = "https://rate.tmall.com/list_detail_rate.htm?itemId="+ itemId + "&spuId="+ spuid + "&sellerId="+ sellerId + "&order=1&currentPage=";
+                shopData.RateUrl = "https://rate.tmall.com/list_detail_rate.htm?itemId="+ itemId + "&spuId="+ spuid + "&sellerId="+ sellerId + "&currentPage=";
                 //TODO 抓取的数据
                 //Console.WriteLine("获取的数据");
                 //Console.WriteLine("mainPic:"+mainPic);
@@ -87,7 +87,7 @@ namespace DeepNaiWorkshop_2796
                 //Console.WriteLine("spuid:" + spuid);
 
 
-
+                shopData.CurrentPage = 1;
                 shopData.Name = name;
                 shopData.MainPicStr = mainPic;
                 shopData.MainPic = ImageTool.getImageBy(mainPic);

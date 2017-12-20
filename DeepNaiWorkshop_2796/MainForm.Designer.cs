@@ -100,6 +100,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -765,7 +766,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button9);
             this.tabPage3.Controls.Add(this.groupBox8);
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -778,6 +778,7 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.button10);
             this.groupBox8.Controls.Add(this.button8);
             this.groupBox8.Controls.Add(this.button7);
             this.groupBox8.Controls.Add(this.pictureBox5);
@@ -816,10 +817,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button9);
             this.groupBox2.Controls.Add(this.textBox10);
             this.groupBox2.Location = new System.Drawing.Point(16, 19);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(321, 500);
+            this.groupBox2.Size = new System.Drawing.Size(321, 521);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "商品评论";
@@ -830,19 +832,29 @@
             this.textBox10.Location = new System.Drawing.Point(6, 20);
             this.textBox10.Multiline = true;
             this.textBox10.Name = "textBox10";
-            this.textBox10.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.textBox10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox10.Size = new System.Drawing.Size(300, 460);
             this.textBox10.TabIndex = 0;
-            this.textBox10.Text = "http://www.jianshu.com/p/632a3d3b15c2";
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(322, 550);
+            this.button9.Location = new System.Drawing.Point(97, 486);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.Size = new System.Drawing.Size(85, 23);
             this.button9.TabIndex = 13;
-            this.button9.Text = "抓取更多";
+            this.button9.Text = "抓取更多评论";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(198, 446);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(94, 23);
+            this.button10.TabIndex = 14;
+            this.button10.Text = "抓取更多图片";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // MainForm
             // 
@@ -960,5 +972,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
     }
 }

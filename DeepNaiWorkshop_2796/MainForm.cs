@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -1001,6 +1002,81 @@ namespace DeepNaiWorkshop_2796
             else
             {
                 waterPictureBox2.Height = int.Parse(this.textBox8.Text);
+            }
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)//抓取更多评论
+
+        {
+            if (dataBean == null)
+            {
+                alert("请通过本软件获取商品信息才能抓取评论");
+            }
+            else//单线程版本 目前
+            {
+                
+              //  LogTool.log("开始抓取评论...", logLabel);
+                String rateContent = WebTool.getHtmlContent(dataBean.RateUrl + (dataBean.CurrentPage)+"&order=1");
+                //Console.WriteLine("抓取的网页内容："+ dataBean.RateUrl + (dataBean.CurrentPage) + "&order=1");
+                //Console.WriteLine(rateContent);
+                //Regex regPid = new Regex("^\"rateContent\": \"([\\s\\S]*)\"$");
+                // 搜索匹配的字符串
+                MatchCollection matches = Regex.Matches(rateContent, ",\"rateContent\":\"([\\s\\S]*?)\",");
+                if (matches.Count <= 0)//到达最后一页
+                {
+                    Console.WriteLine("不能获取更多评论");
+                    alert("没有更多");
+                }
+                else
+                {
+                    this.textBox10.Text = "";//每次翻页，清空当前页面内容
+                    foreach (Match match in matches)
+                    {
+                        //Console.WriteLine("匹配的结果："+ match.Groups[1].Value);
+                        this.textBox10.Text = this.textBox10.Text  + "  "+match.Groups[1].Value + "\r\n\r\n";
+
+                    }
+                }
+
+
+                dataBean.CurrentPage += 1;
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)//抓取更多图片
+        {
+            if (dataBean == null)
+            {
+                alert("请通过本软件获取商品信息才能抓取图片");
+            }
+            else//单线程版本 目前
+            {
+                LogTool.log("开始抓取评论...", logLabel);
+                String rateContent = WebTool.getHtmlContent(dataBean.RateUrl + dataBean.CurrentPage + "&order=3&picture=1");
+                Console.WriteLine("抓取的网页内容：");
+                Console.WriteLine(rateContent);
+                MatchCollection matches = Regex.Matches(rateContent, ",\"pics\": \\[([\\s\\S]*)\\],");
+                if (matches.Count <= 0)//到达最后一页
+                {
+                    Console.WriteLine("不能获取更多评论");
+                    alert("没有更多");
+                }
+                else
+                {
+                    this.textBox10.Text = "";//每次翻页，清空当前页面内容
+                    foreach (Match match in matches)
+                    {
+                        //Console.WriteLine("匹配的结果："+ match.Groups[1].Value);
+                        this.textBox10.Text = this.textBox10.Text + "  " + match.Groups[1].Value + "\r\n\r\n";
+
+                    }
+                }
+
+
+                dataBean.CurrentPage += 1;
+
+
             }
 
         }
