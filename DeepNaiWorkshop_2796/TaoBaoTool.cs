@@ -53,11 +53,14 @@ namespace DeepNaiWorkshop_2796
             }
             if(tmallOrTaoBao== TaoBaoTool.GOOD_TYPE_TMALL)
             {
-               // Console.WriteLine(htmlContent);
+                //Console.WriteLine(htmlContent);
                 Regex reg = new Regex("[\\s\\S]*<title>([\\s\\S]*)-tmall.com天猫</title>[\\s\\S]*<img id=\"J_ImgBooth\"[\\s\\S]*?src=\"([\\s\\S]*?)\"[\\s\\S]*<input type=\"hidden\" name=\"seller_nickname\" value=\"([\\s\\S]*?)\" />[\\s\\S]*defaultItemPrice\":\"([\\s\\S]*?)\"[\\s\\S]*");
+                
                 Match match = reg.Match(htmlContent);
+                
                 String mainPic = match.Groups[2].Value;
                 mainPic = StringTool.replaceStartWith(mainPic, "//", "http://");
+         
                 String name = match.Groups[1].Value;
                 String shopName = match.Groups[3].Value;
                 String price = match.Groups[4].Value;
@@ -79,7 +82,7 @@ namespace DeepNaiWorkshop_2796
                 int couponValue = (int)(shopData.Price * 0.4);
                 shopData.CouponValue = couponValue < 20 ? couponValue : (couponValue+(10-(couponValue % 10)));//自定义券价值
                 shopData.CouponValue = shopData.CouponValue > 100 ? 100 : shopData.CouponValue;
-
+               
 
                 return shopData;
             }

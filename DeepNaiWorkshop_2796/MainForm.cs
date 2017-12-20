@@ -12,9 +12,11 @@ namespace DeepNaiWorkshop_2796
 {
     public partial class MainForm : Form
     {
+        private BaseDataBean dataBean;//生成的有关商品的数据（注意：如果没有通过代码调用网址获取商品数据，就不能获取评论）
         private Label logLabel;
         private Image originalCouponPic;//原始的优惠券截图背景图片
         private PictureBox waterPictureBox;//水印图片控件
+        private PictureBox waterPictureBox2;//水印图片控件(订单)
         public MainForm()
         {
             InitializeComponent();
@@ -56,7 +58,7 @@ namespace DeepNaiWorkshop_2796
 
                     if (TaoBaoTool.GOOD_TYPE_TMALL == int.Parse(validateResult.message))
                     {
-                        BaseDataBean dataBean = taoBaoTool.parseShopData(int.Parse(validateResult.message), htmlWebContent);
+                        dataBean = taoBaoTool.parseShopData(int.Parse(validateResult.message), htmlWebContent);
                         if (dataBean == null)
                         {
                             alert("不能正常解析数据，请手动录入");
@@ -496,6 +498,7 @@ namespace DeepNaiWorkshop_2796
             Point priceAfterPoint = new Point(216, 379);
             g.DrawString(priceAfter.ToString(), priceAfterFont, priceAfterBrush, priceAfterPoint, StringFormat.GenericDefault);
 
+            int watermarkerFontSize = 14;//水印字体的大小
             
             //开始处理水印
             Image watermarker = null;
@@ -508,18 +511,18 @@ namespace DeepNaiWorkshop_2796
                 Font watermarkerFont = null;
                 if (checkBox1.Checked&&!checkBox2.Checked)//加粗
                 {
-                    watermarkerFont = new Font(Const.COUPON_FONT, 12, FontStyle.Bold|FontStyle.Italic);
+                    watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Bold|FontStyle.Italic);
                 }else if(!checkBox1.Checked && checkBox2.Checked)//删除线
                 {
-                    watermarkerFont = new Font(Const.COUPON_FONT, 12, FontStyle.Strikeout | FontStyle.Italic);
+                    watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Italic);
                 }
                 else if(checkBox1.Checked && checkBox2.Checked)//加粗 删除线
                 {
-                    watermarkerFont = new Font(Const.COUPON_FONT, 12, FontStyle.Strikeout | FontStyle.Bold | FontStyle.Italic);
+                    watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Bold | FontStyle.Italic);
                 }
                 else
                 {
-                    watermarkerFont = new Font(Const.COUPON_FONT, 12,FontStyle.Italic);
+                    watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Italic);
                 }
                 SolidBrush watermarkerBrush = new SolidBrush(ColorTool.getColorFromHtml("#333333"));
                 
@@ -558,8 +561,7 @@ namespace DeepNaiWorkshop_2796
 
             g.Dispose();
 
-            //按钮全部可用
-            setMainFormBtnStatus(1);
+            
 
 
             
@@ -589,11 +591,11 @@ namespace DeepNaiWorkshop_2796
                     {
 
                     
-                    Console.WriteLine(mouseMoveEvent.X + "," + mouseMoveEvent.Y);
+                    //Console.WriteLine(mouseMoveEvent.X + "," + mouseMoveEvent.Y);
                     Point mousePos = new Point(waterPictureBox.Location.X, waterPictureBox.Location.Y);
                     mousePos.Offset(mouseMoveEvent.X, mouseMoveEvent.Y);
-                    //mousePos.X -= this.waterPictureBox.Width / 2;
-                    //mousePos.Y -= this.waterPictureBox.Height / 2;
+                    mousePos.X -= this.waterPictureBox.Width / 2;
+                    mousePos.Y -= this.waterPictureBox.Height / 2;
 
                     //int offsetX = (mouseMoveEvent.X - prePoint1.X);
                     //int offsetY = mouseMoveEvent.Y - prePoint1.Y;
@@ -620,6 +622,191 @@ namespace DeepNaiWorkshop_2796
             }
 
 
+
+            //开始订单截图
+            PictureBox orderPb = this.pictureBox4;
+            //开优惠券截图开始插入数据
+            orderPb.Image = ResourceTool.getImage(Const.COUPON_BACK_IMG_NAME_ORDER); ;//初始化背景图片
+            Graphics g2 = Graphics.FromImage(orderPb.Image);
+            //商家名称
+            String shopName2 = this.textBox11.Text;
+            SolidBrush shopName2Brush = new SolidBrush(Color.Black);
+            Font shopName2Font = new Font(Const.COUPON_FONT, 11);
+            //获取字符串宽度
+           // SizeF shopNameSize = g.MeasureString(shopName, shopNameFont);
+            Point shopName2Point = new Point(34,58);
+            g2.DrawString(shopName2, shopName2Font, shopName2Brush, shopName2Point, StringFormat.GenericDefault);
+            //商品缩略图 123x123
+            //Image goodPic = (Image)pictureBox1.Image.Clone();//拷贝一个图片
+            g2.DrawImage(pictureBox1.Image, 11, 93, 94, 94);
+
+            //商品名称 并且自动换行
+            String goodName2 = this.textBox6.Text;
+            Font goodName2Font = new Font(Const.COUPON_FONT, 11);
+            SolidBrush goodName2Brush = new SolidBrush(ColorTool.getColorFromHtml("#707375"));
+            Point goodName2Point = new Point(112, 91);
+
+            Brush font2Brush = SystemBrushes.ControlText;
+            //SizeF sizeText = e.Graphics.MeasureString(nodeText, font);
+            //e.Graphics.DrawString(nodeText, font, fontBrush, (this.Width - sizeText.Width) / 2, (this.Height - sizeText.Height) / 2);
+
+            StringFormat sf2 = new StringFormat();
+            sf.Alignment = StringAlignment.Center;
+            sf.LineAlignment = StringAlignment.Center;
+            g2.DrawString(goodName2, goodName2Font, font2Brush, new Rectangle(goodName2Point.X, goodName2Point.Y, 270, 30), sf2);
+
+            //优惠券价格
+            String couponValue2 = "省" + this.textBox3.Text+"元:聚划算"+ this.textBox3.Text+"元";
+            Font couponValue2Font = new Font(Const.COUPON_FONT, 11);
+            SolidBrush couponValue2Brush = new SolidBrush(ColorTool.getColorFromHtml("#707375"));
+            SizeF couponValue2Size = g2.MeasureString(couponValue2, couponValue2Font);
+            Point couponValue2Point = new Point((int)(82+260- couponValue2Size.Width),315);
+            g2.DrawString(couponValue2, couponValue2Font, couponValue2Brush, couponValue2Point, StringFormat.GenericDefault);
+
+            //现价
+            String price2 = this.textBox2.Text;
+            Font price2Font = new Font(Const.COUPON_FONT, 14);
+            SolidBrush price2Brush = new SolidBrush(ColorTool.getColorFromHtml("#ff5001"));
+            Point price2Point = new Point(127, 172);
+            g2.DrawString(price2, price2Font, price2Brush, price2Point, StringFormat.GenericDefault);
+
+            //券后价
+            double priceAfter2 = double.Parse(price) - double.Parse(couponValue);
+            Font priceAfter2Font = new Font(Const.COUPON_FONT, 12);
+            Font priceAfter3Font = new Font(Const.COUPON_FONT, 12);//小计
+
+            SolidBrush priceAfter2Brush = new SolidBrush(ColorTool.getColorFromHtml("#ff5001"));
+            Point priceAfter2Point = new Point(210, 615);
+            Point priceAfter3Point = new Point(313, 493);
+            g2.DrawString(priceAfter2 < 9999 ? (priceAfter2.ToString().Contains(".") ? priceAfter2.ToString() : priceAfter2.ToString() + ".00") : int.Parse(priceAfter2.ToString()).ToString(), priceAfter2Font, priceAfter2Brush, priceAfter2Point, StringFormat.GenericDefault);
+            g2.DrawString(priceAfter2<9999?(priceAfter2.ToString().Contains(".")? priceAfter2.ToString(): priceAfter2.ToString()+".00"): int.Parse(priceAfter2.ToString()).ToString(), priceAfter3Font, priceAfter2Brush, priceAfter3Point, StringFormat.GenericDefault);
+
+
+            //开始处理水印 订单截图
+            Image watermarker2 = null;
+            if (this.radioButton1.Checked)//图片水印
+            {
+
+                watermarker2 = this.pictureBox2.Image;
+            }
+            else
+            {//文字水印
+                Font watermarker2Font = null;
+                if (checkBox1.Checked && !checkBox2.Checked)//加粗
+                {
+                    watermarker2Font = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Bold | FontStyle.Italic);
+                }
+                else if (!checkBox1.Checked && checkBox2.Checked)//删除线
+                {
+                    watermarker2Font = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Italic);
+                }
+                else if (checkBox1.Checked && checkBox2.Checked)//加粗 删除线
+                {
+                    watermarker2Font = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Bold | FontStyle.Italic);
+                }
+                else
+                {
+                    watermarker2Font = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Italic);
+                }
+                SolidBrush watermarkerBrush = new SolidBrush(ColorTool.getColorFromHtml("#333333"));
+
+                SizeF watermarkerText = g2.MeasureString(this.textBox5.Text, watermarker2Font);
+
+                int watermarkerImgWidth = (int)watermarkerText.Width + 1;
+                int watermarkerImgHeight = (int)watermarkerText.Height + 1;
+                Bitmap image = new Bitmap(watermarkerImgWidth, watermarkerImgHeight);
+                Graphics gi = Graphics.FromImage(image);
+                gi.Clear(Color.Transparent);//透明
+
+                gi.DrawString(this.textBox5.Text, watermarker2Font, watermarkerBrush, new Rectangle(0, 0, watermarkerImgWidth, watermarkerImgHeight));
+                watermarker2 = image;
+                gi.Dispose();
+            }
+
+            waterPictureBox2 = new PictureBox();
+            waterPictureBox2.Image = watermarker2;
+            waterPictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            waterPictureBox2.Height = watermarker2.Height;
+            waterPictureBox2.Width = watermarker2.Width;
+            waterPictureBox2.Location = new Point(10, 410);
+            //给水印图片添加鼠标按下事件
+            //控件首次移动
+            bool isDrag2 = false;
+            Point prePoint2 = new Point();//优惠券截图中的水印图片位置（移动前）
+            bool isFirstMove2 = true;
+            waterPictureBox2.MouseDown += new MouseEventHandler(orderImg_watermarker_MouseDown);
+            waterPictureBox2.MouseUp += new MouseEventHandler(orderImg_watermarker_MouseUp);
+            waterPictureBox2.MouseMove += new MouseEventHandler(orderImg_watermarker_MouseMove);
+            //this.textBox8.Text = waterPictureBox2.Height.ToString();
+            //this.textBox9.Text = waterPictureBox2.Width.ToString();
+
+            this.pictureBox4.Controls.Clear();
+            this.pictureBox4.Controls.Add(waterPictureBox2);
+
+            g2.Dispose();
+
+
+
+
+
+            //水印控件按下事件
+            void orderImg_watermarker_MouseDown(object downObj, MouseEventArgs mouseDownEvent)
+            {
+                //Console.WriteLine(mouseDownEvent.X + "," + mouseDownEvent.Y);
+
+                if (mouseDownEvent.Button == MouseButtons.Left)
+                {
+                    isDrag2 = true;
+
+                    prePoint2 = new Point(mouseDownEvent.X, mouseDownEvent.Y);
+                }
+            }
+            //水印控件鼠标移动事件
+            void orderImg_watermarker_MouseMove(object mouseMoveSender, MouseEventArgs mouseMoveEvent)
+            {
+                if (isDrag2)
+                {
+                    if (isFirstMove2)
+                    {
+                        waterPictureBox2.Location = new Point(waterPictureBox2.Location.X + 1, waterPictureBox2.Location.Y + 1);
+                        isFirstMove2 = false;
+                    }
+                    else
+                    {
+
+
+                        //Console.WriteLine(mouseMoveEvent.X + "," + mouseMoveEvent.Y);
+                        Point mousePos = new Point(waterPictureBox2.Location.X, waterPictureBox2.Location.Y);
+                        mousePos.Offset(mouseMoveEvent.X, mouseMoveEvent.Y);
+                        mousePos.X -= this.waterPictureBox.Width / 2;
+                        mousePos.Y -= this.waterPictureBox.Height / 2;
+
+                        //int offsetX = (mouseMoveEvent.X - prePoint1.X);
+                        //int offsetY = mouseMoveEvent.Y - prePoint1.Y;
+                        //waterPictureBox.Location = new Point(waterPictureBox.Location.X + offsetX, waterPictureBox.Location.Y + offsetY);
+
+                        waterPictureBox2.Location = mousePos;
+                    }
+
+
+
+
+                    //Console.WriteLine(mouseMoveEvent.X+","+ mouseMoveEvent.Y);
+
+
+                }
+            }
+            //水印控件鼠标抬起事件
+            void orderImg_watermarker_MouseUp(object mouseUpSender, MouseEventArgs mouseMoveEvent)
+            {
+                if (isDrag2)
+                {
+                    isDrag2 = false;
+                }
+            }
+
+            //按钮全部可用
+            setMainFormBtnStatus(1);
         }
         
         
@@ -772,11 +959,49 @@ namespace DeepNaiWorkshop_2796
             Graphics g = Graphics.FromImage(watermarkerBackImg);
             Image waterImg = ImageTool.resetImgSize(waterPictureBox.Image, waterPictureBox.Width, waterPictureBox.Height);
 
-            g.DrawImage(waterImg, new Point(waterPictureBox.Width, waterPictureBox.Height));
+            g.DrawImage(waterImg, new Point(waterPictureBox.Location.X, waterPictureBox.Location.Y));
 
             g.Dispose();
             Clipboard.SetImage(watermarkerBackImg);
             alert("优惠券截图已拷贝到剪贴板！");
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)//估值订单详情截图
+        {
+            //合并图片
+            //背景图片 this.pictureBox3.Image
+            Image watermarkerBackImg = (Image)this.pictureBox4.Image.Clone();
+            Graphics g = Graphics.FromImage(watermarkerBackImg);
+            Image waterImg = ImageTool.resetImgSize(waterPictureBox2.Image, waterPictureBox2.Width, waterPictureBox2.Height);
+
+            g.DrawImage(waterImg, new Point(waterPictureBox2.Location.X, waterPictureBox2.Location.Y));
+
+            g.Dispose();
+            Clipboard.SetImage(watermarkerBackImg);
+            alert("订单详情截图已拷贝到剪贴板！");
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)//更改订单中水印图片尺寸
+        {
+            if (String.IsNullOrWhiteSpace(this.textBox9.Text))
+            {
+                alert("水印宽度不能为空");
+                return;
+            }
+            else
+            {
+                waterPictureBox2.Width = int.Parse(this.textBox9.Text);
+            }
+            if (String.IsNullOrWhiteSpace(this.textBox8.Text))
+            {
+                alert("水印高度不能为空");
+                return;
+            }
+            else
+            {
+                waterPictureBox2.Height = int.Parse(this.textBox8.Text);
+            }
 
         }
     }

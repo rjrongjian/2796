@@ -124,5 +124,14 @@
   <ItemGroup>
     <None Include="Resources\吃内存.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\order3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\order.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\order2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

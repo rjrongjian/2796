@@ -83,6 +83,26 @@ namespace DeepNaiWorkshop_2796.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap order2 {
+            get {
+                object obj = ResourceManager.GetObject("order2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap order3 {
+            get {
+                object obj = ResourceManager.GetObject("order3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap template_ip6 {
             get {
                 object obj = ResourceManager.GetObject("template_ip6", resourceCulture);
