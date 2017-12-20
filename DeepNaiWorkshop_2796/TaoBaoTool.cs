@@ -54,22 +54,34 @@ namespace DeepNaiWorkshop_2796
             if(tmallOrTaoBao== TaoBaoTool.GOOD_TYPE_TMALL)
             {
                 //Console.WriteLine(htmlContent);
-                Regex reg = new Regex("[\\s\\S]*<title>([\\s\\S]*)-tmall.com天猫</title>[\\s\\S]*<img id=\"J_ImgBooth\"[\\s\\S]*?src=\"([\\s\\S]*?)\"[\\s\\S]*<input type=\"hidden\" name=\"seller_nickname\" value=\"([\\s\\S]*?)\" />[\\s\\S]*defaultItemPrice\":\"([\\s\\S]*?)\"[\\s\\S]*");
-                
-                Match match = reg.Match(htmlContent);
-                
-                String mainPic = match.Groups[2].Value;
-                mainPic = StringTool.replaceStartWith(mainPic, "//", "http://");
-         
-                String name = match.Groups[1].Value;
-                String shopName = match.Groups[3].Value;
-                String price = match.Groups[4].Value;
+                Regex reg = new Regex("([\\s\\S]*)<title>([\\s\\S]*)-tmall.com天猫</title>[\\s\\S]*<img id=\"J_ImgBooth\"[\\s\\S]*?src=\"([\\s\\S]*?)\"[\\s\\S]*<input type=\"hidden\" name=\"seller_nickname\" value=\"([\\s\\S]*?)\" />[\\s\\S]*defaultItemPrice\":\"([\\s\\S]*?)\"[\\s\\S]*");
 
+                Match match = reg.Match(htmlContent);
+
+                String mainPic = match.Groups[3].Value;
+                mainPic = StringTool.replaceStartWith(mainPic, "//", "http://");
+
+                String name = match.Groups[2].Value;
+                String shopName = match.Groups[4].Value;
+                String price = match.Groups[5].Value;
+
+                String subHtmlContent = match.Groups[1].Value;
+                Console.WriteLine(subHtmlContent);
+                Regex reg2 = new Regex("[\\s\\S]*w.g_config={[\\s\\S]*?itemId:\"([0-9]+)\"[\\s\\S]+sellerId:\"([0-9]+)\"[\\s\\S]*");
+                Match match2 = reg2.Match(subHtmlContent);
+                String sellerId = match2.Groups[2].Value;
+                String itemId = match2.Groups[1].Value;
+                String spuid = "";
                 //TODO 抓取的数据
-                //Console.WriteLine("获取的数据");
-                //Console.WriteLine(mainPic);
-                //Console.WriteLine(name);
-                //Console.WriteLine(price);
+                Console.WriteLine("获取的数据");
+                Console.WriteLine("mainPic:"+mainPic);
+                Console.WriteLine("name:"+name);
+                Console.WriteLine("price:"+price);
+                Console.WriteLine("shopName:" + shopName);
+                Console.WriteLine("sellerId:" + sellerId);
+                Console.WriteLine("itemId:" + itemId);
+                Console.WriteLine("spuid:" + spuid);
+
 
 
                 shopData.Name = name;

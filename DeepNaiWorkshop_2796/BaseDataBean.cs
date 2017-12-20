@@ -20,6 +20,10 @@ namespace DeepNaiWorkshop_2796
         private int _volume;//成交量
         private Image _shopPic;//店铺图标
         private List<String> _commentariesList;//商品评论
+        private String _spuid;//
+        private String _sellerId;//商家id
+        private String _itemId;//商品id
+
 
         public string Name { get => _name; set => _name = value; }
         public Image MainPic { get => _mainPic; set => _mainPic = value; }
@@ -32,5 +36,8 @@ namespace DeepNaiWorkshop_2796
         public Image ShopPic { get => _shopPic; set => _shopPic = value; }
         public List<string> CommentariesList { get => _commentariesList; set => _commentariesList = value; }
         public string MainPicStr { get => _mainPicStr; set => _mainPicStr = value; }
+        public string Spuid { get => _spuid; set => _spuid = value; }
+        public string SellerId { get => _sellerId; set => _sellerId = value; }
+        public string ItemId { get => _itemId; set => _itemId = value; }
     }
 }
