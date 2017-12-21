@@ -878,9 +878,9 @@
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(26, 86);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(515, 12);
+            this.label30.Size = new System.Drawing.Size(587, 12);
             this.label30.TabIndex = 15;
-            this.label30.Text = "（4）使用过程如果软件出现问题，或者需要技术支持，QQ联系：1633545776，添加时说明来意。";
+            this.label30.Text = "（4）使用过程如果软件出现问题，或者需要技术支持，QQ联系：1633545776（深奈工坊），添加时说明来意。";
             // 
             // MainForm
             // 
