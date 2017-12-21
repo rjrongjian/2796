@@ -25,6 +25,8 @@ namespace DeepNaiWorkshop_2796
         private String _itemId;//商品id
         private String _rateUrl;//评论网址
         private int _currentPage;//评论的分页
+        private List<String> _rateImg;//商品评论图片
+        private int _currentRateImgIndex;//当前商品图片索引
 
 
         public string Name { get => _name; set => _name = value; }
@@ -43,5 +45,7 @@ namespace DeepNaiWorkshop_2796
         public string ItemId { get => _itemId; set => _itemId = value; }
         public string RateUrl { get => _rateUrl; set => _rateUrl = value; }
         public int CurrentPage { get => _currentPage; set => _currentPage = value; }
+        public List<string> RateImg { get => _rateImg; set => _rateImg = value; }
+        public int CurrentRateImgIndex { get => _currentRateImgIndex; set => _currentRateImgIndex = value; }
     }
 }

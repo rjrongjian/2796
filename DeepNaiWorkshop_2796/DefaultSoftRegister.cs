@@ -61,6 +61,8 @@ namespace DeepNaiWorkshop_2796
                     }
                 }
             }
+            //获取的机器码，打上软件标识再进行一次MD5
+            strAsciiName = MD5Tool.md5(strAsciiName + Const.SOFT_FLAG_FOR_REGISTER).ToUpper();
             return strAsciiName;
         }
 
@@ -86,7 +88,9 @@ namespace DeepNaiWorkshop_2796
                 //string str = Registry.GetValue(Const.REGISTRY_LOCATION, Const.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY, "").ToString();
                 if (!"".Equals(str))
                 {
-                    fatherKey.SetValue( Const.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY, "");
+                    //fatherKey.SetValue( Const.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY, "");
+                    fatherKey.DeleteValue(Const.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY);
+                    
                     return new RespMessage(2, "请重新输入注册码，以便继续使用应用");
                 }
                 return new RespMessage(3, "请输入正确的注册码！");

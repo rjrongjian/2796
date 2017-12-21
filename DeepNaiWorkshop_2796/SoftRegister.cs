@@ -61,10 +61,10 @@ namespace DeepNaiWorkshop_2796
         {
             RegistryKey lm = Registry.CurrentUser;
             RegistryKey fatherKey = lm.OpenSubKey("SOFTWARE", true);
-            RegistryKey myProjectFatherKey = fatherKey.OpenSubKey(Const.REGISTRY_LOCATION);
+            RegistryKey myProjectFatherKey = fatherKey.OpenSubKey(Const.REGISTRY_LOCATION,true);
             if (myProjectFatherKey == null)
             {
-                myProjectFatherKey = fatherKey.CreateSubKey(Const.REGISTRY_LOCATION);
+                myProjectFatherKey = fatherKey.CreateSubKey(Const.REGISTRY_LOCATION, true);
 
             }
             return myProjectFatherKey;

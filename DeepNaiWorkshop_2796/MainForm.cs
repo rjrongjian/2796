@@ -144,7 +144,8 @@ namespace DeepNaiWorkshop_2796
                 this.button3.Enabled = true;
                 this.button4.Enabled = true;
                 this.button5.Enabled = true;
-                
+                this.button6.Enabled = true;
+
             }
             else if (status == 2)//2 按钮全部不可用
             {
@@ -153,7 +154,8 @@ namespace DeepNaiWorkshop_2796
                 this.button3.Enabled = false;
                 this.button4.Enabled = false;
                 this.button5.Enabled = false;
-                
+                this.button6.Enabled = false;
+
             }
             else if (status == 3)//3 获取商品信息按钮可用
             {
@@ -162,7 +164,8 @@ namespace DeepNaiWorkshop_2796
                 this.button3.Enabled = false;
                 this.button4.Enabled = false;
                 this.button5.Enabled = false;
-                
+                this.button6.Enabled = false;
+
             }
             else if (status == 4)//4 生成截图按钮可用
             {
@@ -180,7 +183,8 @@ namespace DeepNaiWorkshop_2796
                 this.button3.Enabled = true;
                 this.button4.Enabled = false;
                 this.button5.Enabled = false;
-                
+                this.button6.Enabled = false;
+
             }
             else if (status == 6)//6 截图订单详情按钮可用
             {
@@ -188,6 +192,8 @@ namespace DeepNaiWorkshop_2796
                 this.button2.Enabled = false;
                 this.button3.Enabled = false;
                 this.button4.Enabled = true;
+                this.button5.Enabled = false;
+                this.button6.Enabled = false;
             }
             else if (status == 7)//7 获取商品数据、生成截图按钮可用
             {
@@ -196,7 +202,24 @@ namespace DeepNaiWorkshop_2796
                 this.button3.Enabled = false;
                 this.button4.Enabled = false;
                 this.button5.Enabled = false;
-                
+                this.button6.Enabled = false;
+
+            }
+            else if (status == 8)//8 评论页面按钮全部失效
+            {
+                this.button7.Enabled = false;
+                this.button8.Enabled = false;
+                this.button9.Enabled = false;
+                this.button10.Enabled = false;
+
+            }
+            else if (status == 9)//9 评论页面按钮全部有效
+            {
+                this.button7.Enabled = true;
+                this.button8.Enabled = true;
+                this.button9.Enabled = true;
+                this.button10.Enabled = true;
+
             }
             else
             {
@@ -206,7 +229,8 @@ namespace DeepNaiWorkshop_2796
                 this.button3.Enabled = false;
                 this.button4.Enabled = false;
                 this.button5.Enabled = false;
-                
+                this.button6.Enabled = false;
+
             }
         }
 
@@ -1009,13 +1033,19 @@ namespace DeepNaiWorkshop_2796
         private void button9_Click(object sender, EventArgs e)//抓取更多评论
 
         {
+            setMainFormBtnStatus(8);
             if (dataBean == null)
             {
+                setMainFormBtnStatus(9);
                 alert("请通过本软件获取商品信息才能抓取评论");
             }
             else//单线程版本 目前
             {
-                
+                /*
+                 * 疑问：第一次抓取不到评论
+                 * 
+                 * 
+                 */
               //  LogTool.log("开始抓取评论...", logLabel);
                 String rateContent = WebTool.getHtmlContent(dataBean.RateUrl + (dataBean.CurrentPage)+"&order=1");
                 //Console.WriteLine("抓取的网页内容："+ dataBean.RateUrl + (dataBean.CurrentPage) + "&order=1");
@@ -1025,8 +1055,9 @@ namespace DeepNaiWorkshop_2796
                 MatchCollection matches = Regex.Matches(rateContent, ",\"rateContent\":\"([\\s\\S]*?)\",");
                 if (matches.Count <= 0)//到达最后一页
                 {
-                    Console.WriteLine("不能获取更多评论");
-                    alert("没有更多");
+                    setMainFormBtnStatus(9);
+                    //Console.WriteLine("不能获取更多评论");
+                    alert("没有更多或淘宝拦截请再次尝试");
                 }
                 else
                 {
@@ -1038,7 +1069,7 @@ namespace DeepNaiWorkshop_2796
 
                     }
                 }
-
+                setMainFormBtnStatus(9);
 
                 dataBean.CurrentPage += 1;
             }
@@ -1046,39 +1077,89 @@ namespace DeepNaiWorkshop_2796
 
         private void button10_Click(object sender, EventArgs e)//抓取更多图片
         {
+            setMainFormBtnStatus(8);
             if (dataBean == null)
             {
+                setMainFormBtnStatus(9);
                 alert("请通过本软件获取商品信息才能抓取图片");
             }
             else//单线程版本 目前
             {
                 LogTool.log("开始抓取评论...", logLabel);
                 String rateContent = WebTool.getHtmlContent(dataBean.RateUrl + dataBean.CurrentPage + "&order=3&picture=1");
-                Console.WriteLine("抓取的网页内容：");
-                Console.WriteLine(rateContent);
-                MatchCollection matches = Regex.Matches(rateContent, ",\"pics\": \\[([\\s\\S]*)\\],");
+                //Console.WriteLine("抓取的网页内容：");
+                //Console.WriteLine(rateContent);
+                MatchCollection matches = Regex.Matches(rateContent, "\"pics\":\\[\"([\\s\\S]*?)\"\\],\"");
                 if (matches.Count <= 0)//到达最后一页
                 {
-                    Console.WriteLine("不能获取更多评论");
-                    alert("没有更多");
+                    setMainFormBtnStatus(9);
+                    Console.WriteLine("不能获取更多图片");
+                    alert("没有更多或淘宝拦截请再次尝试");
                 }
                 else
                 {
                     this.textBox10.Text = "";//每次翻页，清空当前页面内容
+                    dataBean.RateImg = new List<string>();
                     foreach (Match match in matches)
                     {
                         //Console.WriteLine("匹配的结果："+ match.Groups[1].Value);
-                        this.textBox10.Text = this.textBox10.Text + "  " + match.Groups[1].Value + "\r\n\r\n";
+                        //this.textBox10.Text = this.textBox10.Text + "  " + match.Groups[1].Value + "\r\n\r\n";
+                        
+                        if (!String.IsNullOrWhiteSpace(match.Groups[1].Value))
+                        {
+                            String[] picUrls = match.Groups[1].Value.Split("\",\"".ToCharArray());
+                            //Console.WriteLine("抓取的图片："+ match.Groups[1].Value);
+                            foreach(String picUrl in picUrls)
+                            {
+                                if (!String.IsNullOrWhiteSpace(picUrl))
+                                {
+                                    dataBean.RateImg.Add(StringTool.replaceStartWith(picUrl, "//", "https://"));
+                                }
+                                
+                            }
 
+                            this.pictureBox5.Image = ImageTool.getImageBy(dataBean.RateImg[0]);
+                            dataBean.CurrentRateImgIndex = 0;
+
+
+                        }
                     }
                 }
 
 
                 dataBean.CurrentPage += 1;
-
+                setMainFormBtnStatus(9);
 
             }
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)//换一张图片
+        {
+            
+            if (dataBean == null)
+            {
+                alert("请通过本软件获取商品信息才能抓取图片");
+            }
+            else//单线程版本 目前
+            {
+                if(dataBean.RateImg.Count-1<= dataBean.CurrentRateImgIndex)
+                {
+                    alert("已到最后，重新抓取");
+                }
+                else
+                {
+                    Console.WriteLine("获取的地址："+ dataBean.RateImg[dataBean.CurrentRateImgIndex + 1]);
+                    this.pictureBox5.Image = ImageTool.getImageBy(dataBean.RateImg[dataBean.CurrentRateImgIndex + 1]);
+                }
+                dataBean.CurrentRateImgIndex++;
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)//复制图片
+        {
+            Clipboard.SetImage(this.pictureBox5.Image);
+            alert("订单详情截图已拷贝到剪贴板！");
         }
     }
 }

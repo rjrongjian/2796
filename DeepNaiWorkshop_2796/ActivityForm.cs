@@ -43,6 +43,14 @@ namespace DeepNaiWorkshop_2796
             //MailTool email = new MailTool("1633545776@qq.com", "测试邮件2", "测试内容");
             //email.Send();
             //Console.WriteLine("发送没");
+
+            //测试正则
+            //Console.WriteLine("发送前");
+            //Regex reg = new Regex(".*(\\[.*\\]).*");
+            //Match m = reg.Match("kfjs[fds]jgj");
+            //Console.WriteLine(m.Groups[1].Value);
+
+            //Console.WriteLine("发送后");
         }
         //复制机器码按钮
         private void button2_Click(object sender, EventArgs e)
@@ -68,9 +76,12 @@ namespace DeepNaiWorkshop_2796
                 mainForm.Location = activityFormLocation;
                 mainForm.Text = mainForm.Text + "-版本" + Const.VERSION;
                 mainForm.Show();
+                this.button1.Enabled = true;
             }
             else
             {
+                this.label3.Text = "注册码错误！！！";
+                this.button1.Enabled = true;
                 MessageBox.Show(respMessage.message);
             }
         }

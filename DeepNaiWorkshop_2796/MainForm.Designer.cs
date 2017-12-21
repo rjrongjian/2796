@@ -94,13 +94,15 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.button10 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -326,6 +328,8 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.label30);
+            this.groupBox7.Controls.Add(this.label26);
             this.groupBox7.Controls.Add(this.label20);
             this.groupBox7.Controls.Add(this.label19);
             this.groupBox7.Location = new System.Drawing.Point(16, 417);
@@ -340,18 +344,18 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(26, 43);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(365, 12);
+            this.label20.Size = new System.Drawing.Size(395, 12);
             this.label20.TabIndex = 13;
-            this.label20.Text = "由于软件窗口大小限制，截图有一部分会被折叠，复制后显示完整。";
+            this.label20.Text = "（2）由于软件窗口大小限制，截图有一部分会被折叠，复制后显示完整。";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(26, 21);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(329, 12);
+            this.label19.Size = new System.Drawing.Size(359, 12);
             this.label19.TabIndex = 12;
-            this.label19.Text = "如果没有通过代码调用网址获取商品数据，就不能获取评论。";
+            this.label19.Text = "（1）如果没有通过代码调用网址获取商品数据，就不能获取评论。";
             // 
             // button2
             // 
@@ -361,6 +365,7 @@
             this.button2.TabIndex = 14;
             this.button2.Text = "生成截图";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox4
             // 
@@ -789,6 +794,16 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "评论图片";
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(198, 446);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(94, 23);
+            this.button10.TabIndex = 14;
+            this.button10.Text = "抓取更多图片";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // button8
             // 
             this.button8.Location = new System.Drawing.Point(93, 446);
@@ -797,6 +812,7 @@
             this.button8.TabIndex = 13;
             this.button8.Text = "复制图片";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
@@ -806,12 +822,14 @@
             this.button7.TabIndex = 12;
             this.button7.Text = "换一张";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // pictureBox5
             // 
             this.pictureBox5.Location = new System.Drawing.Point(6, 20);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(302, 402);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 11;
             this.pictureBox5.TabStop = false;
             // 
@@ -826,16 +844,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "商品评论";
             // 
-            // textBox10
-            // 
-            this.textBox10.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox10.Location = new System.Drawing.Point(6, 20);
-            this.textBox10.Multiline = true;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox10.Size = new System.Drawing.Size(300, 460);
-            this.textBox10.TabIndex = 0;
-            // 
             // button9
             // 
             this.button9.Location = new System.Drawing.Point(97, 486);
@@ -846,15 +854,33 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // button10
+            // textBox10
             // 
-            this.button10.Location = new System.Drawing.Point(198, 446);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(94, 23);
-            this.button10.TabIndex = 14;
-            this.button10.Text = "抓取更多图片";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.textBox10.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox10.Location = new System.Drawing.Point(6, 20);
+            this.textBox10.Multiline = true;
+            this.textBox10.Name = "textBox10";
+            this.textBox10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox10.Size = new System.Drawing.Size(300, 460);
+            this.textBox10.TabIndex = 0;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(26, 65);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(587, 12);
+            this.label26.TabIndex = 14;
+            this.label26.Text = "（3）爬虫爬取商品评论或截图可能会被淘宝拦截，此时换个商品重新获取商品信息，再次爬取可能解决问题。";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(26, 86);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(515, 12);
+            this.label30.TabIndex = 15;
+            this.label30.Text = "（4）使用过程如果软件出现问题，或者需要技术支持，QQ联系：1633545776，添加时说明来意。";
             // 
             // MainForm
             // 
@@ -973,5 +999,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label30;
     }
 }
