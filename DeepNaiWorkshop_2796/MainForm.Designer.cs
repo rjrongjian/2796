@@ -718,9 +718,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(265, 21);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.337dcc03cyKDhZ&id=5" +
-    "58089180775&skuId=3467311664654&areaId=420200&user_id=2146742267&cat_id=2&is_b=1" +
-    "&rn=56a6ffdd329413b02d0aa6f8652cd91a";
             // 
             // label5
             // 
