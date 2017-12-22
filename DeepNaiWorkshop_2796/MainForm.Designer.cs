@@ -558,6 +558,7 @@
             this.radioButton1.TabIndex = 0;
             this.radioButton1.Text = "使用图片水印";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.radioButton1_MouseClick);
             // 
             // groupBox3
             // 
