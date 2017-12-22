@@ -319,7 +319,6 @@
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.BackgroundImage = global::DeepNaiWorkshop_2796.Properties.Resources.template_ip61;
             this.pictureBox3.InitialImage = null;
             this.pictureBox3.Location = new System.Drawing.Point(0, 34);
             this.pictureBox3.Name = "pictureBox3";

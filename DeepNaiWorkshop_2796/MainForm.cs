@@ -121,7 +121,7 @@ namespace DeepNaiWorkshop_2796
             this.Location = new Point((Screen.PrimaryScreen.Bounds.Width - this.Width) / 2, (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2);
             this.StartPosition = FormStartPosition.Manual;
             this.logLabel = this.label4;
-
+            this.pictureBox3.BackgroundImage = ResourceTool.getImage(Const.COUPON_BACK_IMG_NAME_ORDER);
             originalCouponPic = this.pictureBox3.Image;
             //测试在pictureBox添加另一个
             //PictureBox p = new PictureBox();
@@ -652,7 +652,7 @@ namespace DeepNaiWorkshop_2796
             //开始订单截图
             PictureBox orderPb = this.pictureBox4;
             //开优惠券截图开始插入数据
-            orderPb.Image = ResourceTool.getImage(Const.COUPON_BACK_IMG_NAME_ORDER); ;//初始化背景图片
+            orderPb.Image = ResourceTool.getImage(Const.COUPON_BACK_IMG_NAME_ORDER);//初始化背景图片
             Graphics g2 = Graphics.FromImage(orderPb.Image);
             //商家名称
             String shopName2 = this.textBox11.Text;
