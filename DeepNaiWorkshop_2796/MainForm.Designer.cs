@@ -49,6 +49,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -103,7 +104,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -163,6 +166,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label34);
             this.tabPage2.Controls.Add(this.button6);
             this.tabPage2.Controls.Add(this.textBox9);
             this.tabPage2.Controls.Add(this.textBox8);
@@ -187,7 +191,7 @@
             // button6
             // 
             this.button6.Enabled = false;
-            this.button6.Location = new System.Drawing.Point(509, 5);
+            this.button6.Location = new System.Drawing.Point(594, 6);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(152, 25);
             this.button6.TabIndex = 14;
@@ -197,7 +201,7 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(330, 7);
+            this.textBox9.Location = new System.Drawing.Point(415, 8);
             this.textBox9.MaxLength = 3;
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(28, 21);
@@ -206,7 +210,7 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(273, 7);
+            this.textBox8.Location = new System.Drawing.Point(358, 8);
             this.textBox8.MaxLength = 3;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(26, 21);
@@ -216,7 +220,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(305, 13);
+            this.label29.Location = new System.Drawing.Point(390, 14);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(29, 12);
             this.label29.TabIndex = 11;
@@ -225,7 +229,7 @@
             // button5
             // 
             this.button5.Enabled = false;
-            this.button5.Location = new System.Drawing.Point(365, 5);
+            this.button5.Location = new System.Drawing.Point(450, 6);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(138, 25);
             this.button5.TabIndex = 10;
@@ -236,7 +240,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(252, 13);
+            this.label28.Location = new System.Drawing.Point(337, 14);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(29, 12);
             this.label28.TabIndex = 9;
@@ -245,7 +249,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(217, 12);
+            this.label27.Location = new System.Drawing.Point(302, 13);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(29, 12);
             this.label27.TabIndex = 8;
@@ -255,7 +259,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.ForeColor = System.Drawing.Color.Red;
-            this.label25.Location = new System.Drawing.Point(298, 11);
+            this.label25.Location = new System.Drawing.Point(383, 12);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(0, 12);
             this.label25.TabIndex = 6;
@@ -340,6 +344,15 @@
             this.groupBox7.TabIndex = 16;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "使用说明";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(26, 86);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(407, 12);
+            this.label31.TabIndex = 16;
+            this.label31.Text = "（4）目前支持的商品地址，形如：https://detail.tmall.com/item.htm...";
             // 
             // label30
             // 
@@ -788,6 +801,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label33);
+            this.tabPage3.Controls.Add(this.label32);
             this.tabPage3.Controls.Add(this.groupBox8);
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -804,9 +819,9 @@
             this.groupBox8.Controls.Add(this.button8);
             this.groupBox8.Controls.Add(this.button7);
             this.groupBox8.Controls.Add(this.pictureBox5);
-            this.groupBox8.Location = new System.Drawing.Point(380, 19);
+            this.groupBox8.Location = new System.Drawing.Point(387, 19);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(315, 500);
+            this.groupBox8.Size = new System.Drawing.Size(315, 480);
             this.groupBox8.TabIndex = 12;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "评论图片";
@@ -881,14 +896,34 @@
             this.textBox10.Size = new System.Drawing.Size(300, 460);
             this.textBox10.TabIndex = 0;
             // 
-            // label31
+            // label32
             // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(26, 86);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(407, 12);
-            this.label31.TabIndex = 16;
-            this.label31.Text = "（4）目前支持的商品地址，形如：https://detail.tmall.com/item.htm...";
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(385, 510);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(305, 12);
+            this.label32.TabIndex = 13;
+            this.label32.Text = "注意：天猫偶尔会禁止爬取评论，请更换商品地址多尝试";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(385, 528);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(137, 12);
+            this.label33.TabIndex = 14;
+            this.label33.Text = "或多点击抓取更多按钮。";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.Gainsboro;
+            this.label34.ForeColor = System.Drawing.Color.Red;
+            this.label34.Location = new System.Drawing.Point(210, 13);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(77, 12);
+            this.label34.TabIndex = 15;
+            this.label34.Text = "水印可拖动！";
             // 
             // MainForm
             // 
@@ -925,6 +960,7 @@
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -1010,5 +1046,8 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label34;
     }
 }

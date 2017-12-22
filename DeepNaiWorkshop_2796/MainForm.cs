@@ -463,7 +463,7 @@ namespace DeepNaiWorkshop_2796
             //优惠券价格
             String rmb = "￥";
             SolidBrush rmbBrush = new SolidBrush(ColorTool.getColorFromHtml("#d0021b"));
-            Font rmbFont = new Font(Const.COUPON_FONT, 20);
+            Font rmbFont = new Font("Arial", 20);
             SizeF rmbSize = g.MeasureString(rmb, rmbFont);
             
 
@@ -1098,7 +1098,7 @@ namespace DeepNaiWorkshop_2796
                 }
                 else
                 {
-                    this.textBox10.Text = "";//每次翻页，清空当前页面内容
+                    
                     dataBean.RateImg = new List<string>();
                     foreach (Match match in matches)
                     {
@@ -1143,16 +1143,20 @@ namespace DeepNaiWorkshop_2796
             }
             else//单线程版本 目前
             {
-                if(dataBean.RateImg.Count-1<= dataBean.CurrentRateImgIndex)
+                if (dataBean.CurrentRateImgIndex != null)
                 {
-                    alert("已到最后，重新抓取");
+                    if (dataBean.RateImg.Count - 1 <= dataBean.CurrentRateImgIndex)
+                    {
+                        alert("已到最后，重新抓取");
+                    }
+                    else
+                    {
+                        Console.WriteLine("获取的地址：" + dataBean.RateImg[dataBean.CurrentRateImgIndex + 1]);
+                        this.pictureBox5.Image = ImageTool.getImageBy(dataBean.RateImg[dataBean.CurrentRateImgIndex + 1]);
+                    }
+                    dataBean.CurrentRateImgIndex++;
                 }
-                else
-                {
-                    Console.WriteLine("获取的地址："+ dataBean.RateImg[dataBean.CurrentRateImgIndex + 1]);
-                    this.pictureBox5.Image = ImageTool.getImageBy(dataBean.RateImg[dataBean.CurrentRateImgIndex + 1]);
-                }
-                dataBean.CurrentRateImgIndex++;
+                
             }
         }
 
