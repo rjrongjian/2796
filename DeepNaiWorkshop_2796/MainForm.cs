@@ -453,7 +453,7 @@ namespace DeepNaiWorkshop_2796
             Font shopNameFont = new Font(Const.COUPON_FONT, 11);
             //获取字符串宽度
             SizeF shopNameSize = g.MeasureString(shopName, shopNameFont);
-            Point shopNamePoint = new Point((int)(couponPb.Image.Width- shopNameSize.Width)/2, 119);
+            Point shopNamePoint = new Point((int)(couponPb.Image.Width- shopNameSize.Width)/2, 117);
             
             g.DrawString(shopName, shopNameFont, shopNameBrush, shopNamePoint, StringFormat.GenericDefault);
             //商品缩略图 123x123
@@ -463,18 +463,19 @@ namespace DeepNaiWorkshop_2796
             //优惠券价格
             String rmb = "￥";
             SolidBrush rmbBrush = new SolidBrush(ColorTool.getColorFromHtml("#d0021b"));
-            Font rmbFont = new Font("Arial", 20);
+            //Font rmbFont = new Font("Arial", 16);
+            Font rmbFont = new Font(Const.COUPON_FONT, 16);
             SizeF rmbSize = g.MeasureString(rmb, rmbFont);
             
 
             String couponValue = this.textBox3.Text;
-            Font couponValueFont = new Font(Const.COUPON_FONT, 38);
+            Font couponValueFont = new Font(Const.COUPON_FONT, 32);
             SizeF couponValueSize = g.MeasureString(couponValue, couponValueFont);
 
             int baseX = 51;
             int baseY = 160;
-            Point rmbPoint = new Point(((int)(170-rmbSize.Width- couponValueSize.Width)/2)+baseX, baseY+(int)(couponValueSize.Height-rmbSize.Width));
-            Point couponValuePoint = new Point((int)(rmbPoint.X+rmbSize.Width), (int)(rmbPoint.Y- (couponValueSize.Height - rmbSize.Width)));
+            Point rmbPoint = new Point(((int)(170-rmbSize.Width- couponValueSize.Width)/2)+baseX+10, baseY+(int)(couponValueSize.Height-rmbSize.Width)-15);
+            Point couponValuePoint = new Point((int)(rmbPoint.X+rmbSize.Width)-10, (int)(rmbPoint.Y- (couponValueSize.Height - rmbSize.Height)+8));
             g.DrawString(rmb, rmbFont, rmbBrush, rmbPoint, StringFormat.GenericDefault);
             g.DrawString(couponValue, couponValueFont, rmbBrush, couponValuePoint, StringFormat.GenericDefault);
 
@@ -504,7 +505,7 @@ namespace DeepNaiWorkshop_2796
             String price = this.textBox2.Text;
             Font priceFont = new Font(Const.COUPON_FONT, 11);
             SolidBrush priceBrush = new SolidBrush(ColorTool.getColorFromHtml("#333"));
-            Point pricePoint = new Point(181,363);
+            Point pricePoint = new Point(183,360);
             g.DrawString(price, priceFont, priceBrush, pricePoint, StringFormat.GenericDefault);
 
             //成交量
@@ -512,15 +513,15 @@ namespace DeepNaiWorkshop_2796
             Font volumeFont = new Font(Const.COUPON_FONT, 11);
             SolidBrush volumeBrush = new SolidBrush(ColorTool.getColorFromHtml("#9b9b9b"));
             SizeF volumeSize = g.MeasureString(volume, volumeFont);
-            Point volumePoint = new Point(375- (int)volumeSize.Width- 15, 336);
+            Point volumePoint = new Point(375- (int)volumeSize.Width- 15, 332);
             g.DrawString(volume, volumeFont, volumeBrush, volumePoint, StringFormat.GenericDefault);
 
             //券后价
             double priceAfter = double.Parse(price) -double.Parse(couponValue);
-            Font priceAfterFont = new Font(Const.COUPON_FONT, 24);
+            Font priceAfterFont = new Font(Const.COUPON_FONT, 23);
             
             SolidBrush priceAfterBrush = new SolidBrush(ColorTool.getColorFromHtml("#f40"));
-            Point priceAfterPoint = new Point(216, 379);
+            Point priceAfterPoint = new Point(216, 375);
             g.DrawString(priceAfter.ToString(), priceAfterFont, priceAfterBrush, priceAfterPoint, StringFormat.GenericDefault);
 
             int watermarkerFontSize = 14;//水印字体的大小
@@ -659,7 +660,7 @@ namespace DeepNaiWorkshop_2796
             Font shopName2Font = new Font(Const.COUPON_FONT, 11);
             //获取字符串宽度
            // SizeF shopNameSize = g.MeasureString(shopName, shopNameFont);
-            Point shopName2Point = new Point(34,58);
+            Point shopName2Point = new Point(34,56);
             g2.DrawString(shopName2, shopName2Font, shopName2Brush, shopName2Point, StringFormat.GenericDefault);
             //商品缩略图 123x123
             //Image goodPic = (Image)pictureBox1.Image.Clone();//拷贝一个图片
@@ -678,21 +679,21 @@ namespace DeepNaiWorkshop_2796
             StringFormat sf2 = new StringFormat();
             sf.Alignment = StringAlignment.Center;
             sf.LineAlignment = StringAlignment.Center;
-            g2.DrawString(goodName2, goodName2Font, font2Brush, new Rectangle(goodName2Point.X, goodName2Point.Y, 270, 30), sf2);
+            g2.DrawString(goodName2, goodName2Font, font2Brush, new Rectangle(goodName2Point.X, goodName2Point.Y, 270, 36), sf2);
 
             //优惠券价格
             String couponValue2 = "省" + this.textBox3.Text+"元";
             Font couponValue2Font = new Font(Const.COUPON_FONT, 11);
             SolidBrush couponValue2Brush = new SolidBrush(ColorTool.getColorFromHtml("#707375"));
             SizeF couponValue2Size = g2.MeasureString(couponValue2, couponValue2Font);
-            Point couponValue2Point = new Point((int)(82+260- couponValue2Size.Width),315);
+            Point couponValue2Point = new Point((int)(82+260- couponValue2Size.Width),312);
             g2.DrawString(couponValue2, couponValue2Font, couponValue2Brush, couponValue2Point, StringFormat.GenericDefault);
 
             //现价
             String price2 = this.textBox2.Text;
             Font price2Font = new Font(Const.COUPON_FONT, 14);
             SolidBrush price2Brush = new SolidBrush(ColorTool.getColorFromHtml("#ff5001"));
-            Point price2Point = new Point(127, 172);
+            Point price2Point = new Point(127, 169);
             g2.DrawString(price2, price2Font, price2Brush, price2Point, StringFormat.GenericDefault);
 
             //券后价
@@ -701,8 +702,8 @@ namespace DeepNaiWorkshop_2796
             Font priceAfter3Font = new Font(Const.COUPON_FONT, 12);//小计
 
             SolidBrush priceAfter2Brush = new SolidBrush(ColorTool.getColorFromHtml("#ff5001"));
-            Point priceAfter2Point = new Point(210, 615);
-            Point priceAfter3Point = new Point(313, 493);
+            Point priceAfter2Point = new Point(210, 612);
+            Point priceAfter3Point = new Point(313, 490);
             g2.DrawString(priceAfter2 < 9999 ? (priceAfter2.ToString().Contains(".") ? priceAfter2.ToString() : priceAfter2.ToString() + ".00") : int.Parse(priceAfter2.ToString()).ToString(), priceAfter2Font, priceAfter2Brush, priceAfter2Point, StringFormat.GenericDefault);
             g2.DrawString(priceAfter2<9999?(priceAfter2.ToString().Contains(".")? priceAfter2.ToString(): priceAfter2.ToString()+".00"): int.Parse(priceAfter2.ToString()).ToString(), priceAfter3Font, priceAfter2Brush, priceAfter3Point, StringFormat.GenericDefault);
 
