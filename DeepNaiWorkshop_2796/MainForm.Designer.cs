@@ -49,6 +49,8 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -101,8 +103,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -328,6 +329,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.label31);
             this.groupBox7.Controls.Add(this.label30);
             this.groupBox7.Controls.Add(this.label26);
             this.groupBox7.Controls.Add(this.label20);
@@ -338,6 +340,24 @@
             this.groupBox7.TabIndex = 16;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "使用说明";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(26, 107);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(587, 12);
+            this.label30.TabIndex = 15;
+            this.label30.Text = "（5）使用过程如果软件出现问题，或者需要技术支持，QQ联系：1633545776（深奈工坊），添加时说明来意。";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(26, 65);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(587, 12);
+            this.label26.TabIndex = 14;
+            this.label26.Text = "（3）爬虫爬取商品评论或截图可能会被淘宝拦截，此时换个商品重新获取商品信息，再次爬取可能解决问题。";
             // 
             // label20
             // 
@@ -861,23 +881,14 @@
             this.textBox10.Size = new System.Drawing.Size(300, 460);
             this.textBox10.TabIndex = 0;
             // 
-            // label26
+            // label31
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(26, 65);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(587, 12);
-            this.label26.TabIndex = 14;
-            this.label26.Text = "（3）爬虫爬取商品评论或截图可能会被淘宝拦截，此时换个商品重新获取商品信息，再次爬取可能解决问题。";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(26, 86);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(587, 12);
-            this.label30.TabIndex = 15;
-            this.label30.Text = "（4）使用过程如果软件出现问题，或者需要技术支持，QQ联系：1633545776（深奈工坊），添加时说明来意。";
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(26, 86);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(407, 12);
+            this.label31.TabIndex = 16;
+            this.label31.Text = "（4）目前支持的商品地址，形如：https://detail.tmall.com/item.htm...";
             // 
             // MainForm
             // 
@@ -998,5 +1009,6 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
     }
 }
