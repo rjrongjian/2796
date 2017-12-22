@@ -681,7 +681,7 @@ namespace DeepNaiWorkshop_2796
             g2.DrawString(goodName2, goodName2Font, font2Brush, new Rectangle(goodName2Point.X, goodName2Point.Y, 270, 30), sf2);
 
             //优惠券价格
-            String couponValue2 = "省" + this.textBox3.Text+"元:聚划算"+ this.textBox3.Text+"元";
+            String couponValue2 = "省" + this.textBox3.Text+"元";
             Font couponValue2Font = new Font(Const.COUPON_FONT, 11);
             SolidBrush couponValue2Brush = new SolidBrush(ColorTool.getColorFromHtml("#707375"));
             SizeF couponValue2Size = g2.MeasureString(couponValue2, couponValue2Font);

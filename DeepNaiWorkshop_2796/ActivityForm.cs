@@ -33,7 +33,7 @@ namespace DeepNaiWorkshop_2796
 
             this.Location = new Point((Screen.PrimaryScreen.Bounds.Width-this.Width)/2, (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2);
             //Console.WriteLine("获取的机器码：" + SoftRegister.getMNum());
-            //Console.WriteLine("生成的注册码：" + sr.generateRegistCode(SoftRegister.getMNum()));
+            //Console.WriteLine("生成的注册码：" + sr.generateRegistCode("BFEBFBFF000306D4F89E3ABC"));
             //Console.WriteLine("生成的注册码2：" + sr.generateRegistCode(SoftRegister.getMNum()));
             //RespMessage respMessage = sr.checkReg(sr.generateRegistCode(SoftRegister.getMNum()));
             //Console.WriteLine("获取的注册信息："+respMessage.message);

@@ -28,7 +28,7 @@ namespace DeepNaiWorkshop_2796
 
         public static String MAIL_FROM_MAIL_NAME = "管理员";//发件人姓名
 
-        public static String COUPON_BACK_IMG_NAME = "template_ip6";//优惠券背景图片名
+        public static String COUPON_BACK_IMG_NAME = "template_ip61";//优惠券背景图片名
 
         public static String COUPON_BACK_IMG_NAME_ORDER = "order2";//订单截图背景图片
 

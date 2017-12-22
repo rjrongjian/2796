@@ -146,6 +146,7 @@
             this.label6.Size = new System.Drawing.Size(209, 12);
             this.label6.TabIndex = 8;
             this.label6.Text = "59元购买注册码，咨询QQ：1633545776";
+            this.label6.Visible = false;
             // 
             // groupBox2
             // 

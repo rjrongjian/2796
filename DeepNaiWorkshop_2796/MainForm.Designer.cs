@@ -34,6 +34,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label34 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
@@ -96,6 +97,8 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.button10 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -104,9 +107,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -187,6 +187,17 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "输出截图";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.Gainsboro;
+            this.label34.ForeColor = System.Drawing.Color.Red;
+            this.label34.Location = new System.Drawing.Point(210, 13);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(77, 12);
+            this.label34.TabIndex = 15;
+            this.label34.Text = "水印可拖动！";
             // 
             // button6
             // 
@@ -308,7 +319,7 @@
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.BackgroundImage = global::DeepNaiWorkshop_2796.Properties.Resources.template_ip6;
+            this.pictureBox3.BackgroundImage = global::DeepNaiWorkshop_2796.Properties.Resources.template_ip61;
             this.pictureBox3.InitialImage = null;
             this.pictureBox3.Location = new System.Drawing.Point(0, 34);
             this.pictureBox3.Name = "pictureBox3";
@@ -813,6 +824,24 @@
             this.tabPage3.Text = "商品评论和截图";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(385, 528);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(137, 12);
+            this.label33.TabIndex = 14;
+            this.label33.Text = "或多点击抓取更多按钮。";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(385, 510);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(305, 12);
+            this.label32.TabIndex = 13;
+            this.label32.Text = "注意：天猫偶尔会禁止爬取评论，请更换商品地址多尝试";
+            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.button10);
@@ -895,35 +924,6 @@
             this.textBox10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox10.Size = new System.Drawing.Size(300, 460);
             this.textBox10.TabIndex = 0;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(385, 510);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(305, 12);
-            this.label32.TabIndex = 13;
-            this.label32.Text = "注意：天猫偶尔会禁止爬取评论，请更换商品地址多尝试";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(385, 528);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(137, 12);
-            this.label33.TabIndex = 14;
-            this.label33.Text = "或多点击抓取更多按钮。";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.Color.Gainsboro;
-            this.label34.ForeColor = System.Drawing.Color.Red;
-            this.label34.Location = new System.Drawing.Point(210, 13);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(77, 12);
-            this.label34.TabIndex = 15;
-            this.label34.Text = "水印可拖动！";
             // 
             // MainForm
             // 
