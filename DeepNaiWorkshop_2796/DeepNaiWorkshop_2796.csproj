@@ -7,7 +7,7 @@
     <ProjectGuid>{721B38FD-7F2C-44CD-9F4F-16CFE280DDB4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>DeepNaiWorkshop_2796</RootNamespace>
-    <AssemblyName>DeepNaiWorkshop_2796</AssemblyName>
+    <AssemblyName>tmallCouponShot</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

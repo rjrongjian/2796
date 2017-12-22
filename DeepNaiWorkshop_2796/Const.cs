@@ -16,7 +16,7 @@ namespace DeepNaiWorkshop_2796
         //在HKEY_LOCAL_MACHINE/SOFTWARE下开始创建
         public static String REGISTRY_LOCATION = PROJECT_ID;//注册表基项位置
 
-        public static String VERSION = "V2.3";//版本号
+        public static String VERSION = "V1.1";//版本号
 
         public static String FROM_MAIL = "1633545776@qq.com";//发件人账号
 
