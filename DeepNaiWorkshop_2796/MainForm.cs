@@ -45,6 +45,7 @@ namespace DeepNaiWorkshop_2796
                 RespMessage validateResult = taoBaoTool.isTmallOrTaoBaoItemPage(url);
                 if (validateResult.code != 1)
                 {
+                    setMainFormBtnStatus(7);//获取商品数据、生成截图按钮可用
                     alert(validateResult.message);
                 }
                 else
@@ -121,7 +122,7 @@ namespace DeepNaiWorkshop_2796
             this.Location = new Point((Screen.PrimaryScreen.Bounds.Width - this.Width) / 2, (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2);
             this.StartPosition = FormStartPosition.Manual;
             this.logLabel = this.label4;
-            this.pictureBox3.BackgroundImage = ResourceTool.getImage(Const.COUPON_BACK_IMG_NAME_ORDER);
+            this.pictureBox3.BackgroundImage = ResourceTool.getImage(Const.COUPON_BACK_IMG_NAME);
             originalCouponPic = this.pictureBox3.Image;
             //测试在pictureBox添加另一个
             //PictureBox p = new PictureBox();
@@ -833,6 +834,7 @@ namespace DeepNaiWorkshop_2796
 
             //按钮全部可用
             setMainFormBtnStatus(1);
+            alert("截图已经生成!");
         }
         
         
@@ -1146,16 +1148,24 @@ namespace DeepNaiWorkshop_2796
             {
                 if (dataBean.CurrentRateImgIndex != null)
                 {
-                    if (dataBean.RateImg.Count - 1 <= dataBean.CurrentRateImgIndex)
+                    if (dataBean.RateImg != null)
                     {
-                        alert("已到最后，重新抓取");
+                        if (dataBean.RateImg.Count - 1 <= dataBean.CurrentRateImgIndex)
+                        {
+                            alert("已到最后，重新抓取");
+                        }
+                        else
+                        {
+                            Console.WriteLine("获取的地址：" + dataBean.RateImg[dataBean.CurrentRateImgIndex + 1]);
+                            this.pictureBox5.Image = ImageTool.getImageBy(dataBean.RateImg[dataBean.CurrentRateImgIndex + 1]);
+                        }
+                        dataBean.CurrentRateImgIndex++;
                     }
                     else
                     {
-                        Console.WriteLine("获取的地址：" + dataBean.RateImg[dataBean.CurrentRateImgIndex + 1]);
-                        this.pictureBox5.Image = ImageTool.getImageBy(dataBean.RateImg[dataBean.CurrentRateImgIndex + 1]);
+                        alert("请重新获取更多数据");
                     }
-                    dataBean.CurrentRateImgIndex++;
+                    
                 }
                 
             }
@@ -1163,8 +1173,17 @@ namespace DeepNaiWorkshop_2796
 
         private void button8_Click(object sender, EventArgs e)//复制图片
         {
-            Clipboard.SetImage(this.pictureBox5.Image);
-            alert("订单详情截图已拷贝到剪贴板！");
+            if (this.pictureBox5.Image == null)
+            {
+                alert("请先抓取图片！");
+            }
+            else
+            {
+                Clipboard.SetImage(this.pictureBox5.Image);
+                alert("订单详情截图已拷贝到剪贴板！");
+
+            }
+            
         }
     }
 }
