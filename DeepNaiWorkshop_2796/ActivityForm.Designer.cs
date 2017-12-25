@@ -143,9 +143,9 @@
             this.label6.ForeColor = System.Drawing.Color.Red;
             this.label6.Location = new System.Drawing.Point(22, 246);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(209, 12);
+            this.label6.Size = new System.Drawing.Size(323, 12);
             this.label6.TabIndex = 8;
-            this.label6.Text = "49元购买注册码，咨询QQ：1633545776";
+            this.label6.Text = "49元购买注册码，pc端软件、app定制，咨询QQ：1633545776";
             // 
             // groupBox2
             // 
