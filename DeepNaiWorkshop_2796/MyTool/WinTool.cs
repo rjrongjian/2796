@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Management;
 using Microsoft.Win32;
 
-namespace DeepNaiWorkshop_2796
+namespace DeepNaiWorkshop_2796.MyTool
 {   /**
      * windows 常用工具
      */

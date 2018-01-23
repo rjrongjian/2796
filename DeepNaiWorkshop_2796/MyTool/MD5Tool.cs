@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeepNaiWorkshop_2796
+namespace DeepNaiWorkshop_2796.MyTool
 {
     class MD5Tool
     {

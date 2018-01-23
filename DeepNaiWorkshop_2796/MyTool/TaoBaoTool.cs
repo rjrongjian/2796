@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace DeepNaiWorkshop_2796
+namespace DeepNaiWorkshop_2796.MyTool
 {
     class TaoBaoTool
     {

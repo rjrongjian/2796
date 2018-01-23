@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeepNaiWorkshop_2796
+namespace 工具集
 {
-    class ExceptionTool
+    class Program
     {
-
-        public static void log(Exception e)
+        static void Main(string[] args)
         {
-            Console.WriteLine(e.ToString());
         }
     }
 }

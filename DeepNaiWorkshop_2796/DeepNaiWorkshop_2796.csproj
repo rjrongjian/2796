@@ -48,39 +48,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDataBean.cs" />
-    <Compile Include="ColorTool.cs" />
+    <Compile Include="MyTool\ColorTool.cs" />
     <Compile Include="Const.cs" />
-    <Compile Include="DataTool.cs" />
+    <Compile Include="MyTool\DataTool.cs" />
     <Compile Include="DateUtil.cs" />
     <Compile Include="DefaultSoftRegister.cs" />
-    <Compile Include="MailTool.cs" />
-    <Compile Include="EncryptTool.cs" />
+    <Compile Include="MyTool\MailTool.cs" />
+    <Compile Include="MyTool\EncryptTool.cs" />
     <Compile Include="ActivityForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ActivityForm.Designer.cs">
       <DependentUpon>ActivityForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExceptionTool.cs" />
-    <Compile Include="ImageTool.cs" />
-    <Compile Include="LogTool.cs" />
+    <Compile Include="MyTool\ExceptionTool.cs" />
+    <Compile Include="MyTool\ImageTool.cs" />
+    <Compile Include="MyTool\LogTool.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MD5Tool.cs" />
+    <Compile Include="MyTool\MD5Tool.cs" />
     <Compile Include="MessageManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResourceTool.cs" />
+    <Compile Include="MyTool\ResourceTool.cs" />
     <Compile Include="RespMessage.cs" />
     <Compile Include="SoftRegister.cs" />
-    <Compile Include="StringTool.cs" />
-    <Compile Include="TaoBaoTool.cs" />
-    <Compile Include="WebTool.cs" />
-    <Compile Include="WinTool.cs" />
+    <Compile Include="MyTool\StringTool.cs" />
+    <Compile Include="MyTool\TaoBaoTool.cs" />
+    <Compile Include="MyTool\WebTool.cs" />
+    <Compile Include="MyTool\WinTool.cs" />
     <EmbeddedResource Include="ActivityForm.resx">
       <DependentUpon>ActivityForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +139,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\template_ip61.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="logo_32x32.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-namespace DeepNaiWorkshop_2796
+namespace DeepNaiWorkshop_2796.MyTool
 {
     class LogTool
     {
