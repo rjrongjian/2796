@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyTools.bean
+namespace MyTools.Bean
 {
-    class ActivityConst
+    class ToolConst
     {
         //邮箱配置
         public static String FROM_MAIL = "1633545776@qq.com";//发件人账号

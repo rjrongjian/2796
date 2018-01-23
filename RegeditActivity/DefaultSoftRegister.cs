@@ -1,4 +1,4 @@
-﻿using DeepNaiWorkshop_2796.MyTool;
+﻿using RegeditActivity.MyTool;
 using MyTools;
 using Microsoft.Win32;
 using System;
@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RegeditActivity.Bean;
 
-namespace DeepNaiWorkshop_2796
+namespace RegeditActivity
 {
     /*
      * 一次注册终身使用
@@ -64,7 +65,7 @@ namespace DeepNaiWorkshop_2796
                 }
             }
             //获取的机器码，打上软件标识再进行一次MD5
-            strAsciiName = MD5Tool.md5(strAsciiName + Const.SOFT_FLAG_FOR_REGISTER).ToUpper();
+            strAsciiName = MD5Tool.md5(strAsciiName + ActivityConst.SOFT_FLAG_FOR_REGISTER).ToUpper();
             return strAsciiName;
         }
 
@@ -73,14 +74,14 @@ namespace DeepNaiWorkshop_2796
             //相等且注册表没有存此值时，就存入
             RegistryKey fatherKey = SoftRegister.getFatherKey();
             String localRegistCode = this.generateRegistCode(SoftRegister.getMNum());
-            string str = fatherKey.GetValue(Const.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY, "").ToString();
+            string str = fatherKey.GetValue(ActivityConst.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY, "").ToString();
             if (localRegistCode.Equals(registCode))
             {
                 
                 
                 if ("".Equals(str))
                 {
-                    fatherKey.SetValue(Const.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY, registCode);
+                    fatherKey.SetValue(ActivityConst.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY, registCode);
                 }
                 return new RespMessage(1,"OK");
             }
@@ -91,7 +92,7 @@ namespace DeepNaiWorkshop_2796
                 if (!"".Equals(str))
                 {
                     //fatherKey.SetValue( Const.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY, "");
-                    fatherKey.DeleteValue(Const.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY);
+                    fatherKey.DeleteValue(ActivityConst.VALUE_NAME_FOR_VALIDATE_IN_REGISTRY);
                     
                     return new RespMessage(2, "请重新输入注册码，以便继续使用应用");
                 }

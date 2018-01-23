@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="BaseDataBean.cs" />
     <Compile Include="Const.cs" />
-    <Compile Include="DefaultSoftRegister.cs" />
     <Compile Include="ActivityForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,7 +67,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RespMessage.cs" />
-    <Compile Include="SoftRegister.cs" />
     <EmbeddedResource Include="ActivityForm.resx">
       <DependentUpon>ActivityForm.cs</DependentUpon>
     </EmbeddedResource>

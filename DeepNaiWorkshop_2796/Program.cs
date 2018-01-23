@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DeepNaiWorkshop_2796
+namespace RegeditActivity
 {
     static class Program
     {

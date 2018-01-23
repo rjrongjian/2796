@@ -1,4 +1,4 @@
-﻿namespace DeepNaiWorkshop_2796
+﻿namespace RegeditActivity
 {
     partial class MainForm
     {

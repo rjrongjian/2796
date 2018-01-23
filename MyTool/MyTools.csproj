@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bean\ActivityConst.cs" />
+    <Compile Include="Bean\ToolConst.cs" />
     <Compile Include="ColorTool.cs" />
     <Compile Include="DataTool.cs" />
     <Compile Include="DateTool.cs" />

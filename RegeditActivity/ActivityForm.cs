@@ -1,6 +1,7 @@
 ﻿using RegeditActivity;
 using Microsoft.Win32;
 using MyTools;
+using RegeditActivity.Bean;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

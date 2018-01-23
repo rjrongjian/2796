@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DeepNaiWorkshop_2796.Properties {
+namespace RegeditActivity.Properties {
     using System;
     
     

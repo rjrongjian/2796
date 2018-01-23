@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using RegeditActivity.Bean;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +7,9 @@ using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeepNaiWorkshop_2796
+namespace RegeditActivity
 {
-    abstract class SoftRegister
+    public abstract class SoftRegister
     {
         
         // 取得设备硬盘的卷标号  
@@ -61,10 +62,10 @@ namespace DeepNaiWorkshop_2796
         {
             RegistryKey lm = Registry.CurrentUser;
             RegistryKey fatherKey = lm.OpenSubKey("SOFTWARE", true);
-            RegistryKey myProjectFatherKey = fatherKey.OpenSubKey(Const.REGISTRY_LOCATION,true);
+            RegistryKey myProjectFatherKey = fatherKey.OpenSubKey(ActivityConst.REGISTRY_LOCATION,true);
             if (myProjectFatherKey == null)
             {
-                myProjectFatherKey = fatherKey.CreateSubKey(Const.REGISTRY_LOCATION, true);
+                myProjectFatherKey = fatherKey.CreateSubKey(ActivityConst.REGISTRY_LOCATION, true);
 
             }
             return myProjectFatherKey;

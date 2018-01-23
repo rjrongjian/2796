@@ -1,4 +1,4 @@
-﻿using MyTools.bean;
+﻿using MyTools.Bean;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +26,7 @@ namespace MyTools
             {
                 if (string.IsNullOrEmpty(_SmtpHost))
                 {
-                    _SmtpHost = ActivityConst.MAIL_STMP_HOST;
+                    _SmtpHost = ToolConst.MAIL_STMP_HOST;
                 }
                 return _SmtpHost;
             }
@@ -40,7 +40,7 @@ namespace MyTools
             {
                 if (_SmtpPort == -1)
                 {
-                    if (!int.TryParse(ActivityConst.MAIL_STMP_PORT, out _SmtpPort))
+                    if (!int.TryParse(ToolConst.MAIL_STMP_PORT, out _SmtpPort))
                     {
                         _SmtpPort = 25;
                     }
@@ -57,7 +57,7 @@ namespace MyTools
             {
                 if (string.IsNullOrEmpty(_FromEmailAddress))
                 {
-                    _FromEmailAddress = ActivityConst.FROM_MAIL;
+                    _FromEmailAddress = ToolConst.FROM_MAIL;
                 }
                 return _FromEmailAddress;
             }
@@ -72,7 +72,7 @@ namespace MyTools
             {
                 if (string.IsNullOrEmpty(_FormEmailPassword))
                 {
-                    _FormEmailPassword = ActivityConst.MAIL_FROM_PWD;
+                    _FormEmailPassword = ToolConst.MAIL_FROM_PWD;
                 }
                 return _FormEmailPassword;
             }
@@ -201,7 +201,7 @@ namespace MyTools
 
             MailMessage mm = new MailMessage(); //实例化一个邮件类  
             mm.Priority = MailPriority.Normal; //邮件的优先级，分为 Low, Normal, High，通常用 Normal即可  
-            mm.From = new MailAddress(this.FromEmailAddress, ActivityConst.MAIL_FROM_MAIL_NAME, Encoding.UTF8);
+            mm.From = new MailAddress(this.FromEmailAddress, ToolConst.MAIL_FROM_MAIL_NAME, Encoding.UTF8);
 
             //收件人  
             if (!string.IsNullOrEmpty(this.ToList))
