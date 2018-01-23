@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using MyTools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,7 +34,7 @@ namespace DeepNaiWorkshop_2796
 
             this.Location = new Point((Screen.PrimaryScreen.Bounds.Width-this.Width)/2, (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2);
             //Console.WriteLine("获取的机器码：" + SoftRegister.getMNum());
-            //Console.WriteLine("生成的注册码：" + sr.generateRegistCode("BFEBFBFF000306C38850D338"));
+            //Console.WriteLine("生成的注册码：" + sr.generateRegistCode("BFEBFBFF000906E93CFE0AB5"));
             //Console.WriteLine("生成的注册码2：" + sr.generateRegistCode(SoftRegister.getMNum()));
             //RespMessage respMessage = sr.checkReg(sr.generateRegistCode(SoftRegister.getMNum()));
             //Console.WriteLine("获取的注册信息："+respMessage.message);
@@ -56,7 +57,7 @@ namespace DeepNaiWorkshop_2796
         private void button2_Click(object sender, EventArgs e)
         {
             Clipboard.SetDataObject(this.textBox1.Text);
-            this.label3.Text = "复制成功，操作时间："+DateUtil.getCurrentTimeStr();
+            this.label3.Text = "复制成功，操作时间："+DateTool.getCurrentTimeStr();
         }
         //激活软件按钮
         private void button1_Click(object sender, EventArgs e)

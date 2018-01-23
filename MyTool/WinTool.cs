@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Management;
+using Microsoft.Win32;
 
-namespace DeepNaiWorkshop_2796.MyTool
-{
-    /**
-     * 加密工具
+namespace MyTools
+{   /**
+     * windows 常用工具
      */
-    class EncryptTool
+    public class WinTool
     {
+
+        
     }
+
 }

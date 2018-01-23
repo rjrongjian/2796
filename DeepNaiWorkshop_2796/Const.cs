@@ -18,15 +18,7 @@ namespace DeepNaiWorkshop_2796
 
         public static String VERSION = "V1.1";//版本号
 
-        public static String FROM_MAIL = "1633545776@qq.com";//发件人账号
-
-        public static String MAIL_STMP_HOST = "smtp.qq.com";
-
-        public static String MAIL_FROM_PWD = "dgjpcwxnccdhdiih";//stmp 授权码
-
-        public static String MAIL_STMP_PORT = "25";
-
-        public static String MAIL_FROM_MAIL_NAME = "管理员";//发件人姓名
+        
 
         public static String COUPON_BACK_IMG_NAME = "template_ip61";//优惠券背景图片名
 

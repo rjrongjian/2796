@@ -7,9 +7,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace DeepNaiWorkshop_2796.MyTool
+namespace MyTools
 {
-    class ImageTool
+    public class ImageTool
     {
         public static Image getImageBy(String imgUrl)
         {

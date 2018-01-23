@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeepNaiWorkshop_2796.MyTool
+namespace MyTools
 {
-    class ExceptionTool
+    public class ExceptionTool
     {
 
         public static void log(Exception e)

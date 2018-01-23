@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeepNaiWorkshop_2796
+namespace MyTools
 {
-    class DateUtil
+    public class DateTool
     {
+
         public static string getCurrentTimeStr()
         {
             return DateTime.Now.ToString();

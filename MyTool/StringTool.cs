@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeepNaiWorkshop_2796.MyTool
+namespace MyTools
 {
-    class StringTool
+    public class StringTool
     {
         public static String replaceStartWith(String str,String startWith,String replaceWithStr)
         {

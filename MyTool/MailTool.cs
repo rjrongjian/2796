@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyTools.bean;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -6,9 +7,9 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeepNaiWorkshop_2796.MyTool
+namespace MyTools
 {
-    class MailTool
+    public class MailTool
     {
         #region [ 属性(发送Email相关) ]  
         private string _SmtpHost = string.Empty;
@@ -25,7 +26,7 @@ namespace DeepNaiWorkshop_2796.MyTool
             {
                 if (string.IsNullOrEmpty(_SmtpHost))
                 {
-                    _SmtpHost = Const.MAIL_STMP_HOST;
+                    _SmtpHost = ActivityConst.MAIL_STMP_HOST;
                 }
                 return _SmtpHost;
             }
@@ -39,7 +40,7 @@ namespace DeepNaiWorkshop_2796.MyTool
             {
                 if (_SmtpPort == -1)
                 {
-                    if (!int.TryParse(Const.MAIL_STMP_PORT, out _SmtpPort))
+                    if (!int.TryParse(ActivityConst.MAIL_STMP_PORT, out _SmtpPort))
                     {
                         _SmtpPort = 25;
                     }
@@ -56,7 +57,7 @@ namespace DeepNaiWorkshop_2796.MyTool
             {
                 if (string.IsNullOrEmpty(_FromEmailAddress))
                 {
-                    _FromEmailAddress = Const.FROM_MAIL;
+                    _FromEmailAddress = ActivityConst.FROM_MAIL;
                 }
                 return _FromEmailAddress;
             }
@@ -71,7 +72,7 @@ namespace DeepNaiWorkshop_2796.MyTool
             {
                 if (string.IsNullOrEmpty(_FormEmailPassword))
                 {
-                    _FormEmailPassword = Const.MAIL_FROM_PWD;
+                    _FormEmailPassword = ActivityConst.MAIL_FROM_PWD;
                 }
                 return _FormEmailPassword;
             }
@@ -200,7 +201,7 @@ namespace DeepNaiWorkshop_2796.MyTool
 
             MailMessage mm = new MailMessage(); //实例化一个邮件类  
             mm.Priority = MailPriority.Normal; //邮件的优先级，分为 Low, Normal, High，通常用 Normal即可  
-            mm.From = new MailAddress(this.FromEmailAddress, Const.MAIL_FROM_MAIL_NAME, Encoding.UTF8);
+            mm.From = new MailAddress(this.FromEmailAddress, ActivityConst.MAIL_FROM_MAIL_NAME, Encoding.UTF8);
 
             //收件人  
             if (!string.IsNullOrEmpty(this.ToList))

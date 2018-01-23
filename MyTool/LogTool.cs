@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-namespace DeepNaiWorkshop_2796.MyTool
+namespace MyTools
 {
-    class LogTool
+    public class LogTool
     {
         /*
          *  向label输入内容

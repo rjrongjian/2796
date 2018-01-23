@@ -5,9 +5,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeepNaiWorkshop_2796.MyTool
+namespace MyTools
 {
-    class MD5Tool
+    public class MD5Tool
     {
         public static String md5(String str)
         {

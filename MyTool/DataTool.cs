@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeepNaiWorkshop_2796.MyTool
+namespace MyTools
 {
-    class DataTool
+    public class DataTool
     {
         /*
          * 随机生成一个值，基值+随机值

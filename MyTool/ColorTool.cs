@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeepNaiWorkshop_2796.MyTool
+namespace MyTools
 {
-    class ColorTool
+    public class ColorTool
     {
         /// <summary>
         /// 转化16进制颜色值 
