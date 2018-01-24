@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RegeditActivity
+namespace DeepNaiWorkshop_2796
 {
-    class ActivityConst
+    class Const
     {
        
 

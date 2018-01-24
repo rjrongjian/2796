@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace RegeditActivity.MyTool
+namespace DeepNaiWorkshop_2796.MyTool
 {
     class TaoBaoTool
     {

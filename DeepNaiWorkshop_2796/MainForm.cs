@@ -1,4 +1,4 @@
-﻿using RegeditActivity.MyTool;
+﻿
 using MyTools;
 using System;
 using System.Collections.Generic;
@@ -10,6 +10,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DeepNaiWorkshop_2796;
+using DeepNaiWorkshop_2796.MyTool;
 
 namespace RegeditActivity
 {
@@ -124,7 +126,7 @@ namespace RegeditActivity
             this.Location = new Point((Screen.PrimaryScreen.Bounds.Width - this.Width) / 2, (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2);
             this.StartPosition = FormStartPosition.Manual;
             this.logLabel = this.label4;
-            this.pictureBox3.BackgroundImage = ResourceTool.getImage(ActivityConst.COUPON_BACK_IMG_NAME);
+            this.pictureBox3.BackgroundImage = ResourceTool.getImage(Const.COUPON_BACK_IMG_NAME);
             originalCouponPic = this.pictureBox3.Image;
             //测试在pictureBox添加另一个
             //PictureBox p = new PictureBox();
@@ -448,12 +450,12 @@ namespace RegeditActivity
 
             PictureBox couponPb = this.pictureBox3;
             //开优惠券截图开始插入数据
-            couponPb.Image = ResourceTool.getImage(ActivityConst.COUPON_BACK_IMG_NAME); ;//初始化背景图片
+            couponPb.Image = ResourceTool.getImage(Const.COUPON_BACK_IMG_NAME); ;//初始化背景图片
             Graphics g = Graphics.FromImage(couponPb.Image);
             //商家名称
             String shopName = this.textBox11.Text;
             SolidBrush shopNameBrush = new SolidBrush(Color.White);
-            Font shopNameFont = new Font(ActivityConst.COUPON_FONT, 11);
+            Font shopNameFont = new Font(Const.COUPON_FONT, 11);
             //获取字符串宽度
             SizeF shopNameSize = g.MeasureString(shopName, shopNameFont);
             Point shopNamePoint = new Point((int)(couponPb.Image.Width- shopNameSize.Width)/2, 117);
@@ -467,12 +469,12 @@ namespace RegeditActivity
             String rmb = "￥";
             SolidBrush rmbBrush = new SolidBrush(ColorTool.getColorFromHtml("#d0021b"));
             //Font rmbFont = new Font("Arial", 16);
-            Font rmbFont = new Font(ActivityConst.COUPON_FONT, 16);
+            Font rmbFont = new Font(Const.COUPON_FONT, 16);
             SizeF rmbSize = g.MeasureString(rmb, rmbFont);
             
 
             String couponValue = this.textBox3.Text;
-            Font couponValueFont = new Font(ActivityConst.COUPON_FONT, 32);
+            Font couponValueFont = new Font(Const.COUPON_FONT, 32);
             SizeF couponValueSize = g.MeasureString(couponValue, couponValueFont);
 
             int baseX = 51;
@@ -484,7 +486,7 @@ namespace RegeditActivity
 
             //优惠券日期
             String couponTime = this.dateTimePicker1.Value.ToString("yyyy.MM.dd")+ "-" + this.dateTimePicker2.Value.ToString("yyyy.MM.dd");
-            Font couponTimeFont = new Font(ActivityConst.COUPON_FONT, 10);
+            Font couponTimeFont = new Font(Const.COUPON_FONT, 10);
             SolidBrush couponTimeBrush = new SolidBrush(ColorTool.getColorFromHtml("#9b9b9b"));
             SizeF couponTimeSize = g.MeasureString(couponTime, couponTimeFont);
             Point couponTimePoint = new Point(51+(int)(170- couponTimeSize.Width)/2,230);
@@ -492,7 +494,7 @@ namespace RegeditActivity
 
             //商品名称 并且自动换行
             String goodName = this.textBox6.Text;
-            Font goodNameFont = new Font(ActivityConst.COUPON_FONT, 11);
+            Font goodNameFont = new Font(Const.COUPON_FONT, 11);
             SolidBrush goodNameBrush = new SolidBrush(ColorTool.getColorFromHtml("#333"));
             Point goodNamePoint = new Point(140,288);
 
@@ -506,14 +508,14 @@ namespace RegeditActivity
             g.DrawString(goodName, goodNameFont, fontBrush, new Rectangle(goodNamePoint.X, goodNamePoint.Y,220,37), sf);
             //现价
             String price = this.textBox2.Text;
-            Font priceFont = new Font(ActivityConst.COUPON_FONT, 11);
+            Font priceFont = new Font(Const.COUPON_FONT, 11);
             SolidBrush priceBrush = new SolidBrush(ColorTool.getColorFromHtml("#333"));
             Point pricePoint = new Point(183,360);
             g.DrawString(price, priceFont, priceBrush, pricePoint, StringFormat.GenericDefault);
 
             //成交量
             String volume = this.textBox4.Text+"笔成交";
-            Font volumeFont = new Font(ActivityConst.COUPON_FONT, 11);
+            Font volumeFont = new Font(Const.COUPON_FONT, 11);
             SolidBrush volumeBrush = new SolidBrush(ColorTool.getColorFromHtml("#9b9b9b"));
             SizeF volumeSize = g.MeasureString(volume, volumeFont);
             Point volumePoint = new Point(375- (int)volumeSize.Width- 15, 332);
@@ -521,7 +523,7 @@ namespace RegeditActivity
 
             //券后价
             double priceAfter = double.Parse(price) -double.Parse(couponValue);
-            Font priceAfterFont = new Font(ActivityConst.COUPON_FONT, 23);
+            Font priceAfterFont = new Font(Const.COUPON_FONT, 23);
             
             SolidBrush priceAfterBrush = new SolidBrush(ColorTool.getColorFromHtml("#f40"));
             Point priceAfterPoint = new Point(216, 375);
@@ -540,18 +542,18 @@ namespace RegeditActivity
                 Font watermarkerFont = null;
                 if (checkBox1.Checked&&!checkBox2.Checked)//加粗
                 {
-                    watermarkerFont = new Font(ActivityConst.COUPON_FONT, watermarkerFontSize, FontStyle.Bold|FontStyle.Italic);
+                    watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Bold|FontStyle.Italic);
                 }else if(!checkBox1.Checked && checkBox2.Checked)//删除线
                 {
-                    watermarkerFont = new Font(ActivityConst.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Italic);
+                    watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Italic);
                 }
                 else if(checkBox1.Checked && checkBox2.Checked)//加粗 删除线
                 {
-                    watermarkerFont = new Font(ActivityConst.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Bold | FontStyle.Italic);
+                    watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Bold | FontStyle.Italic);
                 }
                 else
                 {
-                    watermarkerFont = new Font(ActivityConst.COUPON_FONT, watermarkerFontSize, FontStyle.Italic);
+                    watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Italic);
                 }
                 SolidBrush watermarkerBrush = new SolidBrush(ColorTool.getColorFromHtml("#333333"));
                 
@@ -655,12 +657,12 @@ namespace RegeditActivity
             //开始订单截图
             PictureBox orderPb = this.pictureBox4;
             //开优惠券截图开始插入数据
-            orderPb.Image = ResourceTool.getImage(ActivityConst.COUPON_BACK_IMG_NAME_ORDER);//初始化背景图片
+            orderPb.Image = ResourceTool.getImage(Const.COUPON_BACK_IMG_NAME_ORDER);//初始化背景图片
             Graphics g2 = Graphics.FromImage(orderPb.Image);
             //商家名称
             String shopName2 = this.textBox11.Text;
             SolidBrush shopName2Brush = new SolidBrush(Color.Black);
-            Font shopName2Font = new Font(ActivityConst.COUPON_FONT, 11);
+            Font shopName2Font = new Font(Const.COUPON_FONT, 11);
             //获取字符串宽度
            // SizeF shopNameSize = g.MeasureString(shopName, shopNameFont);
             Point shopName2Point = new Point(34,56);
@@ -671,7 +673,7 @@ namespace RegeditActivity
 
             //商品名称 并且自动换行
             String goodName2 = this.textBox6.Text;
-            Font goodName2Font = new Font(ActivityConst.COUPON_FONT, 11);
+            Font goodName2Font = new Font(Const.COUPON_FONT, 11);
             SolidBrush goodName2Brush = new SolidBrush(ColorTool.getColorFromHtml("#707375"));
             Point goodName2Point = new Point(112, 91);
 
@@ -686,7 +688,7 @@ namespace RegeditActivity
 
             //优惠券价格
             String couponValue2 = "省" + this.textBox3.Text+"元";
-            Font couponValue2Font = new Font(ActivityConst.COUPON_FONT, 11);
+            Font couponValue2Font = new Font(Const.COUPON_FONT, 11);
             SolidBrush couponValue2Brush = new SolidBrush(ColorTool.getColorFromHtml("#707375"));
             SizeF couponValue2Size = g2.MeasureString(couponValue2, couponValue2Font);
             Point couponValue2Point = new Point((int)(82+260- couponValue2Size.Width),312);
@@ -694,15 +696,15 @@ namespace RegeditActivity
 
             //现价
             String price2 = this.textBox2.Text;
-            Font price2Font = new Font(ActivityConst.COUPON_FONT, 14);
+            Font price2Font = new Font(Const.COUPON_FONT, 14);
             SolidBrush price2Brush = new SolidBrush(ColorTool.getColorFromHtml("#ff5001"));
             Point price2Point = new Point(127, 169);
             g2.DrawString(price2, price2Font, price2Brush, price2Point, StringFormat.GenericDefault);
 
             //券后价
             double priceAfter2 = double.Parse(price) - double.Parse(couponValue);
-            Font priceAfter2Font = new Font(ActivityConst.COUPON_FONT, 12);
-            Font priceAfter3Font = new Font(ActivityConst.COUPON_FONT, 12);//小计
+            Font priceAfter2Font = new Font(Const.COUPON_FONT, 12);
+            Font priceAfter3Font = new Font(Const.COUPON_FONT, 12);//小计
 
             SolidBrush priceAfter2Brush = new SolidBrush(ColorTool.getColorFromHtml("#ff5001"));
             Point priceAfter2Point = new Point(210, 612);
@@ -723,19 +725,19 @@ namespace RegeditActivity
                 Font watermarker2Font = null;
                 if (checkBox1.Checked && !checkBox2.Checked)//加粗
                 {
-                    watermarker2Font = new Font(ActivityConst.COUPON_FONT, watermarkerFontSize, FontStyle.Bold | FontStyle.Italic);
+                    watermarker2Font = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Bold | FontStyle.Italic);
                 }
                 else if (!checkBox1.Checked && checkBox2.Checked)//删除线
                 {
-                    watermarker2Font = new Font(ActivityConst.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Italic);
+                    watermarker2Font = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Italic);
                 }
                 else if (checkBox1.Checked && checkBox2.Checked)//加粗 删除线
                 {
-                    watermarker2Font = new Font(ActivityConst.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Bold | FontStyle.Italic);
+                    watermarker2Font = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Bold | FontStyle.Italic);
                 }
                 else
                 {
-                    watermarker2Font = new Font(ActivityConst.COUPON_FONT, watermarkerFontSize, FontStyle.Italic);
+                    watermarker2Font = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Italic);
                 }
                 SolidBrush watermarkerBrush = new SolidBrush(ColorTool.getColorFromHtml("#333333"));
 

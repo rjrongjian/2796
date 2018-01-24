@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RegeditActivity.MyTool
+namespace DeepNaiWorkshop_2796.MyTool
 {
     class ResourceTool
     {
@@ -16,7 +16,7 @@ namespace RegeditActivity.MyTool
         /// <returns></returns>
         public static Image getImage(String imageNameWithoutSuffix)
         {
-           return  (Image)Properties.Resources.ResourceManager.GetObject(imageNameWithoutSuffix);
+            return  (Image)Properties.Resources.ResourceManager.GetObject(imageNameWithoutSuffix);
         }
     }
 }

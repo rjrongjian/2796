@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RegeditActivity
+namespace DeepNaiWorkshop_2796
 {
     static class Program
     {
@@ -14,11 +14,11 @@ namespace RegeditActivity
         [STAThread]
         static void Main()
         {
-            
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ActivityForm());
-            
+
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new ActivityForm());
+            Console.WriteLine("请启动regeditActivity");
         }
     }
 }

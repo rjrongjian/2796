@@ -1,4 +1,4 @@
-﻿using RegeditActivity.MyTool;
+﻿
 using MyTools;
 using Microsoft.Win32;
 using System;
@@ -14,7 +14,7 @@ namespace RegeditActivity
      * 一次注册终身使用
      * 
      */
-    class DefaultSoftRegister : SoftRegister
+    public class DefaultSoftRegister : SoftRegister
     {
         public int[] intCode = new int[127];//存储密钥  
         public int[] intNumber = new int[25];//存机器码的Ascii值  

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RegeditActivity
+namespace RegeditActivity.Bean
 {
-    class RespMessage
+    public class RespMessage
     {
         private int _code;//1 成功 2 友好提示 3 错误信息
         private String _message;//提示信息
