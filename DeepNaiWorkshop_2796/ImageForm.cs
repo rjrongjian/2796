@@ -13,6 +13,7 @@ using System.Windows.Forms;
  * https://www.cnblogs.com/xuekai-to-sharp/p/4014998.html
  * https://blog.csdn.net/real_myth/article/details/49821009
  * http://www.makaidong.com/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E6%90%9C/29590.shtml
+ * https://www.cnblogs.com/cinlap/p/3688204.html (实现高斯模糊)
  */
 namespace DeepNaiWorkshop_2796
 {
