@@ -16,7 +16,8 @@ namespace RegeditActivity
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ActivityForm());
+            //Application.Run(new ActivityForm());
+            Application.Run(new MainForm());
         }
     }
 }

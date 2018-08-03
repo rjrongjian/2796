@@ -22,6 +22,7 @@ namespace RegeditActivity
         private Image originalCouponPic;//原始的优惠券截图背景图片
         private PictureBox waterPictureBox;//水印图片控件
         private PictureBox waterPictureBox2;//水印图片控件(订单)
+
         public MainForm()
         {
             InitializeComponent();
@@ -994,8 +995,9 @@ namespace RegeditActivity
             g.DrawImage(waterImg, new Point(waterPictureBox.Location.X, waterPictureBox.Location.Y));
 
             g.Dispose();
-            Clipboard.SetImage(watermarkerBackImg);
-            alert("优惠券截图已拷贝到剪贴板！");
+            //Clipboard.SetImage(watermarkerBackImg);
+            //alert("优惠券截图已拷贝到剪贴板！");
+            new ImageForm(watermarkerBackImg).Show();
 
         }
 
@@ -1010,8 +1012,9 @@ namespace RegeditActivity
             g.DrawImage(waterImg, new Point(waterPictureBox2.Location.X, waterPictureBox2.Location.Y));
 
             g.Dispose();
-            Clipboard.SetImage(watermarkerBackImg);
-            alert("订单详情截图已拷贝到剪贴板！");
+            //Clipboard.SetImage(watermarkerBackImg);
+            //alert("订单详情截图已拷贝到剪贴板！");
+            new ImageForm(watermarkerBackImg).Show();
         }
 
         private void button6_Click_1(object sender, EventArgs e)//更改订单中水印图片尺寸

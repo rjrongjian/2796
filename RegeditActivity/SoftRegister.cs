@@ -65,7 +65,7 @@ namespace RegeditActivity
             RegistryKey myProjectFatherKey = fatherKey.OpenSubKey(ActivityConst.REGISTRY_LOCATION,true);
             if (myProjectFatherKey == null)
             {
-                myProjectFatherKey = fatherKey.CreateSubKey(ActivityConst.REGISTRY_LOCATION, true);
+                myProjectFatherKey = fatherKey.CreateSubKey(ActivityConst.REGISTRY_LOCATION, RegistryKeyPermissionCheck.ReadWriteSubTree);
 
             }
             return myProjectFatherKey;
