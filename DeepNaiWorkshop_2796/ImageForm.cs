@@ -12,7 +12,7 @@ using System.Windows.Forms;
  * https://www.cnblogs.com/gc2013/p/3678212.html
  * https://www.cnblogs.com/xuekai-to-sharp/p/4014998.html
  * https://blog.csdn.net/real_myth/article/details/49821009
- * 
+ * http://www.makaidong.com/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E6%90%9C/29590.shtml
  */
 namespace DeepNaiWorkshop_2796
 {
@@ -27,6 +27,7 @@ namespace DeepNaiWorkshop_2796
             InitImage = initImage;
             ImageHistory.Add(initImage);
             CurrentImage = ImageHistory.Count-1;
+            pictureBox1.Image = InitImage;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -55,13 +56,9 @@ namespace DeepNaiWorkshop_2796
             ImageHistory = new List<Image>();
             ImageHistory.Add(InitImage);
             CurrentImage = ImageHistory.Count - 1;
-
-            MessageBox.Show("初始话完成！");
+            pictureBox1.Image = InitImage;
+            MessageBox.Show("初始化完成！");
         }
-
-
-
-
 
         /// <summary>
         /// 色调取反
@@ -71,22 +68,22 @@ namespace DeepNaiWorkshop_2796
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Image tempImage = ImageHistory[CurrentImage];
-                // 读入欲转换的图片并转成为 WritableBitmap www.it165.net
-                Bitmap bitmap = new Bitmap(tempImage);
-                for (int y = 0; y < bitmap.Height; y++)
+            // 读入欲转换的图片并转成为 WritableBitmap www.it165.net
+            Bitmap bitmap = new Bitmap(tempImage);
+            for (int y = 0; y < bitmap.Height; y++)
+                {
+                for (int x = 0; x < bitmap.Width; x++)
                     {
-                    for (int x = 0; x < bitmap.Width; x++)
-                        {
-                        // 取得每一个 pixel
-                        var pixel = bitmap.GetPixel(x, y);
+                    // 取得每一个 pixel
+                    var pixel = bitmap.GetPixel(x, y);
 
-                        // 负片效果 将其反转
-                        Color newColor = Color.FromArgb(pixel.A, 255 - pixel.R, 255 - pixel.G, 255 - pixel.B);
+                    // 负片效果 将其反转
+                    Color newColor = Color.FromArgb(pixel.A, 255 - pixel.R, 255 - pixel.G, 255 - pixel.B);
 
-                        bitmap.SetPixel(x, y, newColor);
+                    bitmap.SetPixel(x, y, newColor);
                         
-                    }
-                 }
+                }
+                }
             // 显示结果
             SetImage(bitmap);
             AddLog("使用【滤镜-负片】成功");
@@ -98,6 +95,7 @@ namespace DeepNaiWorkshop_2796
         {
             CurrentImage = ImageHistory.Count;
             ImageHistory.Add(image);
+            pictureBox1.Image = image;
         }
 
         private void AddLog(String content)
