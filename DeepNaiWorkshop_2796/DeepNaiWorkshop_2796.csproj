@@ -63,6 +63,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageManager.cs" />
+    <Compile Include="MyTool\ImageClass.cs" />
     <Compile Include="MyTool\ResourceTool.cs" />
     <Compile Include="MyTool\TaoBaoTool.cs" />
     <Compile Include="Program.cs" />

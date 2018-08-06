@@ -1,8 +1,10 @@
-﻿using System;
+﻿using DeepNaiWorkshop_2796.MyTool;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -88,8 +90,6 @@ namespace DeepNaiWorkshop_2796
             // 显示结果
             SetImage(bitmap);
             AddLog("使用【滤镜-负片】成功");
-
-
         }
 
         private void SetImage(Image image)
@@ -107,6 +107,110 @@ namespace DeepNaiWorkshop_2796
             }
             listBox1.Items.Add(DateTime.Now.ToLongTimeString() + "=>" + content);
             listBox1.SelectedIndex = listBox1.Items.Count - 1;
+        }
+
+        /// <summary>
+        /// 增加噪点
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int noiseCount = Convert.ToInt32(numericUpDown1.Value);
+            if (noiseCount <= 0)
+            {
+                MessageBox.Show("噪点数必须大于0");
+                return;
+            }
+            Image tempImage = ImageHistory[CurrentImage];
+            // 显示结果
+            SetImage(AddNoise(new Bitmap(tempImage), noiseCount));
+            AddLog("给图片增加【噪点】成功");
+        }
+        
+        public static Bitmap AddNoise(Bitmap OriginalImage, int Amount)
+        {
+            
+            Bitmap NewBitmap = new Bitmap(OriginalImage.Width, OriginalImage.Height);
+            //BitmapData NewData = Image.LockImage(NewBitmap);
+            //BitmapData OldData = Image.LockImage(OriginalImage);
+            //int NewPixelSize = Image.GetPixelSize(NewData);
+            //int OldPixelSize = Image.GetPixelSize(OldData);
+            Random TempRandom = new Random();
+            for (int x = 0; x<NewBitmap.Width; ++x)
+            {
+                for (int y = 0; y<NewBitmap.Height; ++y)
+                {
+                    Color CurrentPixel = OriginalImage.GetPixel( x, y);
+                    int R = CurrentPixel.R + TempRandom.Next(-Amount, Amount + 1);
+                    int G = CurrentPixel.G + TempRandom.Next(-Amount, Amount + 1);
+                    int B = CurrentPixel.B + TempRandom.Next(-Amount, Amount + 1);
+                    R = R > 255 ? 255 : R;
+                    R = R< 0 ? 0 : R;
+                    G = G > 255 ? 255 : G;
+                    G = G< 0 ? 0 : G;
+                    B = B > 255 ? 255 : B;
+                    B = B< 0 ? 0 : B;
+                    Color TempValue = Color.FromArgb(R, G, B);
+                    //Image.SetPixel(NewData, x, y, TempValue, NewPixelSize);
+                    NewBitmap.SetPixel(x, y, TempValue);
+                }
+            }
+            //Image.UnlockImage(NewBitmap, NewData);
+            //Image.UnlockImage(OriginalImage, OldData);
+            return NewBitmap;
+        }
+        
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Image tempImage = ImageHistory[CurrentImage];
+            
+            // 显示结果
+            SetImage(ImageClass.FD(new Bitmap(tempImage), tempImage.Width, tempImage.Height));
+            AddLog("使用【滤镜-浮雕】成功");
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Image tempImage = ImageHistory[CurrentImage];
+
+            // 显示结果
+            SetImage(ImageClass.FilPic(new Bitmap(tempImage), tempImage.Width, tempImage.Height));
+            AddLog("使用【滤镜-滤色】成功");
+            
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Image tempImage = ImageHistory[CurrentImage];
+
+            // 显示结果
+            SetImage(ImageClass.RevPicLR(new Bitmap(tempImage), tempImage.Width, tempImage.Height));
+            AddLog("图片【左右翻转】成功");
+        }
+
+        private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Image tempImage = ImageHistory[CurrentImage];
+
+            // 显示结果
+            SetImage(ImageClass.RevPicUD(new Bitmap(tempImage), tempImage.Width, tempImage.Height));
+            AddLog("图片【上下翻转】成功");
+        }
+
+        private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            
+            Image tempImage = ImageHistory[CurrentImage];
+            // 显示结果
+            SetImage(ImageClass.BWPic(new Bitmap(tempImage), tempImage.Width, tempImage.Height));
+            AddLog("使用【滤镜-滤色】成功");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ImageClass.Gray(Color.Red);
+            AddLog("使用【滤镜-滤色】成功");
         }
     }
 }

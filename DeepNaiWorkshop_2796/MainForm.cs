@@ -530,7 +530,7 @@ namespace RegeditActivity
             Point priceAfterPoint = new Point(216, 375);
             g.DrawString(priceAfter.ToString(), priceAfterFont, priceAfterBrush, priceAfterPoint, StringFormat.GenericDefault);
 
-            int watermarkerFontSize = 14;//水印字体的大小
+            int watermarkerFontSize = Convert.ToInt32(numericUpDown1.Value);//水印字体的大小
             
             //开始处理水印
             Image watermarker = null;
@@ -556,8 +556,24 @@ namespace RegeditActivity
                 {
                     watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Italic);
                 }
-                SolidBrush watermarkerBrush = new SolidBrush(ColorTool.getColorFromHtml("#333333"));
-                
+                //设置文字水印的颜色
+                if (String.IsNullOrWhiteSpace(textBox12.Text))
+                {
+                    MessageBox.Show("颜色代码不能为空！");
+                    return;
+                }
+                Color fontColor ;
+                try
+                {
+                    fontColor = ColorTool.getColorFromHtml(textBox12.Text);
+                }catch(Exception ex)
+                {
+                    MessageBox.Show("不能识别的颜色代码！"+ textBox12.Text);
+                    return;
+                }
+                SolidBrush watermarkerBrush = new SolidBrush(fontColor);
+                //SolidBrush watermarkerBrush = new SolidBrush(Color.);
+
                 SizeF watermarkerText = g.MeasureString(this.textBox5.Text, watermarkerFont);
 
                 int watermarkerImgWidth = (int)watermarkerText.Width+1;
@@ -566,6 +582,9 @@ namespace RegeditActivity
                 Graphics gi = Graphics.FromImage(image);
                 gi.Clear(Color.Transparent);//透明
                 
+                
+
+
                 gi.DrawString(this.textBox5.Text, watermarkerFont, watermarkerBrush, new Rectangle(0, 0, watermarkerImgWidth, watermarkerImgHeight));
                 watermarker = image;
                 gi.Dispose();
@@ -740,7 +759,24 @@ namespace RegeditActivity
                 {
                     watermarker2Font = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Italic);
                 }
-                SolidBrush watermarkerBrush = new SolidBrush(ColorTool.getColorFromHtml("#333333"));
+
+                //设置文字水印的颜色
+                if (String.IsNullOrWhiteSpace(textBox12.Text))
+                {
+                    MessageBox.Show("颜色代码不能为空！");
+                    return;
+                }
+                Color fontColor;
+                try
+                {
+                    fontColor = ColorTool.getColorFromHtml(textBox12.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("不能识别的颜色代码！" + textBox12.Text);
+                    return;
+                }
+                SolidBrush watermarkerBrush = new SolidBrush(fontColor);
 
                 SizeF watermarkerText = g2.MeasureString(this.textBox5.Text, watermarker2Font);
 
@@ -1191,6 +1227,31 @@ namespace RegeditActivity
 
             }
             
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://tool.chinaz.com/tools/use");
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("是否关闭窗口", "确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+            {
+                e.Cancel = true;
+
+            }
+            else
+            {
+                //_qrWebWeChat.jieshu = false;
+                //程序完全退出
+                System.Environment.Exit(0);
+            }
         }
     }
 }
