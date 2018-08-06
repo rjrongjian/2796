@@ -26,8 +26,8 @@ namespace RegeditActivity
             Application.SetCompatibleTextRenderingDefault(false);
             Directory.SetCurrentDirectory(Application.StartupPath);
             //Application.Run(new ActivityForm());
-            Application.Run(new ImageForm(null));
-            //Application.Run(new MainForm());
+            //Application.Run(new ImageForm(null));
+            Application.Run(new MainForm());
         }
 
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)

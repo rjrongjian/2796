@@ -38,6 +38,18 @@ namespace DeepNaiWorkshop_2796
             ImageHistory.Add(initImage);
             CurrentImage = ImageHistory.Count-1;
             pictureBox1.Image = InitImage;
+
+
+            if (IsUseWatermark)
+            {
+                label9.Text = "水印印章已启用";
+                label9.ForeColor = Color.Red;
+            }
+            else
+            {
+                label9.Text = "水印印章未启用";
+                label9.ForeColor = Color.Green;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -48,9 +60,10 @@ namespace DeepNaiWorkshop_2796
                 MessageBox.Show("已经是最原始图片");
                 return;
             }
+            Console.WriteLine("即将移出索引："+ CurrentImage+",元素数："+ImageHistory.Count);
             ImageHistory.RemoveAt(CurrentImage);
             CurrentImage -= 1;
-            pictureBox1.Image = ImageHistory[CurrentImage];
+            pictureBox1.Image = (Image)ImageHistory[CurrentImage];
 
         }
 
@@ -101,8 +114,10 @@ namespace DeepNaiWorkshop_2796
 
         private void SetImage(Image image)
         {
+            
             CurrentImage = ImageHistory.Count;
             ImageHistory.Add(image);
+            Console.WriteLine("设置水印成功，当前图片索引：" + CurrentImage + ",图片数：" + ImageHistory.Count);
             pictureBox1.Image = image;
         }
 
@@ -235,8 +250,21 @@ namespace DeepNaiWorkshop_2796
                     this.pictureBox2.Image = watermark;
                     this.label14.Text = watermark.Height.ToString();//水印高
                     this.label15.Text = watermark.Width.ToString();//水印图片宽
-                    this.numericUpDown4.Value = Convert.ToUInt16(watermark.Height.ToString());//水印高
-                    this.numericUpDown5.Value = Convert.ToUInt16(watermark.Width.ToString());//水印宽
+                    int watermarkHeight = Convert.ToUInt16(watermark.Height.ToString());
+                    int watermarkWidth = Convert.ToUInt16(watermark.Width.ToString());
+                    if(watermarkHeight>558|| watermarkWidth > 375)
+                    {
+                        MessageBox.Show("超过水印图片的最大尺寸（375x558）,自动缩减大小至100x20");
+                        this.numericUpDown4.Value = 20;//水印高
+                        this.numericUpDown5.Value = 100;//水印宽
+                    }
+                    else
+                    {
+                        this.numericUpDown4.Value = watermarkHeight;//水印高
+                        this.numericUpDown5.Value = watermarkWidth;//水印宽
+                    }
+                    
+                    
                 }
             }
         }
@@ -249,93 +277,112 @@ namespace DeepNaiWorkshop_2796
         {
             if (IsUseWatermark)
             {
-                
 
+                Image tempImage = ImageHistory[CurrentImage];
+                Bitmap newImage = null;
+                Image watermarker = null;
+                if (this.radioButton1.Checked)//图片水印
+                {
+
+                    watermarker = new Bitmap((Image)this.pictureBox2.Image.Clone());
+                    watermarker = ImageTool.resetImgSize(watermarker, Convert.ToInt32(numericUpDown5.Value), Convert.ToInt32(numericUpDown4.Value));
+                    MouseEventArgs m = (MouseEventArgs)e;
+                    // 显示结果
+                    SetImage(ImageTool.AddImg(tempImage, m.X + "," + m.Y, watermarker, Convert.ToInt32(numericUpDown3.Value)));
+                    AddLog("使用【图片印章】成功");
+
+                }
+                else
+                {
+                    //文字水印
+                    int watermarkerFontSize = Convert.ToInt32(numericUpDown2.Value);//水印字体的大小
+                    Font watermarkerFont = null;
+                    if (checkBox1.Checked && !checkBox2.Checked)//加粗
+                    {
+                        watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Bold | FontStyle.Italic);
+                    }
+                    else if (!checkBox1.Checked && checkBox2.Checked)//删除线
+                    {
+                        watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Italic);
+                    }
+                    else if (checkBox1.Checked && checkBox2.Checked)//加粗 删除线
+                    {
+                        watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Bold | FontStyle.Italic);
+                    }
+                    else
+                    {
+                        watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Italic);
+                    }
+                    //设置文字水印的颜色
+                    if (String.IsNullOrWhiteSpace(textBox12.Text))
+                    {
+                        MessageBox.Show("颜色代码不能为空！");
+                        return;
+                    }
+                    Color fontColor;
+                    try
+                    {
+                        fontColor = ColorTool.getColorFromHtml(textBox12.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("不能识别的颜色代码！" + textBox12.Text);
+                        return;
+                    }
+                    SolidBrush watermarkerBrush = new SolidBrush(fontColor);
+                    //Point p = e.Location;
+                    MouseEventArgs m = (MouseEventArgs)e;
+                    //string X = p.X.ToString();
+                    //string Y = p.Y.ToString();
+                    // 显示结果
+                    SetImage(ImageTool.AddText(tempImage, m.X + "," + m.Y, watermarkerFont, watermarkerBrush, textBox5.Text, Convert.ToInt32(numericUpDown3.Value)));
+                    AddLog("使用【文字印章】成功");
+                }
 
 
             }
+            
         }
         //使用或重置印章
         private void button5_Click_1(object sender, EventArgs e)
         {
-            Image watermarker = null;
-            if (this.radioButton1.Checked)//图片水印
-            {
-
-                watermarker = (Image)this.pictureBox2.Image.Clone();
-
-            }
-            else
-            {
-                //文字水印
-                int watermarkerFontSize = Convert.ToInt32(numericUpDown2.Value);//水印字体的大小
-                Font watermarkerFont = null;
-                if (checkBox1.Checked && !checkBox2.Checked)//加粗
-                {
-                    watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Bold | FontStyle.Italic);
-                }
-                else if (!checkBox1.Checked && checkBox2.Checked)//删除线
-                {
-                    watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Italic);
-                }
-                else if (checkBox1.Checked && checkBox2.Checked)//加粗 删除线
-                {
-                    watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Bold | FontStyle.Italic);
-                }
-                else
-                {
-                    watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Italic);
-                }
-                //设置文字水印的颜色
-                if (String.IsNullOrWhiteSpace(textBox12.Text))
-                {
-                    MessageBox.Show("颜色代码不能为空！");
-                    return;
-                }
-                Color fontColor;
-                try
-                {
-                    fontColor = ColorTool.getColorFromHtml(textBox12.Text);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("不能识别的颜色代码！" + textBox12.Text);
-                    return;
-                }
-                SolidBrush watermarkerBrush = new SolidBrush(fontColor);
-                //SolidBrush watermarkerBrush = new SolidBrush(Color.);
-
-                SizeF watermarkerText = g.MeasureString(this.textBox5.Text, watermarkerFont);
-
-                int watermarkerImgWidth = (int)watermarkerText.Width + 1;
-                int watermarkerImgHeight = (int)watermarkerText.Height + 1;
-                Bitmap image = new Bitmap(watermarkerImgWidth, watermarkerImgHeight);
-                Graphics gi = Graphics.FromImage(image);
-                gi.Clear(Color.Transparent);//透明
-
-
-
-
-                gi.DrawString(this.textBox5.Text, watermarkerFont, watermarkerBrush, new Rectangle(0, 0, watermarkerImgWidth, watermarkerImgHeight));
-                watermarker = image;
-                gi.Dispose();
-            }
-
-
-
-
             IsUseWatermark = true;
 
 
-
+            if (IsUseWatermark)
+            {
+                label9.Text = "水印印章已启用";
+                label9.ForeColor = Color.Red;
+            }
+            else
+            {
+                label9.Text = "水印印章未启用";
+                label9.ForeColor = Color.Green;
+            }
             MessageBox.Show("启用水印印章，鼠标单击图片即可添加印章");
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             IsUseWatermark = false;
-
+            if (IsUseWatermark)
+            {
+                label9.Text = "水印印章已启用";
+                label9.ForeColor = Color.Red;
+            }
+            else
+            {
+                label9.Text = "水印印章未启用";
+                label9.ForeColor = Color.Green;
+            }
             MessageBox.Show("停止使用水印印章");
         }
+
+        private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://tool.chinaz.com/tools/use");
+        }
+
+
     }
 }

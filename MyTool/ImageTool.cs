@@ -183,9 +183,70 @@ namespace MyTools
                 #endregion
             }
             // 写上自定义角度的文字
-            graphics.DrawString(text, font, new SolidBrush(Color.Black), x1, y1);
+            graphics.DrawString(text, font, solidBrush, x1, y1);
             graphics.Dispose();
-            img.Dispose();
+            //img.Dispose();
+            return bmp;
+        }
+
+        /// <summary>
+        /// 图片添加任意角度图片
+        /// </summary>
+        /// <param name="originalImg"></param>
+        /// <param name="locationLeftTop"></param>
+        /// <param name="fontStyle"></param>
+        /// <param name="solidBrush"></param>
+        /// <param name="text"></param>
+        /// <param name="angle"></param>
+        /// <param name="fontName"></param>
+        /// <returns></returns>
+        public static Bitmap AddImg(Image originalImg, string locationLeftTop, Image watermark, int angle = 0, string fontName = "华文行楷")
+        {
+            Image img = originalImg;
+            int width = img.Width;
+            int height = img.Height;
+            Bitmap bmp = new Bitmap(width, height);
+            Graphics graphics = Graphics.FromImage(bmp);
+            // 画底图
+            graphics.DrawImage(img, 0, 0, width, height);
+            //Font font = fontStyle;
+            SizeF sf = new SizeF(watermark.Width,watermark.Height); // 计算出来文字所占矩形区域
+                                                           // 左上角定位
+            string[] location = locationLeftTop.Split(',');
+            float x1 = float.Parse(location[0]);
+            float y1 = float.Parse(location[1]);
+            // 进行文字旋转的角度定位
+            if (angle != 0)
+            {
+                #region 法一：TranslateTransform平移 + RotateTransform旋转
+                /* 
+                 * 注意：
+                 * Graphics.RotateTransform的旋转是以Graphics对象的左上角为原点，旋转整个画板的。
+                 * 同时x，y坐标轴也会跟着旋转。即旋转后的x，y轴依然与矩形的边平行
+                 * 而Graphics.TranslateTransform方法，是沿着x，y轴平移的
+                 * 因此分三步可以实现中心旋转
+                 * 1.把画板(Graphics对象)平移到旋转中心
+                 * 2.旋转画板
+                 * 3.把画板平移退回相同的距离(此时的x，y轴仍然是与旋转后的矩形平行的)
+                 */
+                //// 把画板的原点(默认是左上角)定位移到文字中心
+                //graphics.TranslateTransform(x1 + sf.Width / 2, y1 + sf.Height / 2);
+                //// 旋转画板
+                //graphics.RotateTransform(angle);
+                //// 回退画板x,y轴移动过的距离
+                //graphics.TranslateTransform(-(x1 + sf.Width / 2), -(y1 + sf.Height / 2));
+                #endregion
+                #region 法二：矩阵旋转
+                Matrix matrix = graphics.Transform;
+                matrix.RotateAt(angle, new PointF(x1 + sf.Width / 2, y1 + sf.Height / 2));
+                graphics.Transform = matrix;
+                #endregion
+            }
+            // 写上自定义角度的文字
+            //graphics.DrawString(text, font, new SolidBrush(Color.Black), x1, y1);
+            graphics.DrawImage(watermark,x1,y1);
+            graphics.Dispose();
+            //img.Dispose();
             return bmp;
         }
 
