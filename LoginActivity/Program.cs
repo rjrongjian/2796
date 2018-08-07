@@ -1,5 +1,7 @@
 ﻿using DeepNaiWorkshop_2796.MyModel;
 using DeepNaiWorkshop_2796.MyTool;
+using DeepWorkshop.QQRot.FirstCity;
+using DeepWorkshop.QQRot.FirstCity.MyTool;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,6 +13,7 @@ namespace LoginActivity
 {
     static class Program
     {
+        private static bool IsSupportedRuntimeVersion = false;
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -24,6 +27,15 @@ namespace LoginActivity
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Directory.SetCurrentDirectory(Application.StartupPath);
+
+            if (!MyDotNetFrameworkUtil.IsSupportedRuntimeVersion())
+            {
+                IsSupportedRuntimeVersion = false;
+
+                Application.Run(new RuntimeVerForm());
+
+                
+            }
             Application.Run(new FrmLogin());
         }
 

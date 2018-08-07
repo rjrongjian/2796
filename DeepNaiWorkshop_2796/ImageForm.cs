@@ -254,11 +254,17 @@ namespace DeepNaiWorkshop_2796
                     this.label15.Text = watermark.Width.ToString();//水印图片宽
                     int watermarkHeight = Convert.ToUInt16(watermark.Height.ToString());
                     int watermarkWidth = Convert.ToUInt16(watermark.Width.ToString());
-                    if(watermarkHeight>558|| watermarkWidth > 375)
+                    if(watermarkHeight>558)
                     {
-                        MessageBox.Show("超过水印图片的最大尺寸（375x558）,自动缩减大小至100x20");
-                        this.numericUpDown4.Value = 20;//水印高
-                        this.numericUpDown5.Value = 100;//水印宽
+                        
+                        this.numericUpDown4.Value = 558;//水印高
+                        MessageBox.Show("超过水印图片的最大高度558px,自动缩减大小至558px");
+
+                    }
+                    if (watermarkWidth > 375)
+                    {
+                        this.numericUpDown5.Value = 375;//水印宽
+                        MessageBox.Show("超过水印图片的最大宽度375px,自动缩减大小至375px");
                     }
                     else
                     {

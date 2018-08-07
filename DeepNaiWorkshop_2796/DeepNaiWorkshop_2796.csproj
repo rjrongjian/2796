@@ -82,6 +82,7 @@
     <Compile Include="MyTool\HttpCodeUtil.cs" />
     <Compile Include="MyTool\ImageClass.cs" />
     <Compile Include="MyTool\MyDateUtil.cs" />
+    <Compile Include="MyTool\MyDotNetFrameworkUtil.cs" />
     <Compile Include="MyTool\MyLogUtil.cs" />
     <Compile Include="MyTool\MySystemUtil.cs" />
     <Compile Include="MyTool\ResourceTool.cs" />
@@ -96,6 +97,12 @@
     <Compile Include="RespMessage.cs" />
     <Compile Include="Rsa\BigInteger.cs" />
     <Compile Include="Rsa\RSAHelper.cs" />
+    <Compile Include="RuntimeVerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RuntimeVerForm.designer.cs">
+      <DependentUpon>RuntimeVerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WebApi\WebPost.cs" />
     <EmbeddedResource Include="ImageForm.resx">
       <DependentUpon>ImageForm.cs</DependentUpon>
@@ -113,6 +120,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RuntimeVerForm.resx">
+      <DependentUpon>RuntimeVerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
