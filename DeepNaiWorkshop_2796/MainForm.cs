@@ -32,6 +32,7 @@ namespace RegeditActivity
             CacheData.ExpiredTime = YiYunUtil.GetExpired(CacheData.UserName);
             this.Text = this.Text + "（当前登录的账号：" + CacheData.UserName + ",过期时间：" + CacheData.ExpiredTime + "）";
             this.timer1.Enabled = true;
+            this.label2.Text = CacheData.ExpiredTime;
         }
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
