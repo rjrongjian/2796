@@ -112,9 +112,9 @@ namespace www_52bang_site_enjoy.MyTool
             return GetDllRoot() + "MovieConfig.txt"; 
         }
 
-        
 
         
 
-    }
+
+}
 }

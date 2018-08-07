@@ -1,4 +1,5 @@
-﻿using DeepNaiWorkshop_2796.MyTool;
+﻿using DeepNaiWorkshop_2796.MyModel;
+using DeepNaiWorkshop_2796.MyTool;
 using MyTools;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,10 @@ namespace DeepNaiWorkshop_2796
             }
 
             YiYunUtil.CheckUserStatus();
+
+            this.comboBox1.DataSource = CacheData.fontList;//防止多个combobox绑定同一个数据源导致事件联动
+            this.comboBox1.ValueMember = "moduleName";
+            this.comboBox1.DisplayMember = "moduleName";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -302,24 +307,30 @@ namespace DeepNaiWorkshop_2796
                 }
                 else
                 {
+                    String fontType = (String)comboBox1.SelectedValue;
+                    Console.WriteLine("选中的字体："+fontType);
+                    if (string.IsNullOrWhiteSpace(fontType))
+                    {
+                        fontType = Const.COUPON_FONT;
+                    }
                     //文字水印
                     int watermarkerFontSize = Convert.ToInt32(numericUpDown2.Value);//水印字体的大小
                     Font watermarkerFont = null;
                     if (checkBox1.Checked && !checkBox2.Checked)//加粗
                     {
-                        watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Bold | FontStyle.Italic);
+                        watermarkerFont = new Font(fontType, watermarkerFontSize, FontStyle.Bold | FontStyle.Italic);
                     }
                     else if (!checkBox1.Checked && checkBox2.Checked)//删除线
                     {
-                        watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Italic);
+                        watermarkerFont = new Font(fontType, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Italic);
                     }
                     else if (checkBox1.Checked && checkBox2.Checked)//加粗 删除线
                     {
-                        watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Bold | FontStyle.Italic);
+                        watermarkerFont = new Font(fontType, watermarkerFontSize, FontStyle.Strikeout | FontStyle.Bold | FontStyle.Italic);
                     }
                     else
                     {
-                        watermarkerFont = new Font(Const.COUPON_FONT, watermarkerFontSize, FontStyle.Italic);
+                        watermarkerFont = new Font(fontType, watermarkerFontSize, FontStyle.Italic);
                     }
                     //设置文字水印的颜色
                     if (String.IsNullOrWhiteSpace(textBox12.Text))

@@ -14,6 +14,8 @@ using DeepNaiWorkshop_2796;
 using DeepNaiWorkshop_2796.MyTool;
 using DeepNaiWorkshop_2796.MyModel;
 using www_52bang_site_enjoy.MyTool;
+using System.Drawing.Text;
+using FileCreator.Model;
 
 namespace RegeditActivity
 {
@@ -33,6 +35,20 @@ namespace RegeditActivity
             this.Text = this.Text + "（当前登录的账号：" + CacheData.UserName + ",过期时间：" + CacheData.ExpiredTime + "）";
             this.timer1.Enabled = true;
             this.label2.Text = CacheData.ExpiredTime;
+
+
+            //字体集合
+            CacheData.fontList = new List<ResourceInfoForCombox>();
+            InstalledFontCollection MyFont = new InstalledFontCollection();
+            FontFamily[] MyFontFamilies = MyFont.Families;
+            int Count = MyFontFamilies.Length;
+            for (int i = 0; i < Count; i++)
+            {
+                CacheData.fontList.Add(new ResourceInfoForCombox { index = CacheData.fontList.Count, moduleName = MyFontFamilies[i].Name });
+                Console.WriteLine(MyFontFamilies[i].Name);
+                //MyFontFamilies[i]
+
+            }
         }
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
