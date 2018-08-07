@@ -50,6 +50,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button11 = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
@@ -114,7 +115,6 @@
             this.button9 = new System.Windows.Forms.Button();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button11 = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -299,7 +299,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(76, 25);
             this.button3.TabIndex = 0;
-            this.button3.Text = "复制优惠券";
+            this.button3.Text = "修饰优惠券";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -310,7 +310,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(92, 25);
             this.button4.TabIndex = 1;
-            this.button4.Text = "复制订单详情";
+            this.button4.Text = "修饰订单详情";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -349,6 +349,17 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "输出配置";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(421, 567);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.TabIndex = 19;
+            this.button11.Text = "测试";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Visible = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // groupBox9
             // 
@@ -1006,17 +1017,6 @@
             // 
             this.timer1.Interval = 600000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(421, 567);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 23);
-            this.button11.TabIndex = 19;
-            this.button11.Text = "测试";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Visible = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // MainForm
             // 
