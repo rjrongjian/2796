@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,8 +50,19 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label19 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -101,22 +113,15 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.label20 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button11 = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tabPage1.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -128,8 +133,6 @@
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -334,6 +337,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button11);
             this.tabPage1.Controls.Add(this.groupBox9);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.groupBox4);
@@ -346,6 +350,65 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "输出配置";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.label35);
+            this.groupBox9.Controls.Add(this.label36);
+            this.groupBox9.Controls.Add(this.label37);
+            this.groupBox9.Controls.Add(this.label38);
+            this.groupBox9.Controls.Add(this.label39);
+            this.groupBox9.Location = new System.Drawing.Point(16, 419);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(705, 144);
+            this.groupBox9.TabIndex = 18;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "使用说明";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(26, 86);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(407, 12);
+            this.label35.TabIndex = 16;
+            this.label35.Text = "（4）目前支持的商品地址，形如：https://detail.tmall.com/item.htm...";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(26, 107);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(587, 12);
+            this.label36.TabIndex = 15;
+            this.label36.Text = "（5）使用过程如果软件出现问题，或者需要技术支持，QQ联系：1633545776（深奈工坊），添加时说明来意。";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(26, 65);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(587, 12);
+            this.label37.TabIndex = 14;
+            this.label37.Text = "（3）爬虫爬取商品评论或截图可能会被淘宝拦截，此时换个商品重新获取商品信息，再次爬取可能解决问题。";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(26, 43);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(395, 12);
+            this.label38.TabIndex = 13;
+            this.label38.Text = "（2）由于软件窗口大小限制，截图有一部分会被折叠，复制后显示完整。";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(26, 21);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(359, 12);
+            this.label39.TabIndex = 12;
+            this.label39.Text = "（1）如果没有通过代码调用网址获取商品数据，就不能获取评论。";
             // 
             // button2
             // 
@@ -383,6 +446,65 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "水印设置";
             this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(503, 45);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(65, 12);
+            this.label20.TabIndex = 17;
+            this.label20.Text = "字体颜色：";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(640, 46);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(29, 12);
+            this.linkLabel1.TabIndex = 16;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "说明";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(572, 41);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(62, 21);
+            this.textBox12.TabIndex = 15;
+            this.textBox12.Text = "#333333";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(432, 42);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            72,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(48, 21);
+            this.numericUpDown1.TabIndex = 13;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            14,
+            0,
+            0,
+            0});
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(385, 46);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(41, 12);
+            this.label19.TabIndex = 12;
+            this.label19.Text = "字号：";
             // 
             // label17
             // 
@@ -881,123 +1003,21 @@
             this.textBox10.Size = new System.Drawing.Size(300, 460);
             this.textBox10.TabIndex = 0;
             // 
-            // groupBox9
+            // timer1
             // 
-            this.groupBox9.Controls.Add(this.label35);
-            this.groupBox9.Controls.Add(this.label36);
-            this.groupBox9.Controls.Add(this.label37);
-            this.groupBox9.Controls.Add(this.label38);
-            this.groupBox9.Controls.Add(this.label39);
-            this.groupBox9.Location = new System.Drawing.Point(16, 419);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(705, 144);
-            this.groupBox9.TabIndex = 18;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "使用说明";
+            this.timer1.Interval = 600000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // label35
+            // button11
             // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(26, 86);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(407, 12);
-            this.label35.TabIndex = 16;
-            this.label35.Text = "（4）目前支持的商品地址，形如：https://detail.tmall.com/item.htm...";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(26, 107);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(587, 12);
-            this.label36.TabIndex = 15;
-            this.label36.Text = "（5）使用过程如果软件出现问题，或者需要技术支持，QQ联系：1633545776（深奈工坊），添加时说明来意。";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(26, 65);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(587, 12);
-            this.label37.TabIndex = 14;
-            this.label37.Text = "（3）爬虫爬取商品评论或截图可能会被淘宝拦截，此时换个商品重新获取商品信息，再次爬取可能解决问题。";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(26, 43);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(395, 12);
-            this.label38.TabIndex = 13;
-            this.label38.Text = "（2）由于软件窗口大小限制，截图有一部分会被折叠，复制后显示完整。";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(26, 21);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(359, 12);
-            this.label39.TabIndex = 12;
-            this.label39.Text = "（1）如果没有通过代码调用网址获取商品数据，就不能获取评论。";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(385, 46);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(41, 12);
-            this.label19.TabIndex = 12;
-            this.label19.Text = "字号：";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(432, 42);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            72,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 21);
-            this.numericUpDown1.TabIndex = 13;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            14,
-            0,
-            0,
-            0});
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(572, 41);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(62, 21);
-            this.textBox12.TabIndex = 15;
-            this.textBox12.Text = "#333333";
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(640, 46);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(29, 12);
-            this.linkLabel1.TabIndex = 16;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "说明";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(503, 45);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(65, 12);
-            this.label20.TabIndex = 17;
-            this.label20.Text = "字体颜色：";
+            this.button11.Location = new System.Drawing.Point(421, 567);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.TabIndex = 19;
+            this.button11.Text = "测试";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Visible = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // MainForm
             // 
@@ -1021,8 +1041,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.tabPage1.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -1038,9 +1061,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1130,5 +1150,7 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button11;
     }
 }

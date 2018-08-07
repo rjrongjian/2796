@@ -50,6 +50,8 @@ namespace DeepNaiWorkshop_2796
                 label9.Text = "水印印章未启用";
                 label9.ForeColor = Color.Green;
             }
+
+            YiYunUtil.CheckUserStatus();
         }
 
         private void button2_Click(object sender, EventArgs e)

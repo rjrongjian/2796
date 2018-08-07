@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DeepNaiWorkshop_2796;
 using DeepNaiWorkshop_2796.MyTool;
+using DeepNaiWorkshop_2796.MyModel;
+using www_52bang_site_enjoy.MyTool;
 
 namespace RegeditActivity
 {
@@ -26,12 +28,11 @@ namespace RegeditActivity
         public MainForm()
         {
             InitializeComponent();
+
+            CacheData.ExpiredTime = YiYunUtil.GetExpired(CacheData.UserName);
+            this.Text = this.Text + "（当前登录的账号：" + CacheData.UserName + ",过期时间：" + CacheData.ExpiredTime + "）";
+            this.timer1.Enabled = true;
         }
-        //TODO 网络读取图片 http://www.jb51.net/article/78993.htm
-
-
-
-
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             
@@ -1250,8 +1251,21 @@ namespace RegeditActivity
             {
                 //_qrWebWeChat.jieshu = false;
                 //程序完全退出
+                YiYunUtil.Logout(CacheData.UserName, CacheData.Ret);
                 System.Environment.Exit(0);
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            YiYunUtil.Val();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            YiYunUtil.CheckUserStatus();
+            //YiYunUtil.Val();
+            
         }
     }
 }

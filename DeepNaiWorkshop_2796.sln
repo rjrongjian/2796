@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTools", "MyTool\MyTools.c
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegeditActivity", "RegeditActivity\RegeditActivity.csproj", "{ED551FA6-54D9-4956-BCC0-C77D57757EF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginActivity", "LoginActivity\LoginActivity.csproj", "{6EE75732-F440-4F27-9082-EA081E100D4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{ED551FA6-54D9-4956-BCC0-C77D57757EF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED551FA6-54D9-4956-BCC0-C77D57757EF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED551FA6-54D9-4956-BCC0-C77D57757EF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EE75732-F440-4F27-9082-EA081E100D4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE75732-F440-4F27-9082-EA081E100D4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EE75732-F440-4F27-9082-EA081E100D4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE75732-F440-4F27-9082-EA081E100D4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
