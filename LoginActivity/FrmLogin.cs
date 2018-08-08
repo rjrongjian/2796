@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using WinFrom_WebApi_Demo;
 using www_52bang_site_enjoy.MyTool;
@@ -19,7 +20,11 @@ namespace LoginActivity
         public FrmLogin()
         {
             InitializeComponent();
+            //Thread thread2 = new Thread(YiYunUtil.GetBulletin);
+            //thread2.Start();
+            YiYunUtil.GetBulletin();
         }
+
         /*
         public FrmLogin(MyPlugin myPlugin) : this()
         {
@@ -51,6 +56,7 @@ namespace LoginActivity
                     WebPost.ApiPost(logOutUrl, parameters);
 
                     parameters.Clear();
+                    Console.WriteLine("清除了....2");
                 }
 
                 //  这里改成自己的参数名称
@@ -249,7 +255,15 @@ namespace LoginActivity
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("联系客服购买充值码：月卡-39元，季卡-100元");
+            if (string.IsNullOrWhiteSpace(CacheData.NotifyInfo))
+            {
+                MessageBox.Show("请联系客户，获取最新价格");
+            }
+            else
+            {
+                MessageBox.Show(CacheData.NotifyInfo);
+            }
+           
         }
     }
 }

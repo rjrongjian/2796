@@ -12,5 +12,6 @@ namespace DeepNaiWorkshop_2796.MyModel
         public static String UserName;
         public static String Ret;
         public static List<ResourceInfoForCombox> fontList;
+        public static String NotifyInfo;
     }
 }

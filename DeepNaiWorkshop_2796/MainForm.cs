@@ -49,6 +49,8 @@ namespace RegeditActivity
                 //MyFontFamilies[i]
 
             }
+
+            label30.Text = CacheData.NotifyInfo;
         }
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {

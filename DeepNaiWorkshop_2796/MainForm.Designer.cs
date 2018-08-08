@@ -115,6 +115,8 @@
             this.button9 = new System.Windows.Forms.Button();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label26 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -336,6 +338,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label30);
             this.tabPage1.Controls.Add(this.button11);
             this.tabPage1.Controls.Add(this.groupBox9);
             this.tabPage1.Controls.Add(this.button2);
@@ -1018,11 +1021,30 @@
             this.timer1.Interval = 600000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(370, 640);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(47, 12);
+            this.label26.TabIndex = 20;
+            this.label26.Text = "label26";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label30.Location = new System.Drawing.Point(9, 572);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(0, 12);
+            this.label30.TabIndex = 20;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 661);
+            this.Controls.Add(this.label26);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -1040,6 +1062,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1151,5 +1174,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label26;
     }
 }

@@ -57,7 +57,7 @@ namespace WinFrom_WebApi_Demo
 
                 return html;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;

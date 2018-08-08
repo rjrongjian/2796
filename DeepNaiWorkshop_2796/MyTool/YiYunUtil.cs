@@ -69,8 +69,27 @@ namespace DeepNaiWorkshop_2796.MyTool
             var retValue = WebPost.ApiPost(url, parameters);
             if (retValue == "1")
             {
+                Console.WriteLine("清除了....");
                 // 退出成功,清除本地状态码
                 OperateIniFile.WriteIniData("root", "code", "", "config.ini");
+            }
+        }
+
+        public static void GetBulletin()
+        {
+            String url1 = ApiUrl["GetBulletin"];  //  这里改成自己的地址
+            IDictionary<string, string> parameters1 = new Dictionary<string, string>();
+            //  这里改成自己的参数名称
+            parameters1.Add("UserName", "");
+            String ret1 = WebPost.ApiPost(url1, parameters1);
+
+            if (ret1.Length > 0)
+            {
+                CacheData.NotifyInfo = ret1;
+            }
+            else
+            {
+                CacheData.NotifyInfo = "";
             }
         }
 
