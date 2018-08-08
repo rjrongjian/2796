@@ -20,9 +20,9 @@ namespace LoginActivity
         public FrmLogin()
         {
             InitializeComponent();
-            //Thread thread2 = new Thread(YiYunUtil.GetBulletin);
-            //thread2.Start();
-            YiYunUtil.GetBulletin();
+            Thread thread2 = new Thread(YiYunUtil.GetBulletin);
+            thread2.Start();
+            //YiYunUtil.GetBulletin();
         }
 
         /*
