@@ -80,10 +80,13 @@
     <Compile Include="MessageManager.cs" />
     <Compile Include="MyModel\CacheData.cs" />
     <Compile Include="MyModel\ResourceInfoForCombox.cs" />
+    <Compile Include="MyModel\TemplateConfig.cs" />
     <Compile Include="MyTool\HttpCodeUtil.cs" />
     <Compile Include="MyTool\ImageClass.cs" />
     <Compile Include="MyTool\MyDateUtil.cs" />
     <Compile Include="MyTool\MyDotNetFrameworkUtil.cs" />
+    <Compile Include="MyTool\MyFileUtil.cs" />
+    <Compile Include="MyTool\MyJsonUtil.cs" />
     <Compile Include="MyTool\MyLogUtil.cs" />
     <Compile Include="MyTool\MySystemUtil.cs" />
     <Compile Include="MyTool\ResourceTool.cs" />
@@ -170,12 +173,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo_32x32.ico" />
+    <Content Include="Template\默认模板\template.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyTool\MyTools.csproj">
       <Project>{a6832f7a-3fb5-4196-9804-513b0a2500e3}</Project>
       <Name>MyTools</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Template\模板1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

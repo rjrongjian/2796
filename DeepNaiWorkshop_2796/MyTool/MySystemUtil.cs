@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace www_52bang_site_enjoy.MyTool
 {
-    class MySystemUtil
+    public class MySystemUtil
     {
         /// <summary>  
         /// 获取当前执行的dll的目录 例如： D:\dir\dir\
@@ -112,9 +112,34 @@ namespace www_52bang_site_enjoy.MyTool
             return GetDllRoot() + "MovieConfig.txt"; 
         }
 
+        public static string GetTemplateImgRoot()
+        {
+            string dirPath = GetPath() + @"Template\";
+            if (!Directory.Exists(dirPath))
+            {
+                Directory.CreateDirectory(dirPath);
+            }
+            return dirPath;
+        }
+        /// <summary>
+        /// 获取所有文件夹名称
+        /// </summary>
+        /// <returns></returns>
+        public static List<String> GetAllTemplateNames()
+        {
+            List<String> list = new List<string>();
+            String templateDir = GetTemplateImgRoot();
+            Console.WriteLine("获取指定的目录："+ templateDir);
+            DirectoryInfo root = new DirectoryInfo(templateDir);
+            foreach (DirectoryInfo d in root.GetDirectories())
+            {
+                //Console.WriteLine("获取的文件夹名："+d.Name);
+                list.Add(d.Name);
+            }
+            return list;
+        }
 
-        
 
 
-}
+    }
 }

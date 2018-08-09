@@ -1,5 +1,7 @@
 ﻿using DeepNaiWorkshop_2796.MyModel;
 using DeepNaiWorkshop_2796.MyTool;
+using DeepNaiWorkshop_6001.MyTool;
+using FileCreator.MyTool;
 using RegeditActivity;
 using System;
 using System.Collections.Generic;
@@ -264,6 +266,15 @@ namespace LoginActivity
                 MessageBox.Show(CacheData.NotifyInfo);
             }
            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //MySystemUtil.GetAllTemplateNames();
+            string path = MySystemUtil.GetTemplateImgRoot() + "\\template.json";
+            MyJsonUtil<TemplateConfig> myJsonUtil = new MyJsonUtil<TemplateConfig>();
+            TemplateConfig templateConfig = new TemplateConfig();
+            MyFileUtil.writeToFile(path, myJsonUtil.parseJsonObj(templateConfig));
         }
     }
 }

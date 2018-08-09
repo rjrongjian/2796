@@ -50,7 +50,11 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
@@ -116,7 +120,6 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label26 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -338,8 +341,11 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label30);
+            this.tabPage1.Controls.Add(this.button12);
             this.tabPage1.Controls.Add(this.button11);
+            this.tabPage1.Controls.Add(this.comboBox1);
+            this.tabPage1.Controls.Add(this.label31);
+            this.tabPage1.Controls.Add(this.label30);
             this.tabPage1.Controls.Add(this.groupBox9);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.groupBox4);
@@ -353,16 +359,51 @@
             this.tabPage1.Text = "输出配置";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(224, 12);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(90, 23);
+            this.button12.TabIndex = 26;
+            this.button12.Text = "重新加载模板";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Visible = false;
+            // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(421, 567);
+            this.button11.Location = new System.Drawing.Point(326, 12);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(75, 23);
-            this.button11.TabIndex = 19;
-            this.button11.Text = "测试";
+            this.button11.TabIndex = 25;
+            this.button11.Text = "制作模板";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Visible = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(76, 14);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 20);
+            this.comboBox1.TabIndex = 24;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(18, 17);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(59, 12);
+            this.label31.TabIndex = 23;
+            this.label31.Text = "选择模板:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label30.Location = new System.Drawing.Point(9, 572);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(0, 12);
+            this.label30.TabIndex = 20;
             // 
             // groupBox9
             // 
@@ -371,9 +412,9 @@
             this.groupBox9.Controls.Add(this.label37);
             this.groupBox9.Controls.Add(this.label38);
             this.groupBox9.Controls.Add(this.label39);
-            this.groupBox9.Location = new System.Drawing.Point(16, 419);
+            this.groupBox9.Location = new System.Drawing.Point(16, 436);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(705, 144);
+            this.groupBox9.Size = new System.Drawing.Size(705, 124);
             this.groupBox9.TabIndex = 18;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "使用说明";
@@ -452,7 +493,7 @@
             this.groupBox4.Controls.Add(this.textBox5);
             this.groupBox4.Controls.Add(this.radioButton2);
             this.groupBox4.Controls.Add(this.radioButton1);
-            this.groupBox4.Location = new System.Drawing.Point(16, 228);
+            this.groupBox4.Location = new System.Drawing.Point(16, 256);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(705, 173);
             this.groupBox4.TabIndex = 15;
@@ -661,7 +702,7 @@
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Location = new System.Drawing.Point(407, 14);
+            this.groupBox3.Location = new System.Drawing.Point(407, 41);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(314, 207);
             this.groupBox3.TabIndex = 10;
@@ -783,7 +824,7 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Location = new System.Drawing.Point(15, 14);
+            this.groupBox1.Location = new System.Drawing.Point(15, 41);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(380, 207);
             this.groupBox1.TabIndex = 8;
@@ -850,9 +891,9 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(265, 21);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.51.2c055dfa3OIgHN&id=" +
-    "526061964924&areaId=420200&user_id=2407501817&cat_id=2&is_b=1&rn=eecadfde62afaea" +
-    "d8a741f3ddbce4395";
+            this.textBox1.Text = "https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.1b713598zvZA8l&id=5" +
+    "34210466707&skuId=3620162475911&areaId=420200&user_id=277249531&cat_id=2&is_b=1&" +
+    "rn=825e7336fbaf23129f86e0d4d574849f";
             // 
             // label5
             // 
@@ -1030,15 +1071,6 @@
             this.label26.TabIndex = 20;
             this.label26.Text = "label26";
             // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label30.Location = new System.Drawing.Point(9, 572);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(0, 12);
-            this.label30.TabIndex = 20;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1173,8 +1205,11 @@
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Button button12;
     }
 }

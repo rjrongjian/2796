@@ -2,6 +2,7 @@
 using DeepNaiWorkshop_2796.MyTool;
 using DeepWorkshop.QQRot.FirstCity;
 using DeepWorkshop.QQRot.FirstCity.MyTool;
+using RegeditActivity;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,7 +28,7 @@ namespace LoginActivity
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Directory.SetCurrentDirectory(Application.StartupPath);
-
+            /*
             if (!MyDotNetFrameworkUtil.IsSupportedRuntimeVersion())
             {
                 IsSupportedRuntimeVersion = false;
@@ -36,6 +37,7 @@ namespace LoginActivity
 
                 
             }
+            */
             Application.Run(new FrmLogin());
         }
 
