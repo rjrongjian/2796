@@ -578,7 +578,7 @@ namespace RegeditActivity
                 SolidBrush goodNameBrush = new SolidBrush(ColorTool.getColorFromHtml(templateConfig.GoodsNameFontColor));
                 //Point goodNamePoint = new Point(140, 288);
 
-                Brush fontBrush = SystemBrushes.ControlText;
+                //Brush fontBrush = SystemBrushes.ControlText;
                 //SizeF sizeText = e.Graphics.MeasureString(nodeText, font);
                 //e.Graphics.DrawString(nodeText, font, fontBrush, (this.Width - sizeText.Width) / 2, (this.Height - sizeText.Height) / 2);
                 /*
@@ -586,7 +586,7 @@ namespace RegeditActivity
                 sf.Alignment = StringAlignment.Center;
                 sf.LineAlignment = StringAlignment.Center;
                 */
-                g.DrawString(goodName, goodNameFont, fontBrush, new Rectangle(templateConfig.GoodsNameFontX, templateConfig.GoodsNameFontY, templateConfig.GoodsNameFontWidth, templateConfig.GoodsNameFontHeight), sf);
+                g.DrawString(goodName, goodNameFont, goodNameBrush, new Rectangle(templateConfig.GoodsNameFontX, templateConfig.GoodsNameFontY, templateConfig.GoodsNameFontWidth, templateConfig.GoodsNameFontHeight), sf1);
             }
             if (templateConfig.IsUsePrice)
             {

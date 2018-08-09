@@ -71,7 +71,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -126,7 +125,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.ckbRememberMe);
             this.tabPage1.Controls.Add(this.btnLogin);
             this.tabPage1.Controls.Add(this.txtLoginUserPwd);
@@ -491,16 +489,6 @@
             this.label16.TabIndex = 4;
             this.label16.Text = "充值、问题反馈联系QQ：1633545776（说明来意）";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 109);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(51, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "测试";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -579,7 +567,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button button1;
     }
 }
 

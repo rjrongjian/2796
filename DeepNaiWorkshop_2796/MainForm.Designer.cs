@@ -891,9 +891,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(265, 21);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.1b713598zvZA8l&id=5" +
-    "34210466707&skuId=3620162475911&areaId=420200&user_id=277249531&cat_id=2&is_b=1&" +
-    "rn=825e7336fbaf23129f86e0d4d574849f";
             // 
             // label5
             // 
@@ -1085,7 +1082,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "天猫评价水印助手(优惠券截图生成器)v1.2";
+            this.Text = "天猫评价水印助手(优惠券截图生成器)v1.3.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
