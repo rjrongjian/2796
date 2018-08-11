@@ -381,6 +381,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(76, 14);
             this.comboBox1.Name = "comboBox1";
@@ -891,6 +892,8 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(265, 21);
             this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "https://item.taobao.com/item.htm?spm=a230r.1.14.84.77395368xf4Cec&id=573876368555" +
+    "&ns=1&abbucket=17#detail";
             // 
             // label5
             // 

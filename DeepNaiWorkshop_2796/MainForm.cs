@@ -85,34 +85,37 @@ namespace RegeditActivity
                     LogTool.log("开始解析天猫（淘宝）详情页面：" + url, this.logLabel);
                     
                     LogTool.log("正在获取网页信息", this.logLabel);
+                    Console.WriteLine("正在获取网页信息...");
                     String htmlWebContent = WebTool.getHtmlContent(url);
+                    Console.WriteLine("开始解析网页...");
+                    //Console.WriteLine("网页内容："+ htmlWebContent);
                     LogTool.log("开始解析网页", this.logLabel);
                     //目前只支持天猫
 
-                    if (TaoBaoTool.GOOD_TYPE_TMALL == int.Parse(validateResult.message))
+                    //if (TaoBaoTool.GOOD_TYPE_TMALL == int.Parse(validateResult.message))
+                    //{
+                    dataBean = taoBaoTool.parseShopData(int.Parse(validateResult.message), htmlWebContent);
+                    if (dataBean == null)
                     {
-                        dataBean = taoBaoTool.parseShopData(int.Parse(validateResult.message), htmlWebContent);
-                        if (dataBean == null)
-                        {
-                            alert("不能正常解析数据，请手动录入");
-                        }
+                        alert("不能正常解析数据，请手动录入");
+                    }
 
-                        //赋值
-                        this.textBox3.Text = dataBean.CouponValue.ToString();//自定义券价格
-                        this.textBox2.Text = dataBean.Price.ToString();//商品价格 
-                        this.textBox6.Text = dataBean.Name;//商品名称
-                        this.textBox4.Text = dataBean.Volume.ToString();//商品销量
-                        this.textBox7.Text = dataBean.MainPicStr;// 商品图片地址
-                        this.textBox11.Text = dataBean.ShopName;//店铺名称
-                        this.pictureBox1.Image = dataBean.MainPic;// 商品图片
-                        LogTool.log("数据解析完成，数据可手动更改...",this.logLabel);
+                    //赋值
+                    this.textBox3.Text = dataBean.CouponValue.ToString();//自定义券价格
+                    this.textBox2.Text = dataBean.Price.ToString();//商品价格 
+                    this.textBox6.Text = dataBean.Name;//商品名称
+                    this.textBox4.Text = dataBean.Volume.ToString();//商品销量
+                    this.textBox7.Text = dataBean.MainPicStr;// 商品图片地址
+                    this.textBox11.Text = dataBean.ShopName;//店铺名称
+                    this.pictureBox1.Image = dataBean.MainPic;// 商品图片
+                    LogTool.log("数据解析完成，数据可手动更改...",this.logLabel);
                         
 
-                    }
-                    else
-                    {
-                        alert("目前不支持淘宝商品数据爬取，请手动录入");
-                    }
+                    //}
+                    //else
+                    //{
+                        //alert("目前不支持淘宝商品数据爬取，请手动录入");
+                    //}
 
                     setMainFormBtnStatus(7);//获取商品数据、生成截图按钮可用
                 }
@@ -1352,7 +1355,8 @@ namespace RegeditActivity
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            YiYunUtil.Val();
+            YiYunUtil.CheckUserStatus();
+            //YiYunUtil.Val();
         }
 
         private void button11_Click(object sender, EventArgs e)

@@ -139,6 +139,10 @@ namespace DeepNaiWorkshop_2796.MyTool
                 MessageBox.Show("您的会员已经过期，请充值");
                 System.Environment.Exit(0);
             }
+            else
+            {
+                throw new Exception("定位未知错误：" + retValue);
+            }
             return true;
         }
 
