@@ -125,26 +125,34 @@ namespace DeepNaiWorkshop_2796.MyTool
                 Match match2 = reg2.Match(temp);
                 String sellerId = match2.Groups[1].Value;
                 String temp2 = match2.Groups[2].Value;
-                Regex reg3 = new Regex("[\\s\\S]*sellerNick       : '([\\s\\S]*?)',([\\s\\S]*)");
+                Regex reg3 = new Regex("[\\s\\S]*pic              : '([\\s\\S]*?)',([\\s\\S]*)");
                 Match match3 = reg3.Match(temp2);
-                String shopName = match3.Groups[1].Value;
-                
+                String mainPic = match3.Groups[1].Value;
+                mainPic = StringTool.replaceStartWith(mainPic, "//", "http://");
+
                 String temp4 = match3.Groups[2].Value;
                 //Console.WriteLine("要解析的内容："+temp4);
-                Regex reg4 = new Regex("[\\s\\S]*<input type=\"hidden\" name=\"current_price\" value= \"([\\s\\S]*?)\"/>([\\s\\S]*)");
+                Regex reg4 = new Regex("[\\s\\S]*sellerNick       : '([\\s\\S]*?)',([\\s\\S]*)");
                 Match match4 = reg4.Match(temp4);
-                String price = match4.Groups[1].Value;
-
+                String shopName = match4.Groups[1].Value;
+                Console.WriteLine(shopName);
                 String temp5 = match4.Groups[2].Value;
 
                 //Console.WriteLine("内容啊："+ temp5);
                 
-                Regex reg5 = new Regex("[\\s\\S]*<img id=\"J_ImgBooth\" src=\"([\\s\\S]*?)\" data-hasZoom=\"700\" data-size=\"400x400\"[\\s\\S]*");
+                Regex reg5 = new Regex("[\\s\\S]*<input type=\"hidden\" name=\"current_price\" value= \"([\\s\\S]*?)\"/>([\\s\\S]*)");
                 //<img id="J_ImgBooth" src="//gd2.alicdn.com/imgextra/i4/2965298499/TB2cH4jGhWYBuNjy1zkXXXGGpXa_!!2965298499.jpg_400x400.jpg" data-hasZoom="700" data-size="400x400"/>
                 Match match5 = reg5.Match(temp5);
-                String mainPic = match5.Groups[1].Value;
+                String price = match5.Groups[1].Value;
 
-
+                Console.WriteLine("获取的内容");
+                Console.WriteLine(itemId);
+                Console.WriteLine(name);
+                Console.WriteLine(sellerId);
+                Console.WriteLine(shopName);
+                Console.WriteLine(mainPic);
+                Console.WriteLine(price);
+                Console.WriteLine("获取结束");
 
                 shopData.CurrentPage = 1;
                 shopData.Name = name;
@@ -161,14 +169,7 @@ namespace DeepNaiWorkshop_2796.MyTool
                 shopData.RateUrl = "";//https://rate.taobao.com/feedRateList.htm?auctionNumId=573876368555&userNumId=2965298499&currentPageNum=1&pageSize=20&rateType=&orderType=sort_weight&attribute=&sku=&hasSku=false&folded=0&ua=098%23E1hvM9vUvbpvUpCkvvvvvjiPPsM9gjnjnL5hAjEUPmPpsjYEPLLOtjEbRFMZAjDPR4wCvvpvvUmmRphvCvvvvvvPvpvhMMGvvvhCvvOvCvvvphvEvpCWm2fXvvw6aNoxfXk4jLkxfwLyd3ODN%2BLyaNoAdcHVafknIfvtv0ABDpcBHbUf8%2B1libmAdcHVaNoxfXkwjLFp%2BExreC9aUExr1nAKHdyCvm9vvvvvphvvvvvvvDxvpvs7vvm2phCvhRvvvUnvphvppvvv96CvpCCvkphvC99vvOC0p8yCvv9vvUmAOIbqXv%3D%3D&_ksTS=1533888495287_1089&callback=jsonp_tbcrate_reviews_list
 
                 
-                Console.WriteLine("获取的内容");
-                Console.WriteLine(itemId);
-                Console.WriteLine(name);
-                Console.WriteLine(sellerId);
-                Console.WriteLine(shopName);
-                Console.WriteLine(mainPic);
-                Console.WriteLine(price);
-                Console.WriteLine("获取结束");
+                
                 
                 return shopData;
             }

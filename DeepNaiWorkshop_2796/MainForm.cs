@@ -1185,12 +1185,18 @@ namespace RegeditActivity
             }
             else//单线程版本 目前
             {
+                if (string.IsNullOrWhiteSpace(dataBean.RateUrl)){
+
+                    MessageBox.Show("暂不支持淘宝抓取评论");
+                    setMainFormBtnStatus(9);
+                    return;
+                }
                 /*
                  * 疑问：第一次抓取不到评论
                  * 
                  * 
                  */
-              //  LogTool.log("开始抓取评论...", logLabel);
+                //  LogTool.log("开始抓取评论...", logLabel);
                 String rateContent = WebTool.getHtmlContent(dataBean.RateUrl + (dataBean.CurrentPage)+"&order=1");
                 //Console.WriteLine("抓取的网页内容："+ dataBean.RateUrl + (dataBean.CurrentPage) + "&order=1");
                 //Console.WriteLine(rateContent);
@@ -1229,6 +1235,12 @@ namespace RegeditActivity
             }
             else//单线程版本 目前
             {
+                if (string.IsNullOrWhiteSpace(dataBean.RateUrl))
+                {
+                    MessageBox.Show("暂不支持淘宝抓取评论");
+                    setMainFormBtnStatus(9);
+                    return;
+                }
                 LogTool.log("开始抓取评论...", logLabel);
                 String rateContent = WebTool.getHtmlContent(dataBean.RateUrl + dataBean.CurrentPage + "&order=3&picture=1");
                 //Console.WriteLine("抓取的网页内容：");

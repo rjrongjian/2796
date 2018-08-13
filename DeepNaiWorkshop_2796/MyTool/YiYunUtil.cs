@@ -123,7 +123,7 @@ namespace DeepNaiWorkshop_2796.MyTool
         }
 
 
-        public static bool CheckUserStatus()
+        public static void CheckUserStatus()
         {
             // 程序关闭前退出登录 
             IDictionary<string, string> parameters = new Dictionary<string, string>();
@@ -138,12 +138,15 @@ namespace DeepNaiWorkshop_2796.MyTool
             {
                 MessageBox.Show("您的会员已经过期，请充值");
                 System.Environment.Exit(0);
+            }else if (retValue == "1")
+            {
+                
             }
             else
             {
                 throw new Exception("定位未知错误：" + retValue);
             }
-            return true;
+            
         }
 
 

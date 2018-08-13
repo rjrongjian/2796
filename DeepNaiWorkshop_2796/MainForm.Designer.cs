@@ -425,9 +425,10 @@
             this.label35.AutoSize = true;
             this.label35.Location = new System.Drawing.Point(26, 86);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(407, 12);
+            this.label35.Size = new System.Drawing.Size(629, 12);
             this.label35.TabIndex = 16;
-            this.label35.Text = "（4）目前支持的商品地址，形如：https://detail.tmall.com/item.htm...";
+            this.label35.Text = "（4）目前支持的商品地址，形如：https://detail.tmall.com/item.htm...和https://item.taobao.com/item" +
+    ".htm...";
             // 
             // label36
             // 
@@ -892,8 +893,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(265, 21);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "https://item.taobao.com/item.htm?spm=a230r.1.14.84.77395368xf4Cec&id=573876368555" +
-    "&ns=1&abbucket=17#detail";
             // 
             // label5
             // 
@@ -1085,7 +1084,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "天猫评价水印助手(优惠券截图生成器)v1.3.0";
+            this.Text = "天猫评价水印助手(优惠券截图生成器)v1.4.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);

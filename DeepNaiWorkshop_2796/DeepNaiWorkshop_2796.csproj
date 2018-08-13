@@ -145,6 +145,7 @@
     <None Include="Template\模板6\template.json" />
     <None Include="Template\模板7\template.json" />
     <None Include="Template\模板8\template.json" />
+    <None Include="Template\模板9\template.json" />
     <None Include="Template\默认模板\template.json" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +191,7 @@
     <Content Include="Template\模板6\template.png" />
     <Content Include="Template\模板7\template.jpg" />
     <Content Include="Template\模板8\template.png" />
+    <Content Include="Template\模板9\template.jpg" />
     <Content Include="Template\默认模板\template.jpg" />
   </ItemGroup>
   <ItemGroup>
