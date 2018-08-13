@@ -674,6 +674,12 @@ namespace RegeditActivity
 
                 SizeF watermarkerText = g.MeasureString(this.textBox5.Text, watermarkerFont);
 
+                //防止随着图片大小改变而缩放尺寸
+                Bitmap image2 = new Bitmap(pictureBox3.Width, pictureBox3.Height);
+                Graphics gi2 = Graphics.FromImage(image2);
+                watermarkerText = gi2.MeasureString(this.textBox5.Text, watermarkerFont);
+                //--------------end--------------
+                
                 int watermarkerImgWidth = (int)watermarkerText.Width+1;
                 int watermarkerImgHeight = (int)watermarkerText.Height +1;
                 Bitmap image = new Bitmap(watermarkerImgWidth, watermarkerImgHeight);
@@ -685,7 +691,9 @@ namespace RegeditActivity
 
                 gi.DrawString(this.textBox5.Text, watermarkerFont, watermarkerBrush, new Rectangle(0, 0, watermarkerImgWidth, watermarkerImgHeight));
                 watermarker = image;
+                gi2.Dispose();
                 gi.Dispose();
+
             }
 
             waterPictureBox = new PictureBox();
