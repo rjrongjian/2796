@@ -108,6 +108,12 @@
       <DependentUpon>RuntimeVerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WebApi\WebPost.cs" />
+    <Compile Include="WebbroswerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WebbroswerForm.Designer.cs">
+      <DependentUpon>WebbroswerForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ImageForm.resx">
       <DependentUpon>ImageForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +132,9 @@
     </Compile>
     <EmbeddedResource Include="RuntimeVerForm.resx">
       <DependentUpon>RuntimeVerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebbroswerForm.resx">
+      <DependentUpon>WebbroswerForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

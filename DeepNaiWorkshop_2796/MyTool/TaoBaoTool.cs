@@ -45,7 +45,7 @@ namespace DeepNaiWorkshop_2796.MyTool
 
         public BaseDataBean parseShopData(int tmallOrTaoBao,String htmlContent)
         {
-            Console.WriteLine("正则解析数据...");
+            Console.WriteLine("正则解析数据..."+ htmlContent);
             BaseDataBean shopData = new BaseDataBean();
             //Console.WriteLine(htmlContent);
             if (String.IsNullOrEmpty(htmlContent))
@@ -107,7 +107,8 @@ namespace DeepNaiWorkshop_2796.MyTool
             {
                 //淘宝评论页面
                 //https://rate.taobao.com/feedRateList.htm?auctionNumId=573876368555&userNumId=2965298499&currentPageNum=1&pageSize=20&rateType=&orderType=sort_weight&attribute=&sku=&hasSku=false&folded=0&ua=098%23E1hvM9vUvbpvUpCkvvvvvjiPPsM9gjnjnL5hAjEUPmPpsjYEPLLOtjEbRFMZAjDPR4wCvvpvvUmmRphvCvvvvvvPvpvhMMGvvvhCvvOvCvvvphvEvpCWm2fXvvw6aNoxfXk4jLkxfwLyd3ODN%2BLyaNoAdcHVafknIfvtv0ABDpcBHbUf8%2B1libmAdcHVaNoxfXkwjLFp%2BExreC9aUExr1nAKHdyCvm9vvvvvphvvvvvvvDxvpvs7vvm2phCvhRvvvUnvphvppvvv96CvpCCvkphvC99vvOC0p8yCvv9vvUmAOIbqXv%3D%3D&_ksTS=1533888495287_1089&callback=jsonp_tbcrate_reviews_list
-
+                //淘宝促销价
+                //https://detailskip.taobao.com/service/getData/1/p1/item/detail/sib.htm?itemId=560538164812&sellerId=34203113&modules=dynStock,qrcode,viewer,price,duty,xmpPromotion,delivery,upp,activity,fqg,zjys,couponActivity,soldQuantity,originalPrice,tradeContract&callback=onSibRequestSuccess
                 // String goodName = 
                 //Regex reg = new Regex(".+?item:.+?pic\\s+?:\\s+?'(.+?)',.+<h3 class=\"tb - main - title\" data-title=\"(.+?)\" >.+<strong id=\"J_StrPrice\"><em class=\"tb - rmb\">&yen;</em><em class=\"tb - rmb - num\">(.+?)</em></strong>.+");
                 Regex reg = new Regex("[\\s\\S]*<link rel=\"canonical\" href=\"(\\s\\S]*)\" /><title>([\\s\\S]*)-淘宝网</title>[\\s\\S]*sellerId         : '([\\s\\S]*)',[\\s\\S]*sellerNick       : '([\\s\\S]*)',[\\s\\S]*pic              : '([\\s\\S]*?)',[\\s\\S]*<input type=\"hidden\" name=\"current_price\" value= \"([\\s\\S]*)\"/>[\\s\\S]*");
@@ -119,22 +120,26 @@ namespace DeepNaiWorkshop_2796.MyTool
                 Regex reg1 = new Regex("[\\s\\S]*<link rel=\"canonical\" href=\"https://item.taobao.com/item.htm\\?id=([\\s\\S]*?)\" />[\\s\\S]*");
                 Match match1 = reg1.Match(itemId);
                 itemId = match1.Groups[1].Value;
+
+                Console.Write("测试：" + itemId);
                 String name = match.Groups[2].Value;
                 String temp = match.Groups[3].Value;
                 Regex reg2 = new Regex("[\\s\\S]*sellerId         : '([\\s\\S]*?)',([\\s\\S]*)");
                 Match match2 = reg2.Match(temp);
                 String sellerId = match2.Groups[1].Value;
+                Console.Write("测试：" + sellerId);
                 String temp2 = match2.Groups[2].Value;
                 Regex reg3 = new Regex("[\\s\\S]*pic              : '([\\s\\S]*?)',([\\s\\S]*)");
                 Match match3 = reg3.Match(temp2);
                 String mainPic = match3.Groups[1].Value;
                 mainPic = StringTool.replaceStartWith(mainPic, "//", "http://");
-
+                Console.Write("测试：" + mainPic);
                 String temp4 = match3.Groups[2].Value;
                 //Console.WriteLine("要解析的内容："+temp4);
                 Regex reg4 = new Regex("[\\s\\S]*sellerNick       : '([\\s\\S]*?)',([\\s\\S]*)");
                 Match match4 = reg4.Match(temp4);
                 String shopName = match4.Groups[1].Value;
+                Console.Write("测试：" + shopName);
                 Console.WriteLine(shopName);
                 String temp5 = match4.Groups[2].Value;
 

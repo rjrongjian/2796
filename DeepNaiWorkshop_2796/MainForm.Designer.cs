@@ -893,6 +893,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(265, 21);
             this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "https://item.taobao.com/item.htm?id=570859873864";
             // 
             // label5
             // 

@@ -1,4 +1,5 @@
-﻿using DeepNaiWorkshop_2796.MyModel;
+﻿using DeepNaiWorkshop_2796;
+using DeepNaiWorkshop_2796.MyModel;
 using DeepNaiWorkshop_2796.MyTool;
 using DeepWorkshop.QQRot.FirstCity;
 using DeepWorkshop.QQRot.FirstCity.MyTool;
@@ -40,6 +41,7 @@ namespace LoginActivity
             */
             //Application.Run(new FrmLogin());
             Application.Run(new MainForm());
+            //Application.Run(new WebbroswerForm());
         }
 
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
