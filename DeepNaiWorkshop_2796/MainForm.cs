@@ -57,6 +57,8 @@ namespace RegeditActivity
 
             //模板列表
             comboBox1.DataSource = MySystemUtil.GetAllTemplateNames();
+
+            this.webBrowser1.ScriptErrorsSuppressed = true;
         }
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -122,6 +124,7 @@ namespace RegeditActivity
             }
             catch(Exception ex)
             {
+                setMainFormBtnStatus(7);//获取商品数据、生成截图按钮可用
                 ExceptionTool.log(ex);
                 alert("解析数据失败，请手动录入");
             }
@@ -471,6 +474,9 @@ namespace RegeditActivity
 
         private void button2_Click(object sender, EventArgs e)//生成截图
         {
+            //在webbroswer加载评论
+            this.webBrowser1.Navigate(this.textBox1.Text);
+
             if (string.IsNullOrWhiteSpace((string)comboBox1.SelectedValue))
             {
                 MessageBox.Show("请先选中模板");
@@ -1384,6 +1390,62 @@ namespace RegeditActivity
             YiYunUtil.CheckUserStatus();
             //YiYunUtil.Val();
             
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            WebBrowser webBrowser = (WebBrowser)sender;
+            if (webBrowser1.ReadyState < WebBrowserReadyState.Complete) return;
+            //天猫评论 在url上加
+            if (webBrowser.Url.ToString().Contains("tmall"))
+            {
+                webBrowser1.Document.Window.ScrollTo(200, 980);
+                HtmlDocument htmlDoc = webBrowser1.Document;
+
+                HtmlElementCollection bodyList = webBrowser1.Document.GetElementsByTagName("body");
+                Console.WriteLine(bodyList.Count);
+                //滚动条解决 https://www.cnblogs.com/fj99/p/4218801.html
+                if (bodyList != null && bodyList.Count > 0)
+                {
+                    HtmlElement body = bodyList[0];
+                    //body.SetAttribute("scroll", "no");
+                    //body.SetAttribute("style", "overflow-x:hidden");
+                    if (body.Style == null)
+                    {
+                        body.Style = " overflow-x: hidden; ";
+                    }
+                    else
+                    {
+                        body.Style += " overflow-x: hidden; ";
+                    }
+                }
+            }else if (webBrowser.Url.ToString().Contains("taobao"))
+            {
+                Console.WriteLine("进来了没");
+                webBrowser1.Document.Window.ScrollTo(200, 1280);
+                HtmlDocument htmlDoc = webBrowser1.Document;
+
+                HtmlElementCollection bodyList = webBrowser1.Document.GetElementsByTagName("body");
+                Console.WriteLine(bodyList.Count);
+                //滚动条解决 https://www.cnblogs.com/fj99/p/4218801.html
+                if (bodyList != null && bodyList.Count > 0)
+                {
+                    HtmlElement body = bodyList[0];
+                    //body.SetAttribute("scroll", "no");
+                    //body.SetAttribute("style", "overflow-x:hidden");
+                    if (body.Style == null)
+                    {
+                        body.Style = " overflow-x: hidden; ";
+                    }
+                    else
+                    {
+                        body.Style += " overflow-x: hidden; ";
+                    }
+                }
+            }
+
+
+
         }
     }
 }
