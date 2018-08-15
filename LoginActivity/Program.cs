@@ -39,9 +39,7 @@ namespace LoginActivity
                 
             }
             */
-            //Application.Run(new FrmLogin());
-            Application.Run(new MainForm());
-            //Application.Run(new WebbroswerForm());
+            Application.Run(new FrmLogin());
         }
 
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)

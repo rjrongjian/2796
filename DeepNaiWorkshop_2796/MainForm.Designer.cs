@@ -118,10 +118,12 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label26 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label26 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -344,6 +346,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label41);
+            this.tabPage1.Controls.Add(this.label40);
             this.tabPage1.Controls.Add(this.button12);
             this.tabPage1.Controls.Add(this.button11);
             this.tabPage1.Controls.Add(this.comboBox1);
@@ -941,8 +945,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -960,7 +964,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(752, 598);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "商品评论和截图";
+            this.tabPage3.Text = "扩展";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // label33
@@ -971,6 +975,7 @@
             this.label33.Size = new System.Drawing.Size(137, 12);
             this.label33.TabIndex = 14;
             this.label33.Text = "或多点击抓取更多按钮。";
+            this.label33.Visible = false;
             // 
             // label32
             // 
@@ -980,6 +985,7 @@
             this.label32.Size = new System.Drawing.Size(305, 12);
             this.label32.TabIndex = 13;
             this.label32.Text = "注意：天猫偶尔会禁止爬取评论，请更换商品地址多尝试";
+            this.label32.Visible = false;
             // 
             // groupBox8
             // 
@@ -993,6 +999,7 @@
             this.groupBox8.TabIndex = 12;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "评论图片";
+            this.groupBox8.Visible = false;
             // 
             // button10
             // 
@@ -1043,6 +1050,7 @@
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "商品评论";
+            this.groupBox2.Visible = false;
             // 
             // button9
             // 
@@ -1063,20 +1071,6 @@
             this.textBox10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox10.Size = new System.Drawing.Size(300, 460);
             this.textBox10.TabIndex = 0;
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 600000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(370, 640);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(47, 12);
-            this.label26.TabIndex = 20;
-            this.label26.Text = "label26";
             // 
             // tabPage4
             // 
@@ -1100,6 +1094,40 @@
             this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 600000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(370, 640);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(47, 12);
+            this.label26.TabIndex = 20;
+            this.label26.Text = "label26";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.BackColor = System.Drawing.Color.OrangeRed;
+            this.label40.Location = new System.Drawing.Point(416, 14);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(305, 12);
+            this.label40.TabIndex = 27;
+            this.label40.Text = "注意：商品价格请在“评论”加载后确认是否是此价格，";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.BackColor = System.Drawing.Color.OrangeRed;
+            this.label41.Location = new System.Drawing.Point(416, 30);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(161, 12);
+            this.label41.TabIndex = 28;
+            this.label41.Text = "暂未抓取促销价！！！请注意";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1114,7 +1142,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "天猫评价水印助手(优惠券截图生成器)v1.4.0";
+            this.Text = "天猫评价水印助手(优惠券截图生成器)v1.5.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1243,5 +1271,7 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label40;
     }
 }

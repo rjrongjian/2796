@@ -1394,56 +1394,63 @@ namespace RegeditActivity
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            WebBrowser webBrowser = (WebBrowser)sender;
-            if (webBrowser1.ReadyState < WebBrowserReadyState.Complete) return;
-            //天猫评论 在url上加
-            if (webBrowser.Url.ToString().Contains("tmall"))
+            try
             {
-                webBrowser1.Document.Window.ScrollTo(200, 980);
-                HtmlDocument htmlDoc = webBrowser1.Document;
 
-                HtmlElementCollection bodyList = webBrowser1.Document.GetElementsByTagName("body");
-                Console.WriteLine(bodyList.Count);
-                //滚动条解决 https://www.cnblogs.com/fj99/p/4218801.html
-                if (bodyList != null && bodyList.Count > 0)
+                WebBrowser webBrowser = (WebBrowser)sender;
+                if (webBrowser1.ReadyState < WebBrowserReadyState.Complete) return;
+                //天猫评论 在url上加
+                if (webBrowser.Url.ToString().Contains("tmall"))
                 {
-                    HtmlElement body = bodyList[0];
-                    //body.SetAttribute("scroll", "no");
-                    //body.SetAttribute("style", "overflow-x:hidden");
-                    if (body.Style == null)
+                    webBrowser1.Document.Window.ScrollTo(200, 980);
+                    HtmlDocument htmlDoc = webBrowser1.Document;
+
+                    HtmlElementCollection bodyList = webBrowser1.Document.GetElementsByTagName("body");
+                    Console.WriteLine(bodyList.Count);
+                    //滚动条解决 https://www.cnblogs.com/fj99/p/4218801.html
+                    if (bodyList != null && bodyList.Count > 0)
                     {
-                        body.Style = " overflow-x: hidden; ";
+                        HtmlElement body = bodyList[0];
+                        //body.SetAttribute("scroll", "no");
+                        //body.SetAttribute("style", "overflow-x:hidden");
+                        if (body.Style == null)
+                        {
+                            body.Style = " overflow-x: hidden; ";
+                        }
+                        else
+                        {
+                            body.Style += " overflow-x: hidden; ";
+                        }
                     }
-                    else
+                }else if (webBrowser.Url.ToString().Contains("taobao"))
+                {
+                    Console.WriteLine("进来了没");
+                    webBrowser1.Document.Window.ScrollTo(200, 1280);
+                    HtmlDocument htmlDoc = webBrowser1.Document;
+
+                    HtmlElementCollection bodyList = webBrowser1.Document.GetElementsByTagName("body");
+                    Console.WriteLine(bodyList.Count);
+                    //滚动条解决 https://www.cnblogs.com/fj99/p/4218801.html
+                    if (bodyList != null && bodyList.Count > 0)
                     {
-                        body.Style += " overflow-x: hidden; ";
+                        HtmlElement body = bodyList[0];
+                        //body.SetAttribute("scroll", "no");
+                        //body.SetAttribute("style", "overflow-x:hidden");
+                        if (body.Style == null)
+                        {
+                            body.Style = " overflow-x: hidden; ";
+                        }
+                        else
+                        {
+                            body.Style += " overflow-x: hidden; ";
+                        }
                     }
                 }
-            }else if (webBrowser.Url.ToString().Contains("taobao"))
-            {
-                Console.WriteLine("进来了没");
-                webBrowser1.Document.Window.ScrollTo(200, 1280);
-                HtmlDocument htmlDoc = webBrowser1.Document;
 
-                HtmlElementCollection bodyList = webBrowser1.Document.GetElementsByTagName("body");
-                Console.WriteLine(bodyList.Count);
-                //滚动条解决 https://www.cnblogs.com/fj99/p/4218801.html
-                if (bodyList != null && bodyList.Count > 0)
-                {
-                    HtmlElement body = bodyList[0];
-                    //body.SetAttribute("scroll", "no");
-                    //body.SetAttribute("style", "overflow-x:hidden");
-                    if (body.Style == null)
-                    {
-                        body.Style = " overflow-x: hidden; ";
-                    }
-                    else
-                    {
-                        body.Style += " overflow-x: hidden; ";
-                    }
-                }
+            }catch(Exception ex)
+            {
+                MyLogUtil.ErrToLog("加载网页失败，原因："+ex);
             }
-
 
 
         }
