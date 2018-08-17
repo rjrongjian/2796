@@ -1424,7 +1424,6 @@ namespace RegeditActivity
                     }
                 }else if (webBrowser.Url.ToString().Contains("taobao"))
                 {
-                    Console.WriteLine("进来了没");
                     webBrowser1.Document.Window.ScrollTo(200, 1280);
                     HtmlDocument htmlDoc = webBrowser1.Document;
 
