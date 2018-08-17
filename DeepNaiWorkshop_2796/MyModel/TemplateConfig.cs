@@ -19,6 +19,8 @@ namespace DeepNaiWorkshop_2796.MyModel
         public int ShopNameFontWidth { set; get; }//画出的文字图片宽
         public int ShopNameFontHeight { set; get; }//画出的文字图片高
 
+
+
         //
         public bool IsUseShopSLT { set; get; }//是否使用商品缩略图
         public int ShopSLTX { set; get; }//商品缩略图左上角点x的坐标
@@ -36,6 +38,7 @@ namespace DeepNaiWorkshop_2796.MyModel
         public int CouponValueFontWidth { set; get; }//画出的文字图片宽
         public int CouponValueFontHeight { set; get; }//画出的文字图片高
 
+
         //
         public bool IsUseCouponTime { set; get; }//是否使用优惠券价格
         public String CouponTimeFontColor { set; get; }//字体颜色 例如：#FFFFFF
@@ -46,8 +49,9 @@ namespace DeepNaiWorkshop_2796.MyModel
         public int CouponTimeFontWidth { set; get; }//画出的文字图片宽
         public int CouponTimeFontHeight { set; get; }//画出的文字图片高
 
+
         //
-        public bool IsUseGoodsName { set; get; }//是否使用优惠券价格
+        public bool IsUseGoodsName { set; get; }//是否使用商品名称
         public String GoodsNameFontColor { set; get; }//字体颜色 例如：#FFFFFF
         public String GoodsNameFontType { set; get; }//字体类型 例如：宋体
         public int GoodsNameSize { set; get; }//字体大小
@@ -55,6 +59,7 @@ namespace DeepNaiWorkshop_2796.MyModel
         public int GoodsNameFontY { set; get; }//左上角点y的位置
         public int GoodsNameFontWidth { set; get; }//画出的文字图片宽
         public int GoodsNameFontHeight { set; get; }//画出的文字图片高
+
 
 
         //
@@ -66,6 +71,10 @@ namespace DeepNaiWorkshop_2796.MyModel
         public int PriceFontY { set; get; }//左上角点y的位置
         public int PriceFontWidth { set; get; }//画出的文字图片宽
         public int PriceFontHeight { set; get; }//画出的文字图片高
+        public bool PriceFontDelLine { set; get; }//是否增加删除线
+        public bool PriceFontItalic { set; get; }//是否斜体
+        public bool PriceFontBold { set; get; }//是否加粗显示
+
 
         //
         public bool IsUseVolume { set; get; }//是否使用成交量
@@ -76,6 +85,8 @@ namespace DeepNaiWorkshop_2796.MyModel
         public int VolumeFontY { set; get; }//左上角点y的位置
         public int VolumeFontWidth { set; get; }//画出的文字图片宽
         public int VolumeFontHeight { set; get; }//画出的文字图片高
+
+
 
         //
         public bool IsUsePriceAfter { set; get; }//是否使用成交量

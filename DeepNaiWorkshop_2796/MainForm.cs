@@ -601,7 +601,27 @@ namespace RegeditActivity
             {
                 //现价
                 String price = this.textBox2.Text;
-                Font priceFont = new Font(templateConfig.PriceFontType, templateConfig.PriceSize);
+
+                Font priceFont = null;
+                FontStyle result = FontStyle.Regular;
+                List<FontStyle> style = new List<FontStyle>();
+                
+                if (templateConfig.PriceFontBold)
+                {
+                    result = result | FontStyle.Bold;
+                }
+                if (templateConfig.PriceFontDelLine)
+                {
+                    result = result | FontStyle.Strikeout;
+                }
+                if (templateConfig.PriceFontItalic)
+                {
+                    result = result | FontStyle.Italic;
+                }
+
+                
+                priceFont = new Font(templateConfig.PriceFontType, templateConfig.PriceSize, result);
+               
                 SolidBrush priceBrush = new SolidBrush(ColorTool.getColorFromHtml(templateConfig.PriceFontColor));
                 //Point pricePoint = new Point(183, 360);
                 //g.DrawString(price, priceFont, priceBrush, pricePoint, StringFormat.GenericDefault);

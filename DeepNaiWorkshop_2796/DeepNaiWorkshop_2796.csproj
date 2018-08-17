@@ -107,6 +107,12 @@
     <Compile Include="RuntimeVerForm.designer.cs">
       <DependentUpon>RuntimeVerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TemplateForm.Designer.cs">
+      <DependentUpon>TemplateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WebApi\WebPost.cs" />
     <Compile Include="WebbroswerForm.cs">
       <SubType>Form</SubType>
@@ -132,6 +138,9 @@
     </Compile>
     <EmbeddedResource Include="RuntimeVerForm.resx">
       <DependentUpon>RuntimeVerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TemplateForm.resx">
+      <DependentUpon>TemplateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WebbroswerForm.resx">
       <DependentUpon>WebbroswerForm.cs</DependentUpon>

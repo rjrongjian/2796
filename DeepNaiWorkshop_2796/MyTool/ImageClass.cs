@@ -403,7 +403,7 @@ namespace DeepNaiWorkshop_2796.MyTool
                 Bitmap bap = new Bitmap(newW, newH);
                 Graphics g = Graphics.FromImage(bap);
                 g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                g.DrawImage(bap, new Rectangle(0, 0, newW, newH), new Rectangle(0, 0, bap.Width, bap.Height), GraphicsUnit.Pixel);
+                g.DrawImage(bmp, new Rectangle(0, 0, bap.Width, bap.Height), new Rectangle(0, 0, bmp.Width, bmp.Height), GraphicsUnit.Pixel);
                 g.Dispose();
                 return bap;
             }

@@ -271,11 +271,10 @@ namespace DeepNaiWorkshop_2796
                         watermarkWidth = 375;//水印宽
                         MessageBox.Show("超过水印图片的最大宽度375px,自动缩减大小至375px");
                     }
-                    else
-                    {
-                        this.numericUpDown4.Value = watermarkHeight;//水印高
-                        this.numericUpDown5.Value = watermarkWidth;//水印宽
-                    }
+                    
+                    this.numericUpDown4.Value = watermarkHeight;//水印高
+                    this.numericUpDown5.Value = watermarkWidth;//水印宽
+                    
                     
                     
                 }
@@ -402,6 +401,18 @@ namespace DeepNaiWorkshop_2796
             System.Diagnostics.Process.Start("http://tool.chinaz.com/tools/use");
         }
 
-
+        private void button7_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Image files (*.jpg)|*.jpg";
+            saveFileDialog.FilterIndex = 0;
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.Title = "导出文件保存路径";
+            saveFileDialog.FileName = null;
+            saveFileDialog.ShowDialog();
+            string strPath = saveFileDialog.FileName;
+            Image img = ImageHistory[CurrentImage];
+            img.Save(strPath);
+        }
     }
 }
