@@ -128,6 +128,7 @@
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.label55 = new System.Windows.Forms.Label();
@@ -225,7 +226,10 @@
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label90 = new System.Windows.Forms.Label();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.label91 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -283,6 +287,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown34)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown35)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown36)).BeginInit();
+            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -1591,6 +1596,18 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "商品现价设置";
             // 
+            // checkBox11
+            // 
+            this.checkBox11.AutoSize = true;
+            this.checkBox11.Checked = true;
+            this.checkBox11.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox11.Location = new System.Drawing.Point(126, 83);
+            this.checkBox11.Name = "checkBox11";
+            this.checkBox11.Size = new System.Drawing.Size(48, 16);
+            this.checkBox11.TabIndex = 73;
+            this.checkBox11.Text = "斜体";
+            this.checkBox11.UseVisualStyleBackColor = true;
+            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -2174,8 +2191,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.groupBox10);
             this.tabPage4.Controls.Add(this.label88);
-            this.tabPage4.Controls.Add(this.button12);
             this.tabPage4.Controls.Add(this.groupBox9);
             this.tabPage4.Controls.Add(this.groupBox8);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -2189,7 +2206,7 @@
             // 
             this.label88.AutoSize = true;
             this.label88.ForeColor = System.Drawing.Color.Red;
-            this.label88.Location = new System.Drawing.Point(10, 465);
+            this.label88.Location = new System.Drawing.Point(10, 392);
             this.label88.Name = "label88";
             this.label88.Size = new System.Drawing.Size(377, 12);
             this.label88.TabIndex = 78;
@@ -2197,12 +2214,13 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(312, 489);
+            this.button12.Location = new System.Drawing.Point(328, 82);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.Size = new System.Drawing.Size(52, 23);
             this.button12.TabIndex = 77;
-            this.button12.Text = "生成模板";
+            this.button12.Text = "生成";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // groupBox9
             // 
@@ -2803,17 +2821,44 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // checkBox11
+            // groupBox10
             // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Checked = true;
-            this.checkBox11.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox11.Location = new System.Drawing.Point(126, 83);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(48, 16);
-            this.checkBox11.TabIndex = 73;
-            this.checkBox11.Text = "斜体";
-            this.checkBox11.UseVisualStyleBackColor = true;
+            this.groupBox10.Controls.Add(this.label91);
+            this.groupBox10.Controls.Add(this.textBox16);
+            this.groupBox10.Controls.Add(this.label90);
+            this.groupBox10.Controls.Add(this.button12);
+            this.groupBox10.Location = new System.Drawing.Point(7, 407);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(393, 111);
+            this.groupBox10.TabIndex = 79;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "模板生成";
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Location = new System.Drawing.Point(16, 32);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(65, 12);
+            this.label90.TabIndex = 78;
+            this.label90.Text = "模板名称：";
+            // 
+            // textBox16
+            // 
+            this.textBox16.Location = new System.Drawing.Point(87, 27);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(100, 21);
+            this.textBox16.TabIndex = 79;
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.ForeColor = System.Drawing.Color.Red;
+            this.label91.Location = new System.Drawing.Point(193, 30);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(161, 12);
+            this.label91.TabIndex = 80;
+            this.label91.Text = "注意：不设置，则以时间命名";
             // 
             // TemplateForm
             // 
@@ -2890,6 +2935,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown34)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown35)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown36)).EndInit();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3094,5 +3141,9 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox10;
         private System.Windows.Forms.CheckBox checkBox11;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Label label91;
+        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.Label label90;
     }
 }

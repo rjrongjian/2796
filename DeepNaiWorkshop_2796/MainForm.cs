@@ -60,6 +60,12 @@ namespace RegeditActivity
 
             this.webBrowser1.ScriptErrorsSuppressed = true;
         }
+
+        public void ResetTemplates()
+        {
+            comboBox1.DataSource = MySystemUtil.GetAllTemplateNames();
+        }
+
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             
@@ -1472,6 +1478,18 @@ namespace RegeditActivity
             }
 
 
+        }
+
+        private void button11_Click_1(object sender, EventArgs e)
+        {
+            new TemplateForm(this).Show();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+
+            this.ResetTemplates();
+            MessageBox.Show("重新加载模板成功！");
         }
     }
 }

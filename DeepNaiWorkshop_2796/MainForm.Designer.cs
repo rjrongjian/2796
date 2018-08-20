@@ -50,6 +50,8 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -107,6 +109,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -118,12 +122,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label26 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -138,11 +138,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -366,6 +366,26 @@
             this.tabPage1.Text = "输出配置";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.BackColor = System.Drawing.Color.OrangeRed;
+            this.label41.Location = new System.Drawing.Point(416, 30);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(161, 12);
+            this.label41.TabIndex = 28;
+            this.label41.Text = "暂未抓取促销价！！！请注意";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.BackColor = System.Drawing.Color.OrangeRed;
+            this.label40.Location = new System.Drawing.Point(416, 14);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(305, 12);
+            this.label40.TabIndex = 27;
+            this.label40.Text = "注意：商品价格请在“评论”加载后确认是否是此价格，";
+            // 
             // button12
             // 
             this.button12.Location = new System.Drawing.Point(224, 12);
@@ -374,7 +394,7 @@
             this.button12.TabIndex = 26;
             this.button12.Text = "重新加载模板";
             this.button12.UseVisualStyleBackColor = true;
-            this.button12.Visible = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button11
             // 
@@ -384,7 +404,7 @@
             this.button11.TabIndex = 25;
             this.button11.Text = "制作模板";
             this.button11.UseVisualStyleBackColor = true;
-            this.button11.Visible = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click_1);
             // 
             // comboBox1
             // 
@@ -953,6 +973,28 @@
             this.tabControl1.Size = new System.Drawing.Size(760, 624);
             this.tabControl1.TabIndex = 0;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.webBrowser1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(752, 598);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "评论";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(752, 598);
+            this.webBrowser1.TabIndex = 0;
+            this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
+            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.label33);
@@ -1072,28 +1114,6 @@
             this.textBox10.Size = new System.Drawing.Size(300, 460);
             this.textBox10.TabIndex = 0;
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.webBrowser1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(752, 598);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "评论";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(752, 598);
-            this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
-            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
-            // 
             // timer1
             // 
             this.timer1.Interval = 600000;
@@ -1107,26 +1127,6 @@
             this.label26.Size = new System.Drawing.Size(47, 12);
             this.label26.TabIndex = 20;
             this.label26.Text = "label26";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.BackColor = System.Drawing.Color.OrangeRed;
-            this.label40.Location = new System.Drawing.Point(416, 14);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(305, 12);
-            this.label40.TabIndex = 27;
-            this.label40.Text = "注意：商品价格请在“评论”加载后确认是否是此价格，";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.BackColor = System.Drawing.Color.OrangeRed;
-            this.label41.Location = new System.Drawing.Point(416, 30);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(161, 12);
-            this.label41.TabIndex = 28;
-            this.label41.Text = "暂未抓取促销价！！！请注意";
             // 
             // MainForm
             // 
@@ -1166,13 +1166,13 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

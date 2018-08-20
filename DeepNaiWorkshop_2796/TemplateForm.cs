@@ -1,14 +1,21 @@
 ﻿using DeepNaiWorkshop_2796.MyModel;
 using DeepNaiWorkshop_2796.MyTool;
+using DeepNaiWorkshop_6001.MyTool;
+using FileCreator.Model;
+using FileCreator.MyTool;
 using MyTools;
+using RegeditActivity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using www_52bang_site_enjoy.MyTool;
 
 namespace DeepNaiWorkshop_2796
 {
@@ -18,36 +25,38 @@ namespace DeepNaiWorkshop_2796
         private StringFormat sf1;
         private Image UploadBackImg;
         private Image UploadOriginalImg;
-        public TemplateForm()
+        private String BackImgName;
+        private MainForm MainFormTemp;
+        public TemplateForm(MainForm mainForm)
         {
             InitializeComponent();
 
-            this.comboBox1.DataSource = CacheData.fontList;//防止多个combobox绑定同一个数据源导致事件联动
+            this.comboBox1.DataSource = new List<ResourceInfoForCombox>(CacheData.fontList);//防止多个combobox绑定同一个数据源导致事件联动
             this.comboBox1.ValueMember = "moduleName";
             this.comboBox1.DisplayMember = "moduleName";
 
-            this.comboBox2.DataSource = CacheData.fontList;//防止多个combobox绑定同一个数据源导致事件联动
+            this.comboBox2.DataSource = new List<ResourceInfoForCombox>(CacheData.fontList);//防止多个combobox绑定同一个数据源导致事件联动
             this.comboBox2.ValueMember = "moduleName";
             this.comboBox2.DisplayMember = "moduleName";
 
 
-            this.comboBox3.DataSource = CacheData.fontList;//防止多个combobox绑定同一个数据源导致事件联动
+            this.comboBox3.DataSource = new List<ResourceInfoForCombox>(CacheData.fontList);//防止多个combobox绑定同一个数据源导致事件联动
             this.comboBox3.ValueMember = "moduleName";
             this.comboBox3.DisplayMember = "moduleName";
 
-            this.comboBox4.DataSource = CacheData.fontList;//防止多个combobox绑定同一个数据源导致事件联动
+            this.comboBox4.DataSource = new List<ResourceInfoForCombox>(CacheData.fontList);//防止多个combobox绑定同一个数据源导致事件联动
             this.comboBox4.ValueMember = "moduleName";
             this.comboBox4.DisplayMember = "moduleName";
 
-            this.comboBox5.DataSource = CacheData.fontList;//防止多个combobox绑定同一个数据源导致事件联动
+            this.comboBox5.DataSource = new List<ResourceInfoForCombox>(CacheData.fontList);//防止多个combobox绑定同一个数据源导致事件联动
             this.comboBox5.ValueMember = "moduleName";
             this.comboBox5.DisplayMember = "moduleName";
 
-            this.comboBox6.DataSource = CacheData.fontList;//防止多个combobox绑定同一个数据源导致事件联动
+            this.comboBox6.DataSource = new List<ResourceInfoForCombox>(CacheData.fontList);//防止多个combobox绑定同一个数据源导致事件联动
             this.comboBox6.ValueMember = "moduleName";
             this.comboBox6.DisplayMember = "moduleName";
 
-            this.comboBox7.DataSource = CacheData.fontList;//防止多个combobox绑定同一个数据源导致事件联动
+            this.comboBox7.DataSource = new List<ResourceInfoForCombox>(CacheData.fontList);//防止多个combobox绑定同一个数据源导致事件联动
             this.comboBox7.ValueMember = "moduleName";
             this.comboBox7.DisplayMember = "moduleName";
 
@@ -58,6 +67,7 @@ namespace DeepNaiWorkshop_2796
             sf1 = new StringFormat();
             sf1.Alignment = StringAlignment.Near;
             sf1.LineAlignment = StringAlignment.Center;
+            MainFormTemp = mainForm;
         }
         //上传背景图片
         private void button2_Click(object sender, EventArgs e)
@@ -69,6 +79,8 @@ namespace DeepNaiWorkshop_2796
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string file = dialog.FileName;
+                Console.WriteLine("看看路径啊："+ Path.GetExtension(file));
+                BackImgName = "template" + Path.GetExtension(file);
                 Image watermark = ImageTool.getLocalImageBy(file);
                 UploadBackImg = watermark;
                 UploadOriginalImg = watermark;
@@ -144,8 +156,8 @@ namespace DeepNaiWorkshop_2796
             System.Diagnostics.Process.Start("http://tool.chinaz.com/tools/use");
         }
 
-        //private Image shopNameWatermark;
-        //private PictureBox shopNamePictureBox;
+        private Image shopNameWatermark;
+        private PictureBox shopNamePictureBox;
         //店铺名称
         private void button4_Click(object sender, EventArgs e)
         {
@@ -166,7 +178,8 @@ namespace DeepNaiWorkshop_2796
             }
             int fontSizeTemp = Convert.ToInt16(numericUpDown3.Value);
             String fontColorTemp = textBox12.Text;
-            String fontType = comboBox1.SelectedText;
+            String fontType = (String)comboBox1.SelectedValue;
+            //Console.WriteLine("获取的字体："+fontType);
             int xPointTemp = Convert.ToInt16(numericUpDown5.Value);
             int yPointTemp = Convert.ToInt16(numericUpDown4.Value);
             int widthTemp = Convert.ToInt16(numericUpDown7.Value);
@@ -232,7 +245,7 @@ namespace DeepNaiWorkshop_2796
             int watermarkerImgHeight = heightTemp;
             Bitmap image = new Bitmap(watermarkerImgWidth, watermarkerImgHeight);
             Graphics gi = Graphics.FromImage(image);
-            gi.Clear(Color.Green);//透明
+            gi.Clear(Color.Transparent);//透明
             gi2.Clear(Color.Transparent);//透明
 
 
@@ -335,7 +348,7 @@ namespace DeepNaiWorkshop_2796
         //缩略图
         private void button5_Click(object sender, EventArgs e)
         {
-            if (!checkBox2.Checked)
+            if (!checkBox3.Checked)
             {
                 MessageBox.Show("勾选模块后才能在模板中调试");
                 return;
@@ -464,8 +477,8 @@ namespace DeepNaiWorkshop_2796
                         //waterPictureBox.Location = new Point(waterPictureBox.Location.X + offsetX, waterPictureBox.Location.Y + offsetY);
 
                         shopSLTYPictureBox.Location = mousePos;
-                        this.numericUpDown5.Value = mousePos.X;
-                        this.numericUpDown4.Value = mousePos.Y;
+                        this.numericUpDown11.Value = mousePos.X;
+                        this.numericUpDown10.Value = mousePos.Y;
                     }
 
 
@@ -508,7 +521,7 @@ namespace DeepNaiWorkshop_2796
             }
             int fontSizeTemp = Convert.ToInt16(numericUpDown16.Value);
             String fontColorTemp = textBox4.Text;
-            String fontType = comboBox2.SelectedText;
+            String fontType = (String)comboBox2.SelectedValue;
             int xPointTemp = Convert.ToInt16(numericUpDown15.Value);
             int yPointTemp = Convert.ToInt16(numericUpDown14.Value);
             int widthTemp = Convert.ToInt16(numericUpDown13.Value);
@@ -574,7 +587,7 @@ namespace DeepNaiWorkshop_2796
             int watermarkerImgHeight = heightTemp;
             Bitmap image = new Bitmap(watermarkerImgWidth, watermarkerImgHeight);
             Graphics gi = Graphics.FromImage(image);
-            gi.Clear(Color.Green);//透明
+            gi.Clear(Color.Transparent);//透明
             gi2.Clear(Color.Transparent);//透明
 
 
@@ -694,7 +707,7 @@ namespace DeepNaiWorkshop_2796
             }
             int fontSizeTemp = Convert.ToInt16(numericUpDown21.Value);
             String fontColorTemp = textBox6.Text;
-            String fontType = comboBox3.SelectedText;
+            String fontType = (String)comboBox3.SelectedValue;
             int xPointTemp = Convert.ToInt16(numericUpDown20.Value);
             int yPointTemp = Convert.ToInt16(numericUpDown19.Value);
             int widthTemp = Convert.ToInt16(numericUpDown18.Value);
@@ -760,7 +773,7 @@ namespace DeepNaiWorkshop_2796
             int watermarkerImgHeight = heightTemp;
             Bitmap image = new Bitmap(watermarkerImgWidth, watermarkerImgHeight);
             Graphics gi = Graphics.FromImage(image);
-            gi.Clear(Color.Green);//透明
+            gi.Clear(Color.Transparent);//透明
             gi2.Clear(Color.Transparent);//透明
 
 
@@ -880,7 +893,7 @@ namespace DeepNaiWorkshop_2796
             }
             int fontSizeTemp = Convert.ToInt16(numericUpDown26.Value);
             String fontColorTemp = textBox8.Text;
-            String fontType = comboBox4.SelectedText;
+            String fontType = (String)comboBox4.SelectedValue;
             int xPointTemp = Convert.ToInt16(numericUpDown25.Value);
             int yPointTemp = Convert.ToInt16(numericUpDown24.Value);
             int widthTemp = Convert.ToInt16(numericUpDown23.Value);
@@ -946,7 +959,7 @@ namespace DeepNaiWorkshop_2796
             int watermarkerImgHeight = heightTemp;
             Bitmap image = new Bitmap(watermarkerImgWidth, watermarkerImgHeight);
             Graphics gi = Graphics.FromImage(image);
-            gi.Clear(Color.Green);//透明
+            gi.Clear(Color.Transparent);//透明
             gi2.Clear(Color.Transparent);//透明
 
 
@@ -1066,7 +1079,7 @@ namespace DeepNaiWorkshop_2796
             }
             int fontSizeTemp = Convert.ToInt16(numericUpDown31.Value);
             String fontColorTemp = textBox10.Text;
-            String fontType = comboBox5.SelectedText;
+            String fontType = (String)comboBox5.SelectedValue;
             int xPointTemp = Convert.ToInt16(numericUpDown30.Value);
             int yPointTemp = Convert.ToInt16(numericUpDown29.Value);
             int widthTemp = Convert.ToInt16(numericUpDown28.Value);
@@ -1132,7 +1145,7 @@ namespace DeepNaiWorkshop_2796
             int watermarkerImgHeight = heightTemp;
             Bitmap image = new Bitmap(watermarkerImgWidth, watermarkerImgHeight);
             Graphics gi = Graphics.FromImage(image);
-            gi.Clear(Color.Green);//透明
+            gi.Clear(Color.Transparent);//透明
             gi2.Clear(Color.Transparent);//透明
 
 
@@ -1252,7 +1265,7 @@ namespace DeepNaiWorkshop_2796
             }
             int fontSizeTemp = Convert.ToInt16(numericUpDown36.Value);
             String fontColorTemp = textBox13.Text;
-            String fontType = comboBox6.SelectedText;
+            String fontType = (String)comboBox6.SelectedValue;
             int xPointTemp = Convert.ToInt16(numericUpDown35.Value);
             int yPointTemp = Convert.ToInt16(numericUpDown34.Value);
             int widthTemp = Convert.ToInt16(numericUpDown33.Value);
@@ -1318,7 +1331,7 @@ namespace DeepNaiWorkshop_2796
             int watermarkerImgHeight = heightTemp;
             Bitmap image = new Bitmap(watermarkerImgWidth, watermarkerImgHeight);
             Graphics gi = Graphics.FromImage(image);
-            gi.Clear(Color.Green);//透明
+            gi.Clear(Color.Transparent);//透明
             gi2.Clear(Color.Transparent);//透明
 
 
@@ -1438,7 +1451,7 @@ namespace DeepNaiWorkshop_2796
             }
             int fontSizeTemp = Convert.ToInt16(numericUpDown41.Value);
             String fontColorTemp = textBox15.Text;
-            String fontType = comboBox7.SelectedText;
+            String fontType = (String)comboBox7.SelectedValue;
             int xPointTemp = Convert.ToInt16(numericUpDown40.Value);
             int yPointTemp = Convert.ToInt16(numericUpDown39.Value);
             int widthTemp = Convert.ToInt16(numericUpDown38.Value);
@@ -1504,7 +1517,7 @@ namespace DeepNaiWorkshop_2796
             int watermarkerImgHeight = heightTemp;
             Bitmap image = new Bitmap(watermarkerImgWidth, watermarkerImgHeight);
             Graphics gi = Graphics.FromImage(image);
-            gi.Clear(Color.Green);//透明
+            gi.Clear(Color.Transparent);//透明
             gi2.Clear(Color.Transparent);//透明
 
 
@@ -1603,6 +1616,125 @@ namespace DeepNaiWorkshop_2796
             MessageBox.Show("托动用以调整位置");
         }
 
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (UploadBackImg == null)
+            {
+                MessageBox.Show("请先上传背景图片");
+                return;
+            }
+            string templateName = "";
+            if (string.IsNullOrWhiteSpace(textBox16.Text))
+            {
+                templateName = MyDateUtil.GetTimeStamp(DateTime.Now.Date);
+            }
+            else
+            {
+                templateName = textBox16.Text.Trim();
+            }
+            String pathDir = MySystemUtil.GetPath() + "Template\\";
+            MyFileUtil.CreateDir(pathDir);
+            String fileDir = pathDir + templateName + "\\";
+            //判断指定的文件夹是否存在
+            if (!Directory.Exists(fileDir))
+            {
+                Directory.CreateDirectory(fileDir);//创建新路径
+                TemplateConfig templateConfig = new TemplateConfig();
+                templateConfig.BackImg = BackImgName;
+                //文件拷贝
+                UploadBackImg.Save(fileDir + templateConfig.BackImg);
 
+
+                templateConfig.IsUseShopName = checkBox2.Checked;
+                templateConfig.ShopNameFontColor = textBox12.Text;//商家名称字体颜色 例如：#FFFFFF
+                templateConfig.ShopNameFontType = (String)comboBox1.SelectedValue;//字体类型 例如：宋体
+                templateConfig.ShopNameSize = Convert.ToInt16(numericUpDown3.Value);//字体大小
+                templateConfig.ShopNameFontX = Convert.ToInt16(numericUpDown5.Value);//左上角点x的位置
+                templateConfig.ShopNameFontY = Convert.ToInt16(numericUpDown4.Value);//左上角点y的位置
+                templateConfig.ShopNameFontWidth = Convert.ToInt16(numericUpDown7.Value);//画出的文字图片宽
+                templateConfig.ShopNameFontHeight = Convert.ToInt16(numericUpDown6.Value);//画出的文字图片高
+
+                templateConfig.IsUseShopSLT = checkBox3.Checked;
+                templateConfig.ShopSLTX = Convert.ToInt16(numericUpDown11.Value);//商品缩略图左上角点x的坐标
+                templateConfig.ShopSLTY = Convert.ToInt16(numericUpDown10.Value);//商品缩略图左上角点y的坐标
+                templateConfig.ShopSLTWidth = Convert.ToInt16(numericUpDown9.Value);//商品缩略图宽
+                templateConfig.ShopSLTHeight = Convert.ToInt16(numericUpDown8.Value);//商品缩略图高
+
+                templateConfig.IsUseCouponValue = checkBox4.Checked;
+                templateConfig.CouponValueFontColor = textBox4.Text;//商家名称字体颜色 例如：#FFFFFF
+                templateConfig.CouponValueFontType = (String)comboBox2.SelectedValue;//字体类型 例如：宋体
+                templateConfig.CouponValueSize = Convert.ToInt16(numericUpDown16.Value);//字体大小
+                templateConfig.CouponValueFontX = Convert.ToInt16(numericUpDown15.Value);//左上角点x的位置
+                templateConfig.CouponValueFontY = Convert.ToInt16(numericUpDown14.Value);//左上角点y的位置
+                templateConfig.CouponValueFontWidth = Convert.ToInt16(numericUpDown13.Value);//画出的文字图片宽
+                templateConfig.CouponValueFontHeight = Convert.ToInt16(numericUpDown12.Value);//画出的文字图片高
+
+
+
+                templateConfig.IsUseCouponTime = checkBox5.Checked;
+                templateConfig.CouponTimeFontColor = textBox6.Text;//商家名称字体颜色 例如：#FFFFFF
+                templateConfig.CouponTimeFontType = (String)comboBox3.SelectedValue;//字体类型 例如：宋体
+                templateConfig.CouponTimeSize = Convert.ToInt16(numericUpDown21.Value);//字体大小
+                templateConfig.CouponTimeFontX = Convert.ToInt16(numericUpDown20.Value);//左上角点x的位置
+                templateConfig.CouponTimeFontY = Convert.ToInt16(numericUpDown19.Value);//左上角点y的位置
+                templateConfig.CouponTimeFontWidth = Convert.ToInt16(numericUpDown18.Value);//画出的文字图片宽
+                templateConfig.CouponTimeFontHeight = Convert.ToInt16(numericUpDown17.Value);//画出的文字图片高
+
+                templateConfig.IsUseGoodsName = checkBox6.Checked;
+                templateConfig.GoodsNameFontColor = textBox8.Text;//商家名称字体颜色 例如：#FFFFFF
+                templateConfig.GoodsNameFontType = (String)comboBox4.SelectedValue;//字体类型 例如：宋体
+                templateConfig.GoodsNameSize = Convert.ToInt16(numericUpDown26.Value);//字体大小
+                templateConfig.GoodsNameFontX = Convert.ToInt16(numericUpDown25.Value);//左上角点x的位置
+                templateConfig.GoodsNameFontY = Convert.ToInt16(numericUpDown24.Value);//左上角点y的位置
+                templateConfig.GoodsNameFontWidth = Convert.ToInt16(numericUpDown23.Value);//画出的文字图片宽
+                templateConfig.GoodsNameFontHeight = Convert.ToInt16(numericUpDown22.Value);//画出的文字图片高
+
+
+                templateConfig.IsUsePrice = checkBox7.Checked;
+                templateConfig.PriceFontColor = textBox10.Text;//商家名称字体颜色 例如：#FFFFFF
+                templateConfig.PriceFontType = (String)comboBox5.SelectedValue;//字体类型 例如：宋体
+                templateConfig.PriceSize = Convert.ToInt16(numericUpDown31.Value);//字体大小
+                templateConfig.PriceFontX = Convert.ToInt16(numericUpDown30.Value);//左上角点x的位置
+                templateConfig.PriceFontY = Convert.ToInt16(numericUpDown29.Value);//左上角点y的位置
+                templateConfig.PriceFontWidth = Convert.ToInt16(numericUpDown28.Value);//画出的文字图片宽
+                templateConfig.PriceFontHeight = Convert.ToInt16(numericUpDown27.Value);//画出的文字图片高
+                templateConfig.PriceFontDelLine = checkBox1.Checked;
+                templateConfig.PriceFontItalic = checkBox11.Checked;
+                templateConfig.PriceFontBold = checkBox10.Checked;
+
+
+                templateConfig.IsUseVolume = checkBox8.Checked;
+                templateConfig.VolumeFontColor = textBox13.Text;//商家名称字体颜色 例如：#FFFFFF
+                templateConfig.VolumeFontType = (String)comboBox6.SelectedValue;//字体类型 例如：宋体
+                templateConfig.VolumeSize = Convert.ToInt16(numericUpDown36.Value);//字体大小
+                templateConfig.VolumeFontX = Convert.ToInt16(numericUpDown35.Value);//左上角点x的位置
+                templateConfig.VolumeFontY = Convert.ToInt16(numericUpDown34.Value);//左上角点y的位置
+                templateConfig.VolumeFontWidth = Convert.ToInt16(numericUpDown33.Value);//画出的文字图片宽
+                templateConfig.VolumeFontHeight = Convert.ToInt16(numericUpDown32.Value);//画出的文字图片高
+
+                templateConfig.IsUsePriceAfter = checkBox9.Checked;
+                templateConfig.PriceAfterFontColor = textBox15.Text;//商家名称字体颜色 例如：#FFFFFF
+                templateConfig.PriceAfterFontType = (String)comboBox7.SelectedValue;//字体类型 例如：宋体
+                templateConfig.PriceAfterSize = Convert.ToInt16(numericUpDown41.Value);//字体大小
+                templateConfig.PriceAfterFontX = Convert.ToInt16(numericUpDown40.Value);//左上角点x的位置
+                templateConfig.PriceAfterFontY = Convert.ToInt16(numericUpDown39.Value);//左上角点y的位置
+                templateConfig.PriceAfterFontWidth = Convert.ToInt16(numericUpDown38.Value);//画出的文字图片宽
+                templateConfig.PriceAfterFontHeight = Convert.ToInt16(numericUpDown37.Value);//画出的文字图片高
+                //生成配置文件
+                MyJsonUtil<TemplateConfig> myJsonUtil = new MyJsonUtil<TemplateConfig>();
+                MyFileUtil.writeToFile(fileDir + "template.json", myJsonUtil.parseJsonObj(templateConfig));
+                if (MainFormTemp != null)
+                {
+                    MainFormTemp.ResetTemplates();
+                }
+                
+                MessageBox.Show("模板创建成功");
+            }
+            else
+            {
+                MessageBox.Show("此模板名字重复！");
+                return;
+            }
+        }
     }
 }
