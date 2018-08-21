@@ -124,6 +124,9 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label26 = new System.Windows.Forms.Label();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.label42 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -495,7 +498,6 @@
             // 
             // button2
             // 
-            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(614, 567);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(99, 23);
@@ -721,6 +723,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label42);
+            this.groupBox3.Controls.Add(this.button13);
             this.groupBox3.Controls.Add(this.textBox11);
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.textBox7);
@@ -758,7 +762,7 @@
             // 
             this.textBox7.Location = new System.Drawing.Point(96, 146);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(211, 21);
+            this.textBox7.Size = new System.Drawing.Size(114, 21);
             this.textBox7.TabIndex = 18;
             // 
             // textBox6
@@ -975,6 +979,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.button14);
             this.tabPage4.Controls.Add(this.webBrowser1);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -1128,6 +1133,36 @@
             this.label26.TabIndex = 20;
             this.label26.Text = "label26";
             // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(216, 145);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(92, 23);
+            this.button13.TabIndex = 21;
+            this.button13.Text = "加载网络图片";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(14, 3);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(87, 23);
+            this.button14.TabIndex = 1;
+            this.button14.Text = "加载评论页面";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label42.Location = new System.Drawing.Point(178, 127);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(113, 12);
+            this.label42.TabIndex = 22;
+            this.label42.Text = "支持本地和网络图片";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1142,7 +1177,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "天猫评价水印助手(优惠券截图生成器)v1.6.0";
+            this.Text = "天猫评价水印助手(优惠券截图生成器)v1.6.1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1273,5 +1308,8 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Label label42;
     }
 }

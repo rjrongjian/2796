@@ -480,8 +480,8 @@ namespace RegeditActivity
 
         private void button2_Click(object sender, EventArgs e)//生成截图
         {
-            //在webbroswer加载评论
-            this.webBrowser1.Navigate(this.textBox1.Text);
+            CacheData.GoodsUrl = this.textBox1.Text;
+            
 
             if (string.IsNullOrWhiteSpace((string)comboBox1.SelectedValue))
             {
@@ -513,6 +513,12 @@ namespace RegeditActivity
             if (!validateResult)//生成截图时用到的数据都正常
             {
                 //Console.WriteLine("将数据生成到页面");
+                return;
+            }
+
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("请先加载图片");
                 return;
             }
 
@@ -1061,6 +1067,7 @@ namespace RegeditActivity
                 if (String.IsNullOrWhiteSpace(this.textBox7.Text))//商品图片空，商品地址也为空
                 {
                     alert("请输入正确的商品图片链接");
+                    return false;
                 }
                 else
                 {
@@ -1086,7 +1093,7 @@ namespace RegeditActivity
                         }
                         if (goodPic == null)
                         {
-                            alert("不能获取商品图片，请检查商品图片路径是否正确");
+                            alert("不能获取商品图片，请检查商品图片路径是否正确1");
                             return false;
                         }
                         this.pictureBox1.Image = goodPic;
@@ -1094,6 +1101,7 @@ namespace RegeditActivity
                     catch(Exception e)
                     {
                         alert("不能获取商品图片，请检查商品图片路径是否正确");
+                        MyLogUtil.ErrToLog("不能正确加载图片："+e);
                         return false;
                     }
 
@@ -1506,6 +1514,48 @@ namespace RegeditActivity
 
             this.ResetTemplates();
             MessageBox.Show("重新加载模板成功！");
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBox7.Text))
+            {
+                MessageBox.Show("请输入正确的图片地址");
+                return;
+            }
+            else
+            {
+                try
+                {
+                    this.pictureBox1.Image = ImageTool.getImageBy(textBox7.Text);
+                }
+                catch(Exception ex)
+                {
+                    MyLogUtil.ErrToLog("加载图片失败，原因："+ex);
+                    MessageBox.Show("加载图片失败，请检查图片地址");
+                }
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrWhiteSpace(CacheData.GoodsUrl))
+                {
+                    //在webbroswer加载评论
+                    this.webBrowser1.Navigate(CacheData.GoodsUrl);
+                }
+                else
+                {
+                    MessageBox.Show("请在商品详情链接中添加正确地址");
+                }
+            }catch(Exception ex)
+            {
+                MyLogUtil.ErrToLog("加载评论失败，原因："+ex);
+                MessageBox.Show("请检查商品详情链接是否正确");
+            }
+            
         }
     }
 }

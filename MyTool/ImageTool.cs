@@ -49,6 +49,12 @@ namespace MyTools
                 return 0;
             }
             //网络图片
+            Regex reg2 = new Regex("[http://|https://][\\s\\S]+");
+            Match match2 = reg2.Match(imgPath);
+            if (match2.Success)
+            {
+                return 1;
+            }
             Regex reg = new Regex("[A-Za-z]:[\\s\\S]+[.jpg|.jpeg|.gif|.png|.bmp]");
             Match match = reg.Match(imgPath);
 
@@ -56,12 +62,7 @@ namespace MyTools
             {
                 return 2;
             }
-            Regex reg2 = new Regex("[http://|https://][\\s\\S]+");
-            Match match2 = reg.Match(imgPath);
-            if (match2.Success)
-            {
-                return 1;
-            }
+            
 
             return 0;
 

@@ -2,6 +2,7 @@
 using DeepNaiWorkshop_2796.MyTool;
 using DeepNaiWorkshop_6001.MyTool;
 using FileCreator.MyTool;
+using MyTools;
 using RegeditActivity;
 using System;
 using System.Collections.Generic;
@@ -285,6 +286,11 @@ namespace LoginActivity
         private void button1_Click_2(object sender, EventArgs e)
         {
             Console.WriteLine(FontStyle.Regular == 0);
+        }
+
+        private void button1_Click_3(object sender, EventArgs e)
+        {
+            Console.WriteLine(ImageTool.isLegalOfImgPath("https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_16176567162860368937%22%7D&n_type=0&p_from=1"));
         }
     }
 }
