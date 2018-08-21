@@ -39,9 +39,8 @@ namespace LoginActivity
                 
             }
             */
-            //Application.Run(new FrmLogin());
-            Application.Run(new MainForm());
-            //Application.Run(new TemplateForm(null));
+            Application.Run(new FrmLogin());
+
         }
 
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)

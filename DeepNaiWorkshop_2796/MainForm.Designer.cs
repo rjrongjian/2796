@@ -1142,7 +1142,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "天猫评价水印助手(优惠券截图生成器)v1.5.0";
+            this.Text = "天猫评价水印助手(优惠券截图生成器)v1.6.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);

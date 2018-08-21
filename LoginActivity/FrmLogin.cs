@@ -276,5 +276,15 @@ namespace LoginActivity
             TemplateConfig templateConfig = new TemplateConfig();
             MyFileUtil.writeToFile(path, myJsonUtil.parseJsonObj(templateConfig));
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Console.WriteLine(MyDateUtil.GetTimeStamp(System.DateTime.Now));
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            Console.WriteLine(FontStyle.Regular == 0);
+        }
     }
 }

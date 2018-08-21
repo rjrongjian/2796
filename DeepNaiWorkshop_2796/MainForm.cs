@@ -571,7 +571,7 @@ namespace RegeditActivity
                 //Point couponValuePoint = new Point((int)(rmbPoint.X + rmbSize.Width) - 10, (int)(rmbPoint.Y - (couponValueSize.Height - rmbSize.Height) + 8));
                 //g.DrawString(rmb, rmbFont, rmbBrush, rmbPoint, StringFormat.GenericDefault);
                 //g.DrawString(couponValue, couponValueFont, rmbBrush, couponValuePoint, StringFormat.GenericDefault);
-                g.DrawString(couponValue, couponValueFont, rmbBrush, new Rectangle(templateConfig.CouponValueFontX, templateConfig.CouponValueFontY, templateConfig.CouponValueFontWidth, templateConfig.CouponValueFontHeight), sf1);
+                g.DrawString(couponValue, couponValueFont, rmbBrush, new Rectangle(templateConfig.CouponValueFontX, templateConfig.CouponValueFontY, templateConfig.CouponValueFontWidth, templateConfig.CouponValueFontHeight), sf);
             }
 
             if (templateConfig.IsUseCouponTime)
@@ -624,9 +624,25 @@ namespace RegeditActivity
                 {
                     result = result | FontStyle.Italic;
                 }
+                try
+                {
+                    if (result == 0)
+                    {
+                        priceFont = new Font(templateConfig.PriceFontType, templateConfig.PriceSize);
+                    }
+                    else
+                    {
+                        priceFont = new Font(templateConfig.PriceFontType, templateConfig.PriceSize, result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("当前电脑不支持此字体，请更换");
 
+                    return;
+                }
                 
-                priceFont = new Font(templateConfig.PriceFontType, templateConfig.PriceSize, result);
+                
                
                 SolidBrush priceBrush = new SolidBrush(ColorTool.getColorFromHtml(templateConfig.PriceFontColor));
                 //Point pricePoint = new Point(183, 360);

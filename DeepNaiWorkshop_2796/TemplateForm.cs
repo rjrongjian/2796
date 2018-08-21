@@ -34,31 +34,37 @@ namespace DeepNaiWorkshop_2796
             this.comboBox1.DataSource = new List<ResourceInfoForCombox>(CacheData.fontList);//防止多个combobox绑定同一个数据源导致事件联动
             this.comboBox1.ValueMember = "moduleName";
             this.comboBox1.DisplayMember = "moduleName";
+            this.comboBox1.SelectedIndex = CacheData.fontList.Count>0?CacheData.fontList.Count - 1:0;
 
             this.comboBox2.DataSource = new List<ResourceInfoForCombox>(CacheData.fontList);//防止多个combobox绑定同一个数据源导致事件联动
             this.comboBox2.ValueMember = "moduleName";
             this.comboBox2.DisplayMember = "moduleName";
-
+            this.comboBox2.SelectedIndex = CacheData.fontList.Count > 0 ? CacheData.fontList.Count - 1 : 0;
 
             this.comboBox3.DataSource = new List<ResourceInfoForCombox>(CacheData.fontList);//防止多个combobox绑定同一个数据源导致事件联动
             this.comboBox3.ValueMember = "moduleName";
             this.comboBox3.DisplayMember = "moduleName";
+            this.comboBox3.SelectedIndex = CacheData.fontList.Count > 0 ? CacheData.fontList.Count - 1 : 0;
 
             this.comboBox4.DataSource = new List<ResourceInfoForCombox>(CacheData.fontList);//防止多个combobox绑定同一个数据源导致事件联动
             this.comboBox4.ValueMember = "moduleName";
             this.comboBox4.DisplayMember = "moduleName";
+            this.comboBox4.SelectedIndex = CacheData.fontList.Count > 0 ? CacheData.fontList.Count - 1 : 0;
 
             this.comboBox5.DataSource = new List<ResourceInfoForCombox>(CacheData.fontList);//防止多个combobox绑定同一个数据源导致事件联动
             this.comboBox5.ValueMember = "moduleName";
             this.comboBox5.DisplayMember = "moduleName";
+            this.comboBox5.SelectedIndex = CacheData.fontList.Count > 0 ? CacheData.fontList.Count - 1 : 0;
 
             this.comboBox6.DataSource = new List<ResourceInfoForCombox>(CacheData.fontList);//防止多个combobox绑定同一个数据源导致事件联动
             this.comboBox6.ValueMember = "moduleName";
             this.comboBox6.DisplayMember = "moduleName";
+            this.comboBox6.SelectedIndex = CacheData.fontList.Count > 0 ? CacheData.fontList.Count - 1 : 0;
 
             this.comboBox7.DataSource = new List<ResourceInfoForCombox>(CacheData.fontList);//防止多个combobox绑定同一个数据源导致事件联动
             this.comboBox7.ValueMember = "moduleName";
             this.comboBox7.DisplayMember = "moduleName";
+            this.comboBox7.SelectedIndex = CacheData.fontList.Count > 0 ? CacheData.fontList.Count - 1 : 0;
 
 
             sf = new StringFormat();
@@ -220,7 +226,24 @@ namespace DeepNaiWorkshop_2796
                 result = result | FontStyle.Italic;
             }
             */
-            watermarkerFont = new Font(fontType, fontSizeTemp, result);
+            try
+            {
+                if (result == 0)
+                {
+                    watermarkerFont = new Font(fontType, fontSizeTemp);
+                }
+                else
+                {
+                    watermarkerFont = new Font(fontType, fontSizeTemp, result);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("当前电脑不支持此字体，请更换");
+
+                return;
+            }
+
             Color fontColor;
             try
             {
@@ -371,9 +394,9 @@ namespace DeepNaiWorkshop_2796
 
 
 
-            Font watermarkerFont = null;
-            FontStyle result = FontStyle.Regular;
-            List<FontStyle> style = new List<FontStyle>();
+            //Font watermarkerFont = null;
+            //FontStyle result = FontStyle.Regular;
+            //List<FontStyle> style = new List<FontStyle>();
             /*
             if (templateConfig.PriceFontBold)
             {
@@ -562,7 +585,24 @@ namespace DeepNaiWorkshop_2796
                 result = result | FontStyle.Italic;
             }
             */
-            watermarkerFont = new Font(fontType, fontSizeTemp, result);
+
+            try
+            {
+                if (result == 0)
+                {
+                    watermarkerFont = new Font(fontType, fontSizeTemp);
+                }
+                else
+                {
+                    watermarkerFont = new Font(fontType, fontSizeTemp, result);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("当前电脑不支持此字体，请更换");
+
+                return;
+            }
             Color fontColor;
             try
             {
@@ -748,7 +788,23 @@ namespace DeepNaiWorkshop_2796
                 result = result | FontStyle.Italic;
             }
             */
-            watermarkerFont = new Font(fontType, fontSizeTemp, result);
+            try
+            {
+                if (result == 0)
+                {
+                    watermarkerFont = new Font(fontType, fontSizeTemp);
+                }
+                else
+                {
+                    watermarkerFont = new Font(fontType, fontSizeTemp, result);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("当前电脑不支持此字体，请更换");
+
+                return;
+            }
             Color fontColor;
             try
             {
@@ -934,7 +990,23 @@ namespace DeepNaiWorkshop_2796
                 result = result | FontStyle.Italic;
             }
             */
-            watermarkerFont = new Font(fontType, fontSizeTemp, result);
+            try
+            {
+                if (result == 0)
+                {
+                    watermarkerFont = new Font(fontType, fontSizeTemp);
+                }
+                else
+                {
+                    watermarkerFont = new Font(fontType, fontSizeTemp, result);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("当前电脑不支持此字体，请更换");
+
+                return;
+            }
             Color fontColor;
             try
             {
@@ -1119,8 +1191,24 @@ namespace DeepNaiWorkshop_2796
             {
                 result = result | FontStyle.Italic;
             }
-            
-            watermarkerFont = new Font(fontType, fontSizeTemp, result);
+
+            try
+            {
+                if (result == 0)
+                {
+                    watermarkerFont = new Font(fontType, fontSizeTemp);
+                }
+                else
+                {
+                    watermarkerFont = new Font(fontType, fontSizeTemp, result);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("当前电脑不支持此字体，请更换");
+
+                return;
+            }
             Color fontColor;
             try
             {
@@ -1306,7 +1394,23 @@ namespace DeepNaiWorkshop_2796
                 result = result | FontStyle.Italic;
             }
             */
-            watermarkerFont = new Font(fontType, fontSizeTemp, result);
+            try
+            {
+                if (result == 0)
+                {
+                    watermarkerFont = new Font(fontType, fontSizeTemp);
+                }
+                else
+                {
+                    watermarkerFont = new Font(fontType, fontSizeTemp, result);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("当前电脑不支持此字体，请更换");
+
+                return;
+            }
             Color fontColor;
             try
             {
@@ -1492,7 +1596,23 @@ namespace DeepNaiWorkshop_2796
                 result = result | FontStyle.Italic;
             }
             */
-            watermarkerFont = new Font(fontType, fontSizeTemp, result);
+            try
+            {
+                if (result == 0)
+                {
+                    watermarkerFont = new Font(fontType, fontSizeTemp);
+                }
+                else
+                {
+                    watermarkerFont = new Font(fontType, fontSizeTemp, result);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("当前电脑不支持此字体，请更换");
+
+                return;
+            }
             Color fontColor;
             try
             {
@@ -1626,7 +1746,7 @@ namespace DeepNaiWorkshop_2796
             string templateName = "";
             if (string.IsNullOrWhiteSpace(textBox16.Text))
             {
-                templateName = MyDateUtil.GetTimeStamp(DateTime.Now.Date);
+                templateName = MyDateUtil.GetTimeStamp(System.DateTime.Now);
             }
             else
             {

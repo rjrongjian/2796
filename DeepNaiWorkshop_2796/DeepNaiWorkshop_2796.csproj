@@ -155,6 +155,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Template\2018-08-21_1\template.json" />
     <None Include="Template\模板1\template.json" />
     <None Include="Template\模板2\template.json" />
     <None Include="Template\模板3\template.json" />
@@ -201,6 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo_32x32.ico" />
+    <Content Include="Template\2018-08-21_1\template.jpg" />
     <Content Include="Template\模板1\template.jpg" />
     <Content Include="Template\模板2\template.png" />
     <Content Include="Template\模板3\template.png" />
