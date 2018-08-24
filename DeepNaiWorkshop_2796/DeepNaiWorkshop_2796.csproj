@@ -107,6 +107,12 @@
     <Compile Include="RuntimeVerForm.designer.cs">
       <DependentUpon>RuntimeVerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TemplateDisplayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TemplateDisplayForm.Designer.cs">
+      <DependentUpon>TemplateDisplayForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TemplateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     </Compile>
     <EmbeddedResource Include="RuntimeVerForm.resx">
       <DependentUpon>RuntimeVerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TemplateDisplayForm.resx">
+      <DependentUpon>TemplateDisplayForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TemplateForm.resx">
       <DependentUpon>TemplateForm.cs</DependentUpon>

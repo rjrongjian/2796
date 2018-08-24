@@ -84,6 +84,8 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.button13 = new System.Windows.Forms.Button();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -110,6 +112,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button14 = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label33 = new System.Windows.Forms.Label();
@@ -124,9 +127,7 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label26 = new System.Windows.Forms.Label();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.label42 = new System.Windows.Forms.Label();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -349,6 +350,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.checkBox3);
             this.tabPage1.Controls.Add(this.label41);
             this.tabPage1.Controls.Add(this.label40);
             this.tabPage1.Controls.Add(this.button12);
@@ -417,6 +419,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 24;
+            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
             // label31
             // 
@@ -742,6 +745,26 @@
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label42.Location = new System.Drawing.Point(178, 127);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(113, 12);
+            this.label42.TabIndex = 22;
+            this.label42.Text = "支持本地和网络图片";
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(216, 145);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(92, 23);
+            this.button13.TabIndex = 21;
+            this.button13.Text = "加载网络图片";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
             // textBox11
             // 
             this.textBox11.Location = new System.Drawing.Point(222, 85);
@@ -858,9 +881,9 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Location = new System.Drawing.Point(15, 41);
+            this.groupBox1.Location = new System.Drawing.Point(15, 73);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(380, 207);
+            this.groupBox1.Size = new System.Drawing.Size(380, 175);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "商品信息";
@@ -869,7 +892,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.ForeColor = System.Drawing.Color.Red;
-            this.label24.Location = new System.Drawing.Point(2, 89);
+            this.label24.Location = new System.Drawing.Point(2, 80);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(377, 12);
             this.label24.TabIndex = 14;
@@ -878,7 +901,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(180, 144);
+            this.label10.Location = new System.Drawing.Point(180, 135);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 12);
             this.label10.TabIndex = 12;
@@ -887,7 +910,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 145);
+            this.label9.Location = new System.Drawing.Point(9, 136);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 12);
             this.label9.TabIndex = 9;
@@ -896,14 +919,14 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.CustomFormat = "yyyy.MM.dd";
-            this.dateTimePicker2.Location = new System.Drawing.Point(224, 140);
+            this.dateTimePicker2.Location = new System.Drawing.Point(224, 131);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(105, 21);
             this.dateTimePicker2.TabIndex = 8;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(243, 113);
+            this.textBox3.Location = new System.Drawing.Point(243, 104);
             this.textBox3.MaxLength = 7;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(41, 21);
@@ -913,7 +936,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(158, 118);
+            this.label7.Location = new System.Drawing.Point(158, 109);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 12);
             this.label7.TabIndex = 5;
@@ -921,7 +944,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(80, 31);
+            this.textBox1.Location = new System.Drawing.Point(80, 22);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(265, 21);
             this.textBox1.TabIndex = 1;
@@ -929,7 +952,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 34);
+            this.label5.Location = new System.Drawing.Point(9, 25);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 0;
@@ -937,7 +960,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(11, 58);
+            this.button1.Location = new System.Drawing.Point(11, 49);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(99, 23);
             this.button1.TabIndex = 2;
@@ -948,7 +971,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 118);
+            this.label8.Location = new System.Drawing.Point(9, 109);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 6;
@@ -957,7 +980,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "yyyy.MM.dd";
-            this.dateTimePicker1.Location = new System.Drawing.Point(52, 141);
+            this.dateTimePicker1.Location = new System.Drawing.Point(52, 132);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(106, 21);
             this.dateTimePicker1.TabIndex = 3;
@@ -987,6 +1010,16 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "评论";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(14, 3);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(87, 23);
+            this.button14.TabIndex = 1;
+            this.button14.Text = "加载评论页面";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // webBrowser1
             // 
@@ -1133,35 +1166,16 @@
             this.label26.TabIndex = 20;
             this.label26.Text = "label26";
             // 
-            // button13
+            // checkBox3
             // 
-            this.button13.Location = new System.Drawing.Point(216, 145);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(92, 23);
-            this.button13.TabIndex = 21;
-            this.button13.Text = "加载网络图片";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(14, 3);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(87, 23);
-            this.button14.TabIndex = 1;
-            this.button14.Text = "加载评论页面";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label42.Location = new System.Drawing.Point(178, 127);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(113, 12);
-            this.label42.TabIndex = 22;
-            this.label42.Text = "支持本地和网络图片";
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(20, 43);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(252, 16);
+            this.checkBox3.TabIndex = 29;
+            this.checkBox3.Text = "实时预览切换选中的模板(重选模板后生效)";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // MainForm
             // 
@@ -1177,7 +1191,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "天猫评价水印助手(优惠券截图生成器)v1.6.1";
+            this.Text = "天猫评价水印助手(优惠券截图生成器)v1.6.2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1311,5 +1325,6 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.CheckBox checkBox3;
     }
 }

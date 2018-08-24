@@ -29,6 +29,7 @@ namespace RegeditActivity
         private Image originalCouponPic;//原始的优惠券截图背景图片
         private PictureBox waterPictureBox;//水印图片控件
         private PictureBox waterPictureBox2;//水印图片控件(订单)
+        private TemplateDisplayForm templateDisplayForm; 
 
         public MainForm()
         {
@@ -59,6 +60,15 @@ namespace RegeditActivity
             comboBox1.DataSource = MySystemUtil.GetAllTemplateNames();
 
             this.webBrowser1.ScriptErrorsSuppressed = true;
+
+
+            templateDisplayForm = new TemplateDisplayForm(this);
+
+        }
+
+        public void ResetTemplateForm()
+        {
+            templateDisplayForm = null;
         }
 
         public void ResetTemplates()
@@ -1541,10 +1551,10 @@ namespace RegeditActivity
         {
             try
             {
-                if (!String.IsNullOrWhiteSpace(CacheData.GoodsUrl))
+                if (!String.IsNullOrWhiteSpace(textBox1.Text))
                 {
                     //在webbroswer加载评论
-                    this.webBrowser1.Navigate(CacheData.GoodsUrl);
+                    this.webBrowser1.Navigate(textBox1.Text);
                 }
                 else
                 {
@@ -1556,6 +1566,56 @@ namespace RegeditActivity
                 MessageBox.Show("请检查商品详情链接是否正确");
             }
             
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (templateDisplayForm == null)
+            {
+                templateDisplayForm = new TemplateDisplayForm(this);
+            }
+            if (checkBox3.Checked)
+            {
+                if (string.IsNullOrWhiteSpace((string)comboBox1.SelectedValue))
+                {
+                    MessageBox.Show("请先选中模板");
+                    return;
+                }
+
+                //加载选中的模板
+                String templateConfigPath = MySystemUtil.GetTemplateImgRoot() + comboBox1.SelectedValue + "\\template.json";
+                if (!File.Exists(templateConfigPath))
+                {
+                    MessageBox.Show("当前选中的模板信息不完整");
+                    return;
+                }
+                string content = MyFileUtil.readFileAll(templateConfigPath);
+                MyJsonUtil<TemplateConfig> myJsonUtil = new MyJsonUtil<TemplateConfig>();
+                TemplateConfig templateConfig = myJsonUtil.parseJsonStr(content);
+
+
+                //获取图片模板
+                String templateImgPath = MySystemUtil.GetTemplateImgRoot() + comboBox1.SelectedValue + "\\" + templateConfig.BackImg;
+                if (!File.Exists(templateImgPath))
+                {
+                    MessageBox.Show("当前选中的模板中不存在背景图片");
+                    return;
+                }
+                Image img = Image.FromFile(templateImgPath);
+                templateDisplayForm.DisplayImg(img);
+            }
+            else
+            {
+                templateDisplayForm.Hide();
+            }
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!checkBox3.Checked&& templateDisplayForm!=null)
+            {
+                templateDisplayForm.Hide();
+            }
         }
     }
 }

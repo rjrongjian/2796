@@ -10,15 +10,16 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using www_52bang_site_enjoy.MyTool;
 /*
- * https://www.cnblogs.com/zkwarrior/p/5668137.html
- * https://www.cnblogs.com/lonelyxmas/p/8564650.html
- * https://www.cnblogs.com/gc2013/p/3678212.html
- * https://www.cnblogs.com/xuekai-to-sharp/p/4014998.html
- * https://blog.csdn.net/real_myth/article/details/49821009
- * http://www.makaidong.com/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E6%90%9C/29590.shtml
- * https://www.cnblogs.com/cinlap/p/3688204.html (实现高斯模糊)
- */
+* https://www.cnblogs.com/zkwarrior/p/5668137.html
+* https://www.cnblogs.com/lonelyxmas/p/8564650.html
+* https://www.cnblogs.com/gc2013/p/3678212.html
+* https://www.cnblogs.com/xuekai-to-sharp/p/4014998.html
+* https://blog.csdn.net/real_myth/article/details/49821009
+* http://www.makaidong.com/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E6%90%9C/29590.shtml
+* https://www.cnblogs.com/cinlap/p/3688204.html (实现高斯模糊)
+*/
 namespace DeepNaiWorkshop_2796
 {
     public partial class ImageForm : Form
@@ -403,16 +404,28 @@ namespace DeepNaiWorkshop_2796
 
         private void button7_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Image files (*.jpg)|*.jpg";
-            saveFileDialog.FilterIndex = 0;
-            saveFileDialog.RestoreDirectory = true;
-            saveFileDialog.Title = "导出文件保存路径";
-            saveFileDialog.FileName = null;
-            saveFileDialog.ShowDialog();
-            string strPath = saveFileDialog.FileName;
-            Image img = ImageHistory[CurrentImage];
-            img.Save(strPath);
+            try
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Image files (*.jpg)|*.jpg";
+                saveFileDialog.FilterIndex = 0;
+                saveFileDialog.RestoreDirectory = true;
+                saveFileDialog.Title = "导出文件保存路径";
+                saveFileDialog.FileName = null;
+                saveFileDialog.ShowDialog();
+                string strPath = saveFileDialog.FileName;
+                Image img = ImageHistory[CurrentImage];
+                img.Save(strPath);
+                MessageBox.Show("图片保存成功");
+            }
+            catch(Exception ex)
+            {
+                MyLogUtil.ErrToLog("保存图片失败，原因："+ex);
+                MessageBox.Show("保存失败，请重新保存");
+            }
+            
+
+
         }
     }
 }
