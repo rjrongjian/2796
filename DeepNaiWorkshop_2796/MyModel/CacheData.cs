@@ -14,5 +14,6 @@ namespace DeepNaiWorkshop_2796.MyModel
         public static List<ResourceInfoForCombox> fontList;
         public static String NotifyInfo;
         public static String GoodsUrl;
+        public static WatermarkTextConfig WatermarkTextConfig;
     }
 }

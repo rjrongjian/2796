@@ -121,6 +121,10 @@ namespace www_52bang_site_enjoy.MyTool
             }
             return dirPath;
         }
+        public static string GetWatermarkConfigPath()
+        {
+            return GetPath() + "WatermarkTextConfig.json";
+        }
         /// <summary>
         /// 获取所有文件夹名称
         /// </summary>

@@ -81,6 +81,7 @@
     <Compile Include="MyModel\CacheData.cs" />
     <Compile Include="MyModel\ResourceInfoForCombox.cs" />
     <Compile Include="MyModel\TemplateConfig.cs" />
+    <Compile Include="MyModel\WatermarkTextConfig.cs" />
     <Compile Include="MyTool\HttpCodeUtil.cs" />
     <Compile Include="MyTool\ImageClass.cs" />
     <Compile Include="MyTool\MyDateUtil.cs" />

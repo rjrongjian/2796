@@ -1,5 +1,7 @@
 ﻿using DeepNaiWorkshop_2796.MyModel;
 using DeepNaiWorkshop_2796.MyTool;
+using DeepNaiWorkshop_6001.MyTool;
+using FileCreator.MyTool;
 using MyTools;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -58,6 +61,35 @@ namespace DeepNaiWorkshop_2796
             this.comboBox1.DataSource = CacheData.fontList;//防止多个combobox绑定同一个数据源导致事件联动
             this.comboBox1.ValueMember = "moduleName";
             this.comboBox1.DisplayMember = "moduleName";
+
+
+            //加载水印配置
+            String path = MySystemUtil.GetWatermarkConfigPath();
+            if (File.Exists(path))
+            {
+                try
+                {
+                    MyJsonUtil<WatermarkTextConfig> myJsonUtil = new MyJsonUtil<WatermarkTextConfig>();
+                    CacheData.WatermarkTextConfig = myJsonUtil.parseJsonStr(MyFileUtil.readFileAll(path));
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("加载文字水印配置失败");
+                    MyLogUtil.ErrToLog("加载文字水印配置失败,原因：" + ex);
+                }
+            }
+            //加载配置
+            if (CacheData.WatermarkTextConfig != null)
+            {
+                checkBox1.Checked = CacheData.WatermarkTextConfig.IsBold;
+                checkBox2.Checked = CacheData.WatermarkTextConfig.IsDelete;
+                comboBox1.Text = CacheData.WatermarkTextConfig.FontStyle;
+                numericUpDown2.Value = CacheData.WatermarkTextConfig.FontSize;
+                textBox12.Text = CacheData.WatermarkTextConfig.FontColor;
+                textBox5.Text = CacheData.WatermarkTextConfig.Text;
+                numericUpDown3.Value = CacheData.WatermarkTextConfig.Degree;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -425,6 +457,29 @@ namespace DeepNaiWorkshop_2796
             }
             
 
+
+        }
+        /// <summary>
+        /// 保存文字水印配置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button8_Click(object sender, EventArgs e)
+        {
+            //保存配置
+            WatermarkTextConfig w = new WatermarkTextConfig();
+            w.IsBold = checkBox1.Checked;
+            w.IsDelete = checkBox2.Checked;
+            w.FontStyle = (String)comboBox1.SelectedValue;
+            w.FontColor = textBox12.Text;
+            w.FontSize = Convert.ToInt16(numericUpDown2.Value);
+            w.Degree = Convert.ToInt16(numericUpDown3.Value);
+            w.Text = textBox5.Text;
+
+            String path = MySystemUtil.GetWatermarkConfigPath();
+            MyJsonUtil<WatermarkTextConfig> myJsonUtil = new MyJsonUtil<WatermarkTextConfig>();
+            MyFileUtil.writeToFile(path, myJsonUtil.parseJsonObj(w));
+            MessageBox.Show("保存成功");
 
         }
     }

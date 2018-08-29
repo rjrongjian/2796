@@ -82,6 +82,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -108,7 +109,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(713, 537);
+            this.button1.Location = new System.Drawing.Point(713, 550);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -118,7 +119,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(493, 538);
+            this.button2.Location = new System.Drawing.Point(493, 551);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(92, 23);
             this.button2.TabIndex = 2;
@@ -128,7 +129,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(409, 538);
+            this.button3.Location = new System.Drawing.Point(409, 551);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 3;
@@ -196,7 +197,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.listBox1);
-            this.groupBox2.Location = new System.Drawing.Point(399, 477);
+            this.groupBox2.Location = new System.Drawing.Point(399, 490);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(389, 54);
             this.groupBox2.TabIndex = 5;
@@ -216,7 +217,7 @@
             // 
             this.groupBox3.Controls.Add(this.linkLabel5);
             this.groupBox3.Controls.Add(this.linkLabel4);
-            this.groupBox3.Location = new System.Drawing.Point(401, 431);
+            this.groupBox3.Location = new System.Drawing.Point(401, 444);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(389, 41);
             this.groupBox3.TabIndex = 6;
@@ -300,6 +301,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.button8);
             this.groupBox5.Controls.Add(this.comboBox1);
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.Controls.Add(this.label10);
@@ -335,7 +337,7 @@
             this.groupBox5.Controls.Add(this.radioButton1);
             this.groupBox5.Location = new System.Drawing.Point(399, 106);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(389, 319);
+            this.groupBox5.Size = new System.Drawing.Size(389, 332);
             this.groupBox5.TabIndex = 8;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "水印印章";
@@ -452,7 +454,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(126, 299);
+            this.label5.Location = new System.Drawing.Point(6, 307);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(257, 12);
             this.label5.TabIndex = 35;
@@ -708,7 +710,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(652, 538);
+            this.button7.Location = new System.Drawing.Point(652, 551);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(55, 23);
             this.button7.TabIndex = 9;
@@ -716,11 +718,21 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(269, 299);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(112, 23);
+            this.button8.TabIndex = 52;
+            this.button8.Text = "保存文字水印配置";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // ImageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 573);
+            this.ClientSize = new System.Drawing.Size(800, 591);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -810,5 +822,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
     }
 }

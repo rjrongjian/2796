@@ -64,6 +64,9 @@ namespace RegeditActivity
 
             templateDisplayForm = new TemplateDisplayForm(this);
 
+
+            
+
         }
 
         public void ResetTemplateForm()
