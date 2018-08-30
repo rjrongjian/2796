@@ -124,18 +124,29 @@ namespace RegeditActivity
                     {
                         //url = url.Replace("chaoshi.detail.tmall.com", "detail.m.tmall.com");
                         //htmlWebContent = WebTool.getHtmlContent(url, "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Mobile Safari/537.36");
-                        WebbroswerForm webbroswerForm = new WebbroswerForm();
-                        webbroswerForm.LoadUrl(url);
-                        webbroswerForm.ShowDialog();
-                        if (CacheData.BaseDataBean==null)
+                        try
                         {
-                            setMainFormBtnStatus(7);//获取商品数据、生成截图按钮可用
-                            MessageBox.Show("未能获取天猫超市数据，请手动更改数据");
-                            return;
+
+
+                            WebbroswerForm webbroswerForm = new WebbroswerForm();
+                            webbroswerForm.LoadUrl(url);
+                            webbroswerForm.ShowDialog();
+                            if (CacheData.BaseDataBean == null)
+                            {
+                                setMainFormBtnStatus(7);//获取商品数据、生成截图按钮可用
+                                MessageBox.Show("未能获取天猫超市数据，请手动更改数据");
+                                return;
+                            }
+                            else
+                            {
+                                dataBean = CacheData.BaseDataBean;
+                            }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            dataBean = CacheData.BaseDataBean;
+                            MyLogUtil.ErrToLog("加载天猫数据失败，原因："+ ex);
+                            MessageBox.Show("加载失败，请手动更改数据");
+                            return;
                         }
                     }
                     else
