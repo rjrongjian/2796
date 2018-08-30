@@ -15,5 +15,6 @@ namespace DeepNaiWorkshop_2796.MyModel
         public static String NotifyInfo;
         public static String GoodsUrl;
         public static WatermarkTextConfig WatermarkTextConfig;
+        public static BaseDataBean BaseDataBean;
     }
 }

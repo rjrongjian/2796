@@ -49,7 +49,7 @@ namespace RegeditActivity
             for (int i = 0; i < Count; i++)
             {
                 CacheData.fontList.Add(new ResourceInfoForCombox { index = CacheData.fontList.Count, moduleName = MyFontFamilies[i].Name });
-                Console.WriteLine(MyFontFamilies[i].Name);
+                //Console.WriteLine(MyFontFamilies[i].Name);
                 //MyFontFamilies[i]
 
             }
@@ -107,18 +107,55 @@ namespace RegeditActivity
                     
                     LogTool.log("正在获取网页信息", this.logLabel);
                     Console.WriteLine("正在获取网页信息...");
-                    String htmlWebContent = WebTool.getHtmlContent(url);
+                    String htmlWebContent = "";
+                    /*
+                    if (validateResult.message=="3"&&url.Contains("chaoshi.detail.tmall.com"))//天猫超市的链接，需要转换成手机端访问
+                    {
+                        url = url.Replace("chaoshi.detail.tmall.com", "detail.m.tmall.com");
+                        htmlWebContent = WebTool.getHtmlContent(url, "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Mobile Safari/537.36");
+                    }
+                    else
+                    {
+                        htmlWebContent = WebTool.getHtmlContent(url);
+                    }
+                    */
+
+                    if (validateResult.message == "3")//天猫超市的链接需要通过浏览器爬取
+                    {
+                        //url = url.Replace("chaoshi.detail.tmall.com", "detail.m.tmall.com");
+                        //htmlWebContent = WebTool.getHtmlContent(url, "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Mobile Safari/537.36");
+                        WebbroswerForm webbroswerForm = new WebbroswerForm();
+                        webbroswerForm.LoadUrl(url);
+                        webbroswerForm.ShowDialog();
+                        if (CacheData.BaseDataBean==null)
+                        {
+                            setMainFormBtnStatus(7);//获取商品数据、生成截图按钮可用
+                            MessageBox.Show("未能获取天猫超市数据，请手动更改数据");
+                            return;
+                        }
+                        else
+                        {
+                            dataBean = CacheData.BaseDataBean;
+                        }
+                    }
+                    else
+                    {
+                        htmlWebContent = WebTool.getHtmlContent(url);
+                        dataBean = taoBaoTool.parseShopData(int.Parse(validateResult.message), htmlWebContent);
+                        
+                    }
+
                     Console.WriteLine("开始解析网页...");
                     //Console.WriteLine("网页内容："+ htmlWebContent);
-                    LogTool.log("开始解析网页", this.logLabel);
+                    //LogTool.log("开始解析网页", this.logLabel);
                     //目前只支持天猫
 
                     //if (TaoBaoTool.GOOD_TYPE_TMALL == int.Parse(validateResult.message))
                     //{
-                    dataBean = taoBaoTool.parseShopData(int.Parse(validateResult.message), htmlWebContent);
                     if (dataBean == null)
                     {
                         alert("不能正常解析数据，请手动录入");
+                        return;
                     }
 
                     //赋值

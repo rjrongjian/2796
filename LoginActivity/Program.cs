@@ -39,7 +39,8 @@ namespace LoginActivity
                 
             }
             */
-            Application.Run(new FrmLogin());
+            //Application.Run(new FrmLogin());
+            Application.Run(new MainForm());
 
         }
 

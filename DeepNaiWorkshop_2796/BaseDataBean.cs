@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DeepNaiWorkshop_2796
 {
-    class BaseDataBean
+    public class BaseDataBean
     {
         private String _name;//商品标题
         private Image _mainPic;//商品主图

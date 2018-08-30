@@ -120,4 +120,7 @@
   <data name="webBrowser1.Url" xml:space="preserve">
     <value>https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.64de27f3w23lC3&amp;id=545735165592&amp;skuId=3458604047487&amp;areaId=420200&amp;user_id=773610237&amp;cat_id=50025135&amp;is_b=1&amp;rn=e6753522e88ac374cd239195b7189a00</value>
   </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

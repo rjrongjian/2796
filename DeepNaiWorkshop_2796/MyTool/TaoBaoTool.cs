@@ -12,6 +12,7 @@ namespace DeepNaiWorkshop_2796.MyTool
     {
         public static int GOOD_TYPE_TMALL = 1;
         public static int GOOD_TYPE_TAOBAO = 2;
+        public static int GOOD_TYPE_TMALLMARKET = 3;
 
         public RespMessage isTmallOrTaoBaoItemPage(String url)
         {
@@ -22,14 +23,21 @@ namespace DeepNaiWorkshop_2796.MyTool
 
             String taoBaoItemPattern = "item.taobao.com/item.htm";
             String tmallTemPattern = "detail.tmall.com/item.htm";
+            String tmallMarketPattern = "chaoshi.detail.tmall.com";
 
-            if (url.Contains(taoBaoItemPattern) )
+            if (url.Contains(taoBaoItemPattern))
             {
                 if (url.Contains("id=")){
                     return new RespMessage(1, "2");//淘宝
                 }
             }
-
+            if (url.Contains(tmallMarketPattern))
+            {
+                if (url.Contains("id="))
+                {
+                    return new RespMessage(1, "3");//天猫超市
+                }
+            }
             if (url.Contains(tmallTemPattern))
             {
                 if (url.Contains("id="))
@@ -37,6 +45,8 @@ namespace DeepNaiWorkshop_2796.MyTool
                     return new RespMessage(1,"1");//天猫
                 }
             }
+
+            
 
 
             return new RespMessage(2, "不是天猫或淘宝商品详情页地址");
@@ -103,7 +113,7 @@ namespace DeepNaiWorkshop_2796.MyTool
 
                 return shopData;
             }
-            else
+            else if(tmallOrTaoBao == TaoBaoTool.GOOD_TYPE_TAOBAO)
             {
                 //淘宝评论页面
                 //https://rate.taobao.com/feedRateList.htm?auctionNumId=573876368555&userNumId=2965298499&currentPageNum=1&pageSize=20&rateType=&orderType=sort_weight&attribute=&sku=&hasSku=false&folded=0&ua=098%23E1hvM9vUvbpvUpCkvvvvvjiPPsM9gjnjnL5hAjEUPmPpsjYEPLLOtjEbRFMZAjDPR4wCvvpvvUmmRphvCvvvvvvPvpvhMMGvvvhCvvOvCvvvphvEvpCWm2fXvvw6aNoxfXk4jLkxfwLyd3ODN%2BLyaNoAdcHVafknIfvtv0ABDpcBHbUf8%2B1libmAdcHVaNoxfXkwjLFp%2BExreC9aUExr1nAKHdyCvm9vvvvvphvvvvvvvDxvpvs7vvm2phCvhRvvvUnvphvppvvv96CvpCCvkphvC99vvOC0p8yCvv9vvUmAOIbqXv%3D%3D&_ksTS=1533888495287_1089&callback=jsonp_tbcrate_reviews_list
@@ -177,6 +187,10 @@ namespace DeepNaiWorkshop_2796.MyTool
                 
                 
                 return shopData;
+            }
+            else //天猫超市
+            {
+                return null;
             }
 
         }

@@ -115,6 +115,13 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.button14 = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -128,13 +135,8 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label26 = new System.Windows.Forms.Label();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -150,13 +152,13 @@
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -891,6 +893,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label48);
+            this.groupBox1.Controls.Add(this.label47);
             this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
@@ -969,6 +973,8 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(265, 21);
             this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "https://chaoshi.detail.tmall.com/item.htm?spm=a3204.7933263.0.0.406b2258UX2r9l&id" +
+    "=548917187511&rewcatid=50516046";
             // 
             // label5
             // 
@@ -1054,6 +1060,75 @@
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.groupBox10);
+            this.tabPage5.Controls.Add(this.groupBox7);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(752, 598);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "版本更新说明";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.label45);
+            this.groupBox10.Controls.Add(this.label46);
+            this.groupBox10.Location = new System.Drawing.Point(16, 87);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(345, 67);
+            this.groupBox10.TabIndex = 2;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "版本_1.6.3";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(6, 39);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(227, 12);
+            this.label45.TabIndex = 1;
+            this.label45.Text = "（2）支持天猫超市商品详情信息的爬取；";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(6, 17);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(305, 12);
+            this.label46.TabIndex = 0;
+            this.label46.Text = "（1）在防ocr识别页面，增加保存文字水印配置的功能；";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label44);
+            this.groupBox7.Controls.Add(this.label43);
+            this.groupBox7.Location = new System.Drawing.Point(16, 14);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(345, 67);
+            this.groupBox7.TabIndex = 0;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "版本_1.6.2";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(6, 39);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(311, 12);
+            this.label44.TabIndex = 1;
+            this.label44.Text = "（2）增加另存图片的功能，用于保存制作好的评价图片；";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(6, 17);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(263, 12);
+            this.label43.TabIndex = 0;
+            this.label43.Text = "（1）选择模板时，增加模板背景图片预览功能；";
             // 
             // tabPage3
             // 
@@ -1188,74 +1263,25 @@
             this.label26.TabIndex = 20;
             this.label26.Text = "label26";
             // 
-            // tabPage5
+            // label47
             // 
-            this.tabPage5.Controls.Add(this.groupBox10);
-            this.tabPage5.Controls.Add(this.groupBox7);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(752, 598);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "版本更新说明";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.label47.AutoSize = true;
+            this.label47.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label47.Location = new System.Drawing.Point(116, 46);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(257, 12);
+            this.label47.TabIndex = 15;
+            this.label47.Text = "注意：天猫超市商品信息是通过内嵌ie浏览器获";
             // 
-            // groupBox7
+            // label48
             // 
-            this.groupBox7.Controls.Add(this.label44);
-            this.groupBox7.Controls.Add(this.label43);
-            this.groupBox7.Location = new System.Drawing.Point(16, 14);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(345, 67);
-            this.groupBox7.TabIndex = 0;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "版本_1.6.2";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(6, 17);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(263, 12);
-            this.label43.TabIndex = 0;
-            this.label43.Text = "（1）选择模板时，增加模板背景图片预览功能；";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(6, 39);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(311, 12);
-            this.label44.TabIndex = 1;
-            this.label44.Text = "（2）增加另存图片的功能，用于保存制作好的评价图片；";
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.label45);
-            this.groupBox10.Controls.Add(this.label46);
-            this.groupBox10.Location = new System.Drawing.Point(16, 87);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(345, 67);
-            this.groupBox10.TabIndex = 2;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "版本_1.6.3";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(6, 39);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(227, 12);
-            this.label45.TabIndex = 1;
-            this.label45.Text = "（2）支持天猫超市商品详情信息的爬取；";
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(6, 17);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(305, 12);
-            this.label46.TabIndex = 0;
-            this.label46.Text = "（1）在防ocr识别页面，增加保存文字水印配置的功能；";
+            this.label48.AutoSize = true;
+            this.label48.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label48.Location = new System.Drawing.Point(116, 62);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(233, 12);
+            this.label48.TabIndex = 16;
+            this.label48.Text = "取的，请将ie升级到11，此方法偶尔不稳定";
             // 
             // MainForm
             // 
@@ -1271,7 +1297,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "天猫评价水印助手(优惠券截图生成器)v1.6.2";
+            this.Text = "天猫评价水印助手(优惠券截图生成器)v1.6.3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1296,17 +1322,17 @@
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.tabPage5.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1418,5 +1444,7 @@
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label47;
     }
 }
