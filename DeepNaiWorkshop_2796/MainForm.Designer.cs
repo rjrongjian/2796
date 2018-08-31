@@ -100,6 +100,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -135,8 +137,6 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label26 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -913,6 +913,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "商品信息";
             // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label48.Location = new System.Drawing.Point(116, 62);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(233, 12);
+            this.label48.TabIndex = 16;
+            this.label48.Text = "取的，请将ie升级到11，此方法偶尔不稳定";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label47.Location = new System.Drawing.Point(116, 46);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(257, 12);
+            this.label47.TabIndex = 15;
+            this.label47.Text = "注意：天猫超市商品信息是通过内嵌ie浏览器获";
+            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -973,8 +993,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(265, 21);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "https://chaoshi.detail.tmall.com/item.htm?spm=a3204.7933263.0.0.406b2258UX2r9l&id" +
-    "=548917187511&rewcatid=50516046";
             // 
             // label5
             // 
@@ -1262,26 +1280,6 @@
             this.label26.Size = new System.Drawing.Size(47, 12);
             this.label26.TabIndex = 20;
             this.label26.Text = "label26";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label47.Location = new System.Drawing.Point(116, 46);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(257, 12);
-            this.label47.TabIndex = 15;
-            this.label47.Text = "注意：天猫超市商品信息是通过内嵌ie浏览器获";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label48.Location = new System.Drawing.Point(116, 62);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(233, 12);
-            this.label48.TabIndex = 16;
-            this.label48.Text = "取的，请将ie升级到11，此方法偶尔不稳定";
             // 
             // MainForm
             // 
