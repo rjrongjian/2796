@@ -125,28 +125,34 @@ namespace DeepNaiWorkshop_2796.MyTool
 
         public static void CheckUserStatus()
         {
-            // 程序关闭前退出登录 
-            IDictionary<string, string> parameters = new Dictionary<string, string>();
-            var url = ApiUrl["CheckUserStatus"];  //  这里改成自己的地址
+            try { 
+                // 程序关闭前退出登录 
+                IDictionary<string, string> parameters = new Dictionary<string, string>();
+                var url = ApiUrl["CheckUserStatus"];  //  这里改成自己的地址
 
-            //  这里改成自己的参数名称
-            parameters.Add("StatusCode", CacheData.Ret);
-            parameters.Add("UserName", CacheData.UserName);
-            var retValue = WebPost.ApiPost(url, parameters);
-            Console.WriteLine("返回的码："+ retValue);
-            if (retValue == "-110"||retValue=="110")
-            {
-                MessageBox.Show("您的会员已经过期，请充值");
-                System.Environment.Exit(0);
-            }else if (retValue == "1")
-            {
+                //  这里改成自己的参数名称
+                parameters.Add("StatusCode", CacheData.Ret);
+                parameters.Add("UserName", CacheData.UserName);
+                var retValue = WebPost.ApiPost(url, parameters);
+                Console.WriteLine("返回的码："+ retValue);
+                if (retValue == "-110"||retValue=="110")
+                {
+                    MessageBox.Show("您的会员已经过期，请充值");
+                    System.Environment.Exit(0);
+                }else if (retValue == "1")
+                {
                 
-            }
-            else
+                }
+                else
+                {
+                    throw new Exception("定位未知错误：" + retValue);
+                }
+            }catch(Exception e)
             {
-                throw new Exception("定位未知错误：" + retValue);
+                MyLogUtil.ErrToLog("error："+e);
             }
-            
+
+
         }
 
 
